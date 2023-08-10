@@ -13,10 +13,11 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 <details><summary>Install Elixir/Erlang w/ asdf</summary>
 
-```bash
-asdf install elixir 1.15.4-otp-25
-asdf install erlang 25.3.2.5 # VSCode elixirLS does not support OTP 26 
-```
+- `asdf install elixir 1.15.4-otp-25`
+- `asdf install erlang 25.3.2.5 # VSCode elixirLS does not support OTP 26`
+- `mix local.hex`
+
+xxx
 
 </details>
 
