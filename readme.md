@@ -1,6 +1,14 @@
+---
+source: https://phoenixonrails.com
+title: Phoenix on Rails
+---
+
 [Phoenix on Rails](https://phoenixonrails.com)
 
 ## 1. Intro  
+
+[asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
+
 ## Part 1. An introduction to Elixir
 ## 2. Ruby vs. Elixir  
 ## 3. Basic Elixir syntax  
