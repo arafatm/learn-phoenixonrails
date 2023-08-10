@@ -17,6 +17,7 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 - `asdf install erlang 25.3.2.5       # VSCode elixirLS does not support OTP 26`
 - `mix local.hex`
 - `mix archive.install hex phx_new`
+- [PostgreSQL - Detailed installation guides](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
 xxx
 
 </details>
