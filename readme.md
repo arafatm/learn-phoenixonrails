@@ -18,20 +18,16 @@ asdf install elixir 1.15.4-otp-25
 asdf install erlang 25.3.2.5 # VSCode elixirLS does not support OTP 26 
 ```
 
-```elixir
-puts "test"
-```
-
 </details>
 
 ## Part 1. An introduction to Elixir
-  ### 2. Ruby vs. Elixir  
-  ### 3. Basic Elixir syntax  
-  ### 4. Elixir modules  
-    ### 5. Atoms, Lists and Tuples  
-  ### 6. Sigils  
-  ### 7. Pattern matching  
-  ### 8. Elixir Maps  
+### 2. Ruby vs. Elixir  
+### 3. Basic Elixir syntax  
+### 4. Elixir modules  
+### 5. Atoms, Lists and Tuples  
+### 6. Sigils  
+### 7. Pattern matching  
+### 8. Elixir Maps  
 ### 9. Keyword Lists  
 ### 10. Module attributes  
 ### 11. Elixir Structs  
