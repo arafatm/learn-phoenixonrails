@@ -38,7 +38,7 @@ a>img  {border: 2px solid blue;}
 blockquote  { border-left: 0.5rem solid maroon; margin: 0.5rem; padding: 0.5rem 0.5rem; background-color: lavender; }
 blockquote p  { margin: 0; padding: 0;}
 code  {  color: lavender; background-color: #272822; padding: 0.1rem 1rem; border-radius: 1rem; }
-del  {}
+details  {  color: lavender; background-color: #272822; padding: 0.1rem 1rem; border-radius: 1rem; }
 em  { background-color: limegreen; padding: 0.1rem 0.3rem; font-style: normal; }
 img  { margin: 0; padding: 0.5rem; max-height: 20rem; max-width: 100%; }
 img.emoji, img.ico  { width: 1.2rem; height: 1.2rem; padding: 0; }
