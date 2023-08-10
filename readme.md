@@ -15,7 +15,7 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 - `asdf install elixir 1.15.4-otp-25`
 - `asdf install erlang 25.3.2.5       # VSCode elixirLS does not support OTP 26`
-- :ship: `mix local.hex`
+- `mix local.hex`
 
 xxx
 
