@@ -7,7 +7,13 @@ title: Phoenix on Rails
 
 ## 1. Intro  
 
-[asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
+Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
+<details><summary>Install Elixir/Erlang w/ asdf</summary>
+```bash
+asdf install elixir 1.15.4-otp-25
+asdf install erlang 25.3.2.5 # VSCode elixirLS does not support OTP 26 
+```
+</details>
 
 ## Part 1. An introduction to Elixir
 ## 2. Ruby vs. Elixir  
