@@ -1,0 +1,8 @@
+---
+layout: default
+---
+Arafat
+
+<article class="book">
+  <div>{{ content }}</div>
+</article>

@@ -1,0 +1,58 @@
+<footer>
+  <span class="{{ }}"><a href="{{ '' | absolute_url }}">Home</a></span>
+  <span class="github">
+    <img class="ico" src="https://github.com/favicon.ico" /> 
+    <a href="{{ site.github.repository_url }}">{{ site.github.owner_name }}</a> 
+  </span>
+</footer>
+{% if site.baseurl == "/ghp" or site.url == 'http://localhost:4000'  %} 
+  <section class="footer"> 
+    <h2>Debug Vars</h2> 
+    <ul>
+      <li>| absolute_url {{ '/' | absolute_url }} </li> 
+      <li>| relative_url {{ '/' | relative_url }} </li> 
+      <li>site.url {{ site.url }} </li> 
+      <li>site.baseurl {{ site.baseurl }} </li>  
+      <li>page.title {{ page.title }} </li> 
+      <li>page.url {{ page.url}} </li> 
+      <li>github_username: {{ github_username }}</li>
+      <li>site.github_username: {{ site.github_username }}</li>
+    </ul> 
+    <h3>Debug: Site != html_pages, documents, pages, github</h3>
+    <table>
+      {% for s in site %}
+        {% if {{s}} != "html_pages" and {{s}} != "documents" and {{s}} != "pages" and {{s}} != "github" %}
+          <tr><td>{{s}}</td><td>{{ site[s] }}</td></tr>
+        {% endif %}
+      {% endfor %}
+    </table>
+    <h3>Debug: Page != "content</h3>
+    <table>
+      {% for s in page %}
+        {% if s[0] != "content" %}
+          <tr><td>{{s[0]}}</td><td>{{s[1]}}</td></tr>
+        {% endif %}
+      {% endfor %}
+    </table>
+    <h3>Debug: Site.Github</h3>
+    <table>
+      {% for s in site.github %}
+        {% if {{s}} == "public_repositories" %}
+          <tr><td>Public Repos</td><td>
+              <ul>
+                {% for r in site.github[s] %}
+                  {% if r.has_pages %}
+                    <li><a href="{{r.html_url}}">{{r.name}}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </td></tr>
+            </tr>
+          {% else %}
+            <tr><td>{{s]}}</td><td>{{ site.github[s] }}</td></tr>
+          {% endif %}
+        {% endfor %}
+    </table>
+  </section> 
+{% endif %}
+<!-- vim: set ft=liquid: -->
