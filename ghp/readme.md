@@ -3,18 +3,15 @@ layout: home
 title: arafatm template
 ---
 
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+
 - `gh workflow run jekyll-gh-pages.yml`
 - `gh api --paginate /users/arafatm/repos | jq '.[] | select(.has_pages == true) | .name'`
 - Create repo & `ggit_arafatm; ggit_pages`
-
-<!-- vim-markdown-toc GFM -->
-
-* [Useful Links](#useful-links)
-* [Syntax](#syntax)
-  * [Math](#math)
-  * [Code](#code)
-
-<!-- vim-markdown-toc -->
 
 ## Useful Links
 
@@ -27,18 +24,6 @@ title: arafatm template
 
 ## Syntax
 
-This is some random text **This is bold text** _This text is italicized_ ~~This
-was mistaken text~~ This is some random text **This is bold text** _This text
-is italicized_ ~~This was mistaken text~~ This is some random text **This is
-bold text** _This text is italicized_ ~~This was mistaken text~~ This is some
-random text `with some code in the middle` **This is bold text** _This text is
-italicized_ ~~This was mistaken text~~ This is some random text **This is bold
-text** _This text is italicized_ ~~This was mistaken text~~ This is some random
-text **This is bold text** _This text is italicized_ ~~This was mistaken text~~
-
-> Multiline Quote :cry: <newline>
-> :bulb: bulb :knot:
-
     Block Text
 
 <details><summary>Testing Code</summary>
@@ -50,6 +35,18 @@ puts "Hello #{world}"
 
 Color `#0969DA`
 </details>
+
+> Multiline Quote :cry: <newline>
+> :bulb: bulb :knot:
+
+This is some random text **This is bold text** _This text is italicized_ ~~This
+was mistaken text~~ This is some random text **This is bold text** _This text
+is italicized_ ~~This was mistaken text~~ This is some random text **This is
+bold text** _This text is italicized_ ~~This was mistaken text~~ This is some
+random text `with some code in the middle` **This is bold text** _This text is
+italicized_ ~~This was mistaken text~~ This is some random text **This is bold
+text** _This text is italicized_ ~~This was mistaken text~~ This is some random
+text **This is bold text** _This text is italicized_ ~~This was mistaken text~~
 
 - [ ] task A
 - [ ] :a: task B
@@ -72,6 +69,7 @@ Followed by some text Followed by some text on next line
 - Inline: `$$` $$f_{w,b}(x) = wx + b$$ is equivalent to asdf
 
 Block: 
+
 $$
 \begin{aligned}
 \text{repeat until convergence \{} \\ 
