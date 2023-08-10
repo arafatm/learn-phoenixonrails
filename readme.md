@@ -18,6 +18,8 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 - `mix local.hex`
 - `mix archive.install hex phx_new`
 - [PostgreSQL - Detailed installation guides](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+  - `sudo apt-get install postgresql postgresql-contrib postgresql-client`
+
 xxx
 
 </details>
