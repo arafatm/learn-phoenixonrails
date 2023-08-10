@@ -41,12 +41,15 @@ text **This is bold text** _This text is italicized_ ~~This was mistaken text~~
 
     Block Text
 
+<details><summary>Testing Code</summary>
+
 ```ruby
 world = "world"
 puts "Hello #{world}"
 ```
 
 Color `#0969DA`
+</details>
 
 - [ ] task A
 - [ ] :a: task B
