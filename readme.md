@@ -17,10 +17,12 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 - `asdf install erlang 25.3.2.5       # VSCode elixirLS does not support OTP 26`
 - `mix local.hex`
 - `mix archive.install hex phx_new`
+- `mix phx.new --version` #> Phoenix installer v1.7.7
 - [PostgreSQL - Detailed installation guides](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
   - `sudo apt-get install postgresql postgresql-contrib postgresql-client`
   - `sudo service postgresql start` # For WSL
   - `sudo -u postgres psql postgres`
+
 
 xxx
 
