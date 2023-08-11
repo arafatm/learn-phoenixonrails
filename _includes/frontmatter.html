@@ -1,0 +1,9 @@
+{% if page.category or page.author or page.source or page.tags.size > 0 %}
+<table class="header">
+  {% comment %} <h1 class="post-title">{{ page.title | escape  }}</h1> {% endcomment %}
+  {% if page.category %} <tr><td>Category:</td><td> {{ page.category }}</td></tr> {% endif %}
+  {% if page.author %} <tr><td>By:</td><td> {{ page.author }}</td></tr> {% endif %}
+  {% if page.source %} <tr><td>Source:</td><td><a href="{{ page.source }}">{{ page.source }}</a></td></tr> {% endif %}
+  {% if page.tags.size > 0 %}<tr><td>Tags:</td><td>{% for tag in page.tags %}{{ tag }} {% endfor %}</td></tr>{% endif %}
+</table>
+{% endif %}
