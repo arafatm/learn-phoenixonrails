@@ -23,12 +23,21 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
   - `sudo service postgresql start` # For WSL
   - `sudo -u postgres psql postgres`
 
-xxx
-
 </details>
 
 ## Part 1. An introduction to Elixir
+
 ### 2. Ruby vs. Elixir  
+
+Elixir _doesn't have classes_, but it has __modules__
+
+```elixir
+String.upcase(name) # vs Ruby: name.upcase
+```
+
+xxx
+
+
 ### 3. Basic Elixir syntax  
 ### 4. Elixir modules  
 ### 5. Atoms, Lists and Tuples  
