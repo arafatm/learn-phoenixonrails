@@ -31,17 +31,48 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 Elixir _doesn't have classes_, but it has __modules__
 
-#### Functional vs. Object-Oriented
+###### Functional vs. Object-Oriented
 
 ```elixir
 String.upcase(name) # vs Ruby: name.upcase
 ```
+###### Immutability vs Mutability
+
+In Elixir, everything behaves like a Ruby symbol. There’s no equivalent of
+`capitalize!` on a Elixir string because Elixir __can’t mutate the string__ in
+place.
+
+###### Compiled vs Interpreted
+
+Elixir files end in `.ex`, and get compiled to BEAM files with extension `.beam`.
+
+<details><summary>Compiling `elixirc` vs `elixir` </summary>
+
+```bash
+elixirc math.ex # creates Elixir.Math.Bem
+
+elixir math.exs # Doesn't save .beam
+```
+</details>
+
+###### Recap
+
+|                | Ruby                                                               | Elixir                                      |
+| ---            | ---                                                                | ---                                         |
+| paradigm       | Object-oriented                                                    | Functional                                  |
+| Console        | `irb` (Press `Ctrl + D` to exit)                                   | `iex` (Press `Ctrl + C` twice to exit)      |
+| Mutability     | Some objects (strings) are mutable, others (symbols) are immutable | Everything is immutable                     |
+| File extension | `.rb`                                                              | `.ex` or `.exs`                             |
+| Execution      | Interpreted                                                        | Compile `.ex` files, interpret `.exs` files |
+
+### 3. Basic Elixir syntax  
 
 xxx
 
-
-### 3. Basic Elixir syntax  
 ### 4. Elixir modules  
+
+###### Variables
+
 ### 5. Atoms, Lists and Tuples  
 ### 6. Sigils  
 ### 7. Pattern matching  
