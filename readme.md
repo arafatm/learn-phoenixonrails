@@ -9,7 +9,7 @@ title: Phoenix on Rails
 
 Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
 
-:bulb: 
+:grin: 
 
 <details><summary>Install Elixir/Erlang w/ asdf</summary>
 
@@ -20,6 +20,8 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 - [PostgreSQL - Detailed installation guides](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
   - `sudo apt-get install postgresql postgresql-contrib postgresql-client`
 
+- [ ] test
+- [x] test
 xxx
 
 </details>
