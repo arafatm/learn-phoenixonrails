@@ -62,14 +62,14 @@ any given role pays?
 … and what better time to enter a negotiation than when you perfectly happy to
 walk away if you don’t get what you want?
 
-I’m telling you that the absolute very best time to talk to a recruiter happens
+I'm telling you that the absolute very best time to talk to a recruiter happens
 when you’re not looking for a job.
 
 Back to the initial problem though. Here’s the script that you probably get
 pretty frequently:
 
 Hi `{{first-name}}`, I was going through your profile and noticed your work as
-`{{job-title}}`. I have an open role with a `{{startup|scale-up|fortune 500}}`
+`{{job-title}}`. I have an open role with a `{startup/scale-up/fortune 500}`
 and we’re looking for your skillset. Would you have time to hop on a quick 15
 minute call to discuss the opportunity?
 

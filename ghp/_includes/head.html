@@ -30,6 +30,9 @@
   </script>
   {% endif %}
   <link rel="stylesheet" href="{{ 'https://arafatm.com/ghp/assets/css/rouge.monokai.css' }}">
-  <link rel="stylesheet" href="{{ 'https://arafatm.com//ghp/assets/css/styles.css' }}"> 
+  {% unless site.url == 'http://localhost:4000' %}
+    <link rel="stylesheet" href="{{ 'https://arafatm.com//ghp/assets/css/styles.css' }}"> 
+  {% endunless %}
   <link rel="stylesheet" href="{{ 'assets/css/styles.css' | absolute_url }}">
 </head>
+<!-- vim: set ft=liquid: -->

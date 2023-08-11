@@ -5,11 +5,11 @@ body  { font: 14px "fira sans", sans-serif; max-width: 60rem; background-color: 
 footer  { display: flex; justify-content: space-between; margin: 1rem; padding: 0.5rem 3rem; text-align: center;}
 
 nav ul  { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; /*! background-color: maroon; */}
-nav ul a  { text-decoration: none; color: white; font-weight: bold; }
-nav ul li  { padding: 0 0.5rem; background-color: maroon; margin: 0 0.2ex;}
+nav ul li  { padding: 0 0.5rem; background-color: aliceblue; margin: 0 0.2ex;}
+nav ul li a  { text-decoration: none; color: black; font-weight: bold; }
 nav ul li:last-child  { margin-right: 0; /* Remove margin from last item */ }
 nav.toc  { background-color: #333; }
-nav.toc>ul  { list-style: none; margin: 1rem; padding: 0; display: flex; flex-wrap: wrap; }
+nav.toc>ul  { list-style: none; margin: 1rem; padding: 0; display: block; flex-wrap: wrap; }
 nav.toc>ul>li  { position: relative; padding: 0.5rem; border: 1px solid white; margin: 0; }
 nav.toc>ul>li:hover>ul  { display: block; margin: 0.5rem 0 0 0.5rem; padding: 0; /* Show submenu on hover */ }
 nav.toc>ul>li>ul   { display: none; }

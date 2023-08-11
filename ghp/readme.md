@@ -3,12 +3,6 @@ layout: home
 title: arafatm template
 ---
 
-## H2
-### H3
-#### H4
-##### H5
-###### H6
-
 - `gh workflow run jekyll-gh-pages.yml`
 - `gh api --paginate /users/arafatm/repos | jq '.[] | select(.has_pages == true) | .name'`
 - Create repo & `ggit_arafatm; ggit_pages`
@@ -26,7 +20,7 @@ title: arafatm template
 
     Block Text
 
-<details><summary>Testing Code</summary>
+<details><summary>:bulb: Testing Code</summary>
 
 ```ruby
 world = "world"
@@ -38,6 +32,8 @@ Color `#0969DA`
 
 > Multiline Quote :cry: <newline>
 > :bulb: bulb :knot:
+
+:bulb:
 
 This is some random text **This is bold text** _This text is italicized_ ~~This
 was mistaken text~~ This is some random text **This is bold text** _This text
@@ -92,3 +88,58 @@ Test Code
 i = 56;
 puts "test #{i}"
 ```
+
+## Heading 2
+### Heading 3
+### Heading 4
+### Heading 5
+### Heading 6
+
+## Heading 2
+### Heading 3
+### Heading 4
+### Heading 5
+### Heading 6
+
+## Heading 2
+### Heading 3
+### Heading 4
+### Heading 5
+### Heading 6
+
+## Heading 2
+### Heading 3
+### Heading 4
+### Heading 5
+### Heading 6
+
+## Heading 2
+### Heading 3
+### Heading 4
+### Heading 5
+### Heading 6
+
+## Heading 2
+### Heading 3
+### Heading 4
+### Heading 5
+### Heading 6
+
+## Heading 2
+### Heading 3
+### Heading 4
+### Heading 5
+### Heading 6
+
+## Heading 2
+### Heading Heading 3 
+### Heading Heading 4 Heading
+### Heading 5 Heading Heading Heading
+### Heading 6 Heading Heading Heading Heading
+
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+
