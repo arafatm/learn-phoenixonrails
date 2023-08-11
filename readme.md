@@ -31,6 +31,8 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 Elixir _doesn't have classes_, but it has __modules__
 
+#### Functional vs. Object-Oriented
+
 ```elixir
 String.upcase(name) # vs Ruby: name.upcase
 ```
