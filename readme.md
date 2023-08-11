@@ -9,7 +9,7 @@ title: Phoenix on Rails
 
 Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
 
-:grin: 
+:dog: 
 
 <details><summary>Install Elixir/Erlang w/ asdf</summary>
 
@@ -19,9 +19,9 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 - `mix archive.install hex phx_new`
 - [PostgreSQL - Detailed installation guides](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
   - `sudo apt-get install postgresql postgresql-contrib postgresql-client`
+  - `sudo service postgresql start` # For WSL
+  - `sudo -u postgres psql postgres`
 
-- [ ] test
-- [x] test
 xxx
 
 </details>
