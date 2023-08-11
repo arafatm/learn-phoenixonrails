@@ -11,7 +11,7 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 :dog: 
 
-<details><summary>Install Elixir/Erlang w/ asdf</summary>
+<details><summary>:ship: Install Elixir/Erlang w/ asdf</summary>
 
 - `asdf install elixir 1.15.4-otp-25`
 - `asdf install erlang 25.3.2.5       # VSCode elixirLS does not support OTP 26`
@@ -22,7 +22,6 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
   - `sudo apt-get install postgresql postgresql-contrib postgresql-client`
   - `sudo service postgresql start` # For WSL
   - `sudo -u postgres psql postgres`
-
 
 xxx
 
