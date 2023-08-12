@@ -9,8 +9,7 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 :dog: 
 
-<details><summary>
-### :ship: Install Elixir/Erlang w/ asdf
+<details><summary>:ship: Install Elixir/Erlang w/ asdf
 </summary>
 
 - `asdf install elixir 1.15.4-otp-25`
@@ -343,6 +342,7 @@ Atoms are never garbage collected.
 </details>
 
 <details><summary>Lists </summary>
+
 Implemented as _linked lists_.
 
 ```elixir
@@ -367,6 +367,7 @@ Enum.at(["James", "Kirk", "Lars", "Robert"], 2) # "Lars"
 </details>
 
 <details><summary>Tuples </summary>
+
 Tuples are fixed-size, ordered containers of elements.
 
 ```elixir
@@ -382,6 +383,7 @@ File.read("file_that_doesnt_exist.txt") # {:error, :enoent}
 </details>
 
 <details><summary>Lists vs. Tuples</summary>
+
 - Tuples are _contiguous in memory_. A tuple takes up a fixed, known amount of
   memory, and accessing a tuple element by its index will always run in
   constant time.
@@ -401,6 +403,7 @@ List.to_tuple([1,2,3]) # {1, 2, 3}
 </details>
 
 <details><summary> Size vs Length</summary>
+
 - Since tuples are contiguous in memory, Elixir knows in advance how big it is
   and can return the size in constant time, __O(1)__
 - To calculate the length of a list, however, Elixir needs to traverse the
@@ -413,6 +416,7 @@ length(["fizz", "buzz"])  # 2
 </details>
 
 <details><summary>Recap</summary>
+
 - Elixir **atoms** are essentially the same thing as Ruby **symbols** and use
   the `:same_syntax`.
 - Elixir **lists** are written with square brackets (`[`, `]`) and are
