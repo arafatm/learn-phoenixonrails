@@ -246,13 +246,91 @@ Foo.bar   # => "rescued error"
 - sytactic sugar for looping over enumerables
 - have 3 parts: generators, filters, and collectables
 
-xxx
-
 ### 4. Elixir modules  
 
-###### Variables
+<details><summary>Modules organize functions</summary>
+
+```elixir
+defmodule Math do
+  def add(a, b) do
+    a + b
+  end
+
+  def subtract(a, b) do
+    a - b
+  end
+end
+```
+</details>
+
+<details><summary>Import (only)</summary>
+
+```elixir
+import Math
+add(2, 2)       #> 4
+subtract(5, 3)  #> 2
+
+import Math, only: [add: 2]
+```
+</details>
+
+<details><summary>Private</summary>
+
+_No protected methods_. `defp` for private
+
+```elixir
+defmodule Math do
+  defp add(a, b) do
+    a + b
+  end
+end
+```
+</details>
+
+<details><summary>Alias</summary>
+
+```elixir
+alias Math, as: M
+M.add(2, 2)     #> 4
+
+defmodule PhoenixOnRails.Multiplication do ... end
+alias PhoenixOnRails.Multiplication # Now we can just refer to `Multiplication` without using its full name:
+Multiplication.multiply(3, 4)       #> 12
+
+  # Instead of writing this on separate lines:
+alias PhoenixOnRails.Foo
+alias PhoenixOnRails.Bar
+alias PhoenixOnRails.Fizz
+alias PhoenixOnRails.Buzz
+
+  # You can write it like this:
+alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
+```
+</details>
+
+#### Recap
+
+Module
+
+|                            | **Ruby**                                     | **Elixir**                                                   |
+| ---                        | ---                                          | ---                                                          |
+| create a module            | `module`                                     | `defmodule`                                                  |
+| using a module’s functions | mix in to a class with `include` or `extend` | call directly e.g. `Math.add(2, 2)`, or import with `import` |
+| private functions          | `private`                                    | `defp`                                                       |
+| protected functions        | `protected`                                  | don’t exist                                                  |
+
+Alias
+
+| **Syntax**                  | **Result**                                                       |
+| ---                         | ---                                                              |
+| `alias Foo.Bar, as: Bar`    | adds `Bar` as alternative name for `Foo`                         |
+| `alias Foo.Bar`             | shorthand for `alias Foo.Bar, as: Bar`                           |
+| `alias Foo.{Bar, Car, Dar}` | shorthand for `alias Foo.Bar`, `alias Foo.Car`, `alias Foo.Dar`. |
 
 ### 5. Atoms, Lists and Tuples  
+
+xxx
+
 ### 6. Sigils  
 ### 7. Pattern matching  
 ### 8. Elixir Maps  
