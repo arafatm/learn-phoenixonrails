@@ -72,7 +72,7 @@ IO.puts("Hello, world!")
 
   # Vars
 some_number = 1
- # variable names can end with ? or !:
+  # variable names can end with ? or !:
 valid? = true 
 password! = "foobar"
 
@@ -80,7 +80,7 @@ password! = "foobar"
 "Hello" <> " " <> "there" # contat
 "The name's #{name}"      # interpolate
 
- # No multiline comments
+  # No multiline comments
 
   # Conditionals
 unless age >= 18 do
@@ -89,14 +89,14 @@ else
   "Adult"
 end
 
- # blocks are scoped
+  # blocks are scoped
 x = "Something"
 if true do
   x = "Something else"
 end
 x #=> "Something"
 
- # return value to assign
+  # return value to assign
 x = if true do
   "Something"
 else
@@ -104,14 +104,14 @@ else
 end
 x #=>"Something"
 
- # No elsif
+  # No elsif
 cond do
   age >= 18 -> "Adult"
   age >= 13 -> "Teenager"
   true -> "Child"           # fallback clause
 end
 
- # for loops are expressions that return a value
+  # for loops are expressions that return a value
 squares = for n <- [1,2,3,4] do
   n * n
 end
@@ -130,6 +130,11 @@ floor; ceil; round; abs; max; min;
 2 ==  2.0 # true
 2 === 2.0 # false
 
+```
+</details>
+<details><summary>Functions</summary>
+
+```elixir
   # Elixir doesn’t have a return statement. 
   # You can’t “exit early” from an Elixir function - 
   # the only way to return something is to make it be the 
@@ -171,12 +176,25 @@ sum3.(3,4)                  # => 7
 Enum.map([1, 2, 3, 4], &(&1 ** 2))    # => [1, 4, 9, 16]
 Enum.reduce([1, 2, 3, 4], &(&1 + &2)) # => 10
 
+```
+
+</details>
+<details><summary>Regex</summary>
+
+```elixir
   # Regex
 Regex.match?(~r/se[0-9]en/, "se7en") # => true
   # These are all equivalent:
 ~r/se[0-9]en/
 ~r(se[0-9]en)
 ~r'se[0-9]en'
+
+```
+
+</details>
+<details><summary>Inspect & Exceptions</summary>
+
+```elixir
 
   # inspect
 puts :symbol  # => symbol
@@ -221,6 +239,7 @@ end
 Foo.bar   # => "rescued error"
 
 ```
+
 </details>
 
 [Comprehensions - The Elixir programming language](https://elixir-lang.org/getting-started/comprehensions.html)
