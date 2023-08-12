@@ -3,8 +3,6 @@ source: https://phoenixonrails.com
 title: Phoenix on Rails
 ---
 
-[Phoenix on Rails](https://phoenixonrails.com)
-
 ## 1. Intro  
 
 Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
@@ -66,6 +64,82 @@ elixir math.exs # Doesn't save .beam
 | Execution      | Interpreted                                                        | Compile `.ex` files, interpret `.exs` files |
 
 ### 3. Basic Elixir syntax  
+
+<details><summary>Common Syntax</summary>
+
+```elixir
+IO.puts("Hello, world!")
+
+  # Vars
+some_number = 1
+ # variable names can end with ? or !:
+valid? = true 
+password! = "foobar"
+
+  # Strings
+"Hello" <> " " <> "there" # contat
+"The name's #{name}"      # interpolate
+
+ # No multiline comments
+
+  # Conditionals
+unless age >= 18 do
+  "Minor"
+else
+  "Adult"
+end
+
+ # blocks are scoped
+x = "Something"
+if true do
+  x = "Something else"
+end
+x #=> "Something"
+
+ # return value to assign
+x = if true do
+  "Something"
+else
+  "Something else"
+end
+x #=>"Something"
+
+ # No elsif
+cond do
+  age >= 18 -> "Adult"
+  age >= 13 -> "Teenager"
+  true -> "Child"           # fallback clause
+end
+
+ # for loops are expressions that return a value
+squares = for n <- [1,2,3,4] do
+  n * n
+end
+IO.puts squares #=> [1,4,9,16]
+
+5/2       #> 2.5
+div(5,2)  #> 2 
+rem(6,4)  #> 2
+2 ** 4    #> 16
+floor; ceil; round; abs; max; min;
+
+  # equals vs exactly equals...
+2 ==  2   # true
+2 === 2   # true
+2 ==  2.0 # true
+2 === 2.0 # false
+
+  # Functions
+def add(a, b) do
+  a + b
+end
+
+```
+</details>
+
+[Comprehensions - The Elixir programming language](https://elixir-lang.org/getting-started/comprehensions.html)
+- sytactic sugar for looping over enumerables
+- have 3 parts: generators, filters, and collectables
 
 xxx
 
