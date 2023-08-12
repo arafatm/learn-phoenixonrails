@@ -310,18 +310,18 @@ alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 
 #### Recap
 
-Module
+##### Module
 
-|                            | **Ruby**                                     | **Elixir**                                                   |
+|                            | Ruby                                     | Elixir                                                   |
 | ---                        | ---                                          | ---                                                          |
 | create a module            | `module`                                     | `defmodule`                                                  |
 | using a module’s functions | mix in to a class with `include` or `extend` | call directly e.g. `Math.add(2, 2)`, or import with `import` |
 | private functions          | `private`                                    | `defp`                                                       |
 | protected functions        | `protected`                                  | don’t exist                                                  |
 
-Alias
+##### Alias
 
-| **Syntax**                  | **Result**                                                       |
+| Syntax                  | Result                                                       |
 | ---                         | ---                                                              |
 | `alias Foo.Bar, as: Bar`    | adds `Bar` as alternative name for `Foo`                         |
 | `alias Foo.Bar`             | shorthand for `alias Foo.Bar, as: Bar`                           |
