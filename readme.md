@@ -131,7 +131,11 @@ floor; ceil; round; abs; max; min;
 2 === 2.0 # false
 
 ```
+[Comprehensions - The Elixir programming language](https://elixir-lang.org/getting-started/comprehensions.html)
+- sytactic sugar for looping over enumerables
+- have 3 parts: generators, filters, and collectables
 </details>
+
 <details><summary>Functions</summary>
 
 ```elixir
@@ -241,10 +245,6 @@ Foo.bar   # => "rescued error"
 ```
 
 </details>
-
-[Comprehensions - The Elixir programming language](https://elixir-lang.org/getting-started/comprehensions.html)
-- sytactic sugar for looping over enumerables
-- have 3 parts: generators, filters, and collectables
 
 ### 4. Elixir modules  
 
