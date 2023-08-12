@@ -15,7 +15,7 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 - `asdf install erlang 25.3.2.5       # VSCode elixirLS does not support OTP 26`
 - `mix local.hex`
 - `mix archive.install hex phx_new`
-- `mix phx.new --version` #> Phoenix installer v1.7.7
+- `mix phx.new --version` # => Phoenix installer v1.7.7
 - [PostgreSQL - Detailed installation guides](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
   - `sudo apt-get install postgresql postgresql-contrib postgresql-client`
   - `sudo service postgresql start` # For WSL
@@ -118,10 +118,10 @@ end
 IO.puts squares #=> [1,4,9,16]
 
   # Math
-5/2       #> 2.5
-div(5,2)  #> 2 
-rem(6,4)  #> 2
-2 ** 4    #> 16
+5/2       # => 2.5
+div(5,2)  # => 2 
+rem(6,4)  # => 2
+2 ** 4    # => 16
 floor; ceil; round; abs; max; min;
 
   # equals vs exactly equals...
@@ -130,9 +130,10 @@ floor; ceil; round; abs; max; min;
 2 ==  2.0 # true
 2 === 2.0 # false
 
-  # Elixir doesn’t have a return statement. You can’t “exit early” from an
-  # Elixir function - the only way to return something is to make it be the value
-  # of the function’s final expression.
+  # Elixir doesn’t have a return statement. 
+  # You can’t “exit early” from an Elixir function - 
+  # the only way to return something is to make it be the 
+  # value of the function’s final expression.
 def add(a, b) do
 
   # Default argument
@@ -143,8 +144,9 @@ String.contains?("England", "gland")
 
   # And functions that end an ! raise an exception in their error cases
 File.read("file_that_doesnt_exist.txt") # => {:error, :enoent}
-File.read!("file_that_doesnt_exist.txt") # ** (File.Error) could not read file 
-                                         # file_that_doesnt_exist.txt: no such file or directory
+File.read!("file_that_doesnt_exist.txt") 
+  # => ** (File.Error) could not read file 
+  # => file_that_doesnt_exist.txt: no such file or directory
 
   # Anonymous Fn
 fn x, y ->
@@ -152,11 +154,11 @@ fn x, y ->
 end
 
 sum = fn x, y -> x + y end    # call with '.'
-sum.(1, 2)                    #> 3
+sum.(1, 2)                    # => 3
 
   # Can be passed as argument to other fns
-Enum.map([1, 2, 3, 4], fn n -> n ** 2 end)          #> [1, 4, 9, 16]
-Enum.reduce([1, 2, 3, 4], fn x, acc -> x + acc end) #> 10
+Enum.map([1, 2, 3, 4], fn n -> n ** 2 end)          # => [1, 4, 9, 16]
+Enum.reduce([1, 2, 3, 4], fn x, acc -> x + acc end) # => 10
                             
   # Shorthand syntax for anonymous fns
 sum1= fn x, y -> x + y end
@@ -166,32 +168,32 @@ sum2.(3,4)                  # => 7
 sum3 = & &1 + &2            # The brackets are optional:
 sum3.(3,4)                  # => 7 
 
-Enum.map([1, 2, 3, 4], &(&1 ** 2))    #> [1, 4, 9, 16]
-Enum.reduce([1, 2, 3, 4], &(&1 + &2)) #> 10
+Enum.map([1, 2, 3, 4], &(&1 ** 2))    # => [1, 4, 9, 16]
+Enum.reduce([1, 2, 3, 4], &(&1 + &2)) # => 10
 
   # Regex
-Regex.match?(~r/se[0-9]en/, "se7en") #> true
+Regex.match?(~r/se[0-9]en/, "se7en") # => true
   # These are all equivalent:
 ~r/se[0-9]en/
 ~r(se[0-9]en)
 ~r'se[0-9]en'
 
   # inspect
-puts :symbol  #> symbol
-p :symbol     #> :symbol
+puts :symbol  # => symbol
+p :symbol     # => :symbol
 
   # p == IO.inspect
-IO.puts "string"    #> string
-IO.inspect "string" #> "string"
+IO.puts "string"    # => string
+IO.inspect "string" # => "string"
 
   # Exceptions
-raise "something's wrong!" #> ** (RuntimeError) something's wrong!
+raise "something's wrong!" # => ** (RuntimeError) something's wrong!
 
 try do
   raise "something's wrong"
 rescue
   e in RuntimeError -> e.message
-end                               #> "something's wrong"
+end                               # => "something's wrong"
 
 try do  # code that might raise an exception
 rescue  # code that handles the error
@@ -203,7 +205,7 @@ try do
   throw 1
 catch
   x -> "#{x} was caught"
-end                       #> "1 was caught"
+end                       # => "1 was caught"
 
   # There’s almost always a better, more readable way to solve a problem 
   # than with throw and catch. 
@@ -216,7 +218,7 @@ defmodule Foo do
     RuntimeError -> "rescued error"
   end
 end
-Foo.bar   #> "rescued error"
+Foo.bar   # => "rescued error"
 
 ```
 </details>
