@@ -329,6 +329,10 @@ alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 
 ### 5. Atoms, Lists and Tuples  
 
+#### Atoms
+#### Lists 
+#### Tuples 
+
 xxx
 
 ### 6. Sigils  
