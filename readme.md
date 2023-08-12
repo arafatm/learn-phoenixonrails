@@ -331,9 +331,101 @@ alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 
 ### 5. Atoms, Lists and Tuples  
 
-#### Atoms
-#### Lists 
-#### Tuples 
+<details><summary>Atoms</summary>
+
+Atoms are never garbage collected.
+
+```elixir
+:like_this
+:"like_this"
+:'like_this'
+```
+</details>
+
+<details><summary>Lists </summary>
+Implemented as _linked lists_.
+
+```elixir
+[3.14, "Hello", :hola, 456, false]
+["foo", "bar"] ++ ["fizz", "buzz"]  # ["foo", "bar", "fizz", "buzz"]
+["foo", "bar"] -- ["foo"]           # ["bar"]
+
+hd ["foo", "bar", "fizz", "buzz"] # "foo"
+tl ["foo", "bar", "fizz", "buzz"] # ["bar", "fizz", "buzz"]
+tl ["foo"]      # [] # The tail of a one-element list is the empty list:
+
+length ["James", "Kirk", "Lars", "Robert"]    # 4
+"Kirk" in ["James", "Kirk", "Lars", "Robert"] # true
+
+List.starts_with?([1, 1, 2, 3, 5, 8], [1, 1])   # true
+Enum.at(["James", "Kirk", "Lars", "Robert"], 2) # "Lars"
+
+  # [head | tail]
+[0 | [1,2,3,4]] # [0, 1, 2, 3, 4]
+["foo" | []]    # ["foo"]
+```
+</details>
+
+<details><summary>Tuples </summary>
+Tuples are fixed-size, ordered containers of elements.
+
+```elixir
+{"Biden", "president@whitehouse.gov"}
+
+elem {"Biden", "president@whitehouse.gov"}, 0 # "Biden"
+elem {"Biden", "president@whitehouse.gov"}, 1 # "president@whitehouse.gov"
+
+  # commonly used in function return with status
+File.read("file_that_exists.txt")       # {:ok, "this is the file's contents"}
+File.read("file_that_doesnt_exist.txt") # {:error, :enoent}
+```
+</details>
+
+<details><summary>Lists vs. Tuples</summary>
+- Tuples are _contiguous in memory_. A tuple takes up a fixed, known amount of
+  memory, and accessing a tuple element by its index will always run in
+  constant time.
+  - If you know exactly _how many elements you want to store, and this number won’t change_, then you probably want a tuple. 
+- Lists, on the other hand, are represented internally as _linked lists_. This
+  means that to get an element from a list, you must traverse the list’s
+  elements one by one, which can be slow if the list is long.
+  - Lists are better suited when the _number of elements is variable_ or not known in advance.
+
+```elixir
+president_tuple = {"Biden", "president@whitehouse.gov"}
+president_list  = ["Biden", "president@whitehouse.gov"]
+
+Tuple.to_list({1,2,3}) # [1, 2, 3]
+List.to_tuple([1,2,3]) # {1, 2, 3}
+```
+</details>
+
+<details><summary> Size vs Length</summary>
+- Since tuples are contiguous in memory, Elixir knows in advance how big it is
+  and can return the size in constant time, __O(1)__
+- To calculate the length of a list, however, Elixir needs to traverse the
+  whole list and count its elements one by one, in linear time, __O(n)__
+
+```elixir
+tuple_size({5, 1, 4})     # 3
+length(["fizz", "buzz"])  # 2
+```
+</details>
+
+<details><summary>Recap</summary>
+- Elixir **atoms** are essentially the same thing as Ruby **symbols** and use
+  the `:same_syntax`.
+- Elixir **lists** are written with square brackets (`[`, `]`) and are
+  internally represented as linked lists.
+- Elixir **tuples** are written with curly braces (`{`, `}`) and are stored as
+  contiguous blocks of memory. They have no direct equivalent in Ruby.
+- Use tuples for compound values and fixed-size collections, and use lists for
+  sequences of data of indeterminate size.
+- `tuple_size/1` counts the number of elements in a tuple and runs in constant
+  time. `length/1` counts the number of elements in a list and runs in time
+  linear to the length of the list.
+- `String.length/1` returns the number of characters in a string.
+</details>
 
 xxx
 
