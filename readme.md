@@ -54,7 +54,13 @@ elixir math.exs # Doesn't save .beam
 ```
 </details>
 
-### 3. Basic Elixir syntax  
+### 3. Basic Elixir Syntax  
+
+Just remember that:
+- Strings must use double quotes, not single quotes.
+- Functions and `if/unless` must have a do on their opening lines.
+- There are no `return` or `elsif` keywords.
+
 
 <details><summary>Common Syntax</summary>
 
@@ -237,7 +243,7 @@ Foo.bar   # => "rescued error"
 
 </details>
 
-### 4. Elixir modules  
+### 4. Elixir Modules  
 
 <details><summary>Modules organize functions</summary>
 
@@ -419,12 +425,263 @@ length(["fizz", "buzz"])  # 2
 - `String.length/1` returns the number of characters in a string.
 </details>
 
-xxx
-
 ### 6. Sigils  
+
+|                              |  Elixir                                  |  Ruby                   |
+| --                           |  --                                      |  --                     |
+| String (with interpolation)  |  `~s(…)`                                 |  `%(…)` or `%Q(…)`      |
+| String (no interpolation)    |  `~S(…)`                                 |  `%q(…)`                |
+| Array of strings             |  `~w(…)`                                 |  `%w(…)`                |
+| Array of symbols/atoms       |  `~w(…)a`                                |  `%i(…)`                |
+| Regex                        |  `~r(…)`                                 |  `%r(…)` or just /…/    |
+| Delimiter                    |  8 options `//  ||  ""  '' () [] {} <>`  |  any symbol             |
+| Interpolation with #{}       |  lowercase e.g. `~w[…]`                  |  uppercase e.g. `%W[…]` |
+
+<details><summary>Code</summary>
+
+```elixir
+~w[crash bang wallop] #> ["crash", "bang", "wallop"]
+
+~w[crash bang wallop]a #> [:crash, :bang, :wallop]
+                       # In Elixir use ~w[…]a to create an array of atoms. 
+                       # That is, use the same syntax as for an array of strings, 
+                       # but _add an a_ after the closing delimiter:
+
+~w/crash bang wallop/ # ONLY theseeight lines create the array:
+~w|crash bang wallop| # Unlike Ruby (which can use any delimiter)
+~w"crash bang wallop"
+~w'crash bang wallop'
+~w(crash bang wallop)
+~w[crash bang wallop]
+~w{crash bang wallop}
+~w<crash bang wallop>
+
+Regex.match?(~r/se[0-9]en/, "se7en") # ~r creates regex
+ # Your choice of delimiter affects which characters must be escaped with \.
+ # For example, to write a regex that matches the string http//, 
+ # you might not want to use / as your delimiter, 
+ # because then you’d need to write ~r/^https?\/\//, which is a bit hard to read.
+ # With a different delimiter you don’t need to escape the slashes; 
+ # e.g. you could write ~r(^https?//).
+
+~s(This is a string) #> "This is a string"
+ # Sigil, no need for escape characters:
+~s(He said "I'm not sure") 
+ # Equivalent with escaped double quotes: "He said \"I'm not sure\""
+
+  # To create a multiline string, called a heredoc, use ~s with three double or single quotes:
+haiku = ~s"""
+        Elixir code flows free,
+        Functional charm in each line,
+        Concurrency thrives.
+        """ 
+        #> "Elixir code flows free,\nFunctional charm in each line,\nConcurrency thrives.\n"
+
+  # Note that the heredoc removes the opening indentation from each line:
+IO.puts(haiku)
+  #> Elixir code flows free,
+  #> Functional charm in each line,
+  #> Concurrency thrives.
+
+ # Sigils allow you to interpolate data using #{}, just like a string. 
+ # Alternatively, if you use the capitalized version of the sigil (e.g. ~S), 
+ # interpolation will be ignored:
+noun = "mat" #> "mat"
+
+~s(The cat sat on the #{noun}) #> "The cat sat on the mat"
+
+~S(The cat sat on the #{noun}) #> "The cat sat on the \#{noun}"
+```
+</details>
+
 ### 7. Pattern matching  
+
+- Allows to assign more than one variable at once
+- e.g. with tuples or lists
+- can be used in `case`
+- allows pattern matching function params
+- `match/2`
+
+<details><summary>Code</summary>
+
+```elixir
+{x, y} = {1, 2}
+
+list = [1,2,3]
+[a, b, c] = list
+
+{x, y} = {1, 2, 3}  #> ** (MatchError) no match of right hand side value: {1, 2, 3}
+{x, x} = {10, 11}   #> ** (MatchError) no match of right hand side value: {10, 11}
+
+[head | tail] = ["a", "b", "c", "d"]
+head #> "a"
+tail #> ["b", "c", "d"]
+
+[1 | tail] = [1, 1, 2, 3, 5]    
+tail                            #> [1, 2, 3, 5]
+[1 | tail] = [2, 3, 5, 7, 11]   #> ** (MatchError) no match of right hand side value: [2, 3, 5, 7, 11]
+
+{x, 2} = {1, 2}
+x               #> 1
+{x, 2} = {1, 3} #> ** (MatchError) no match of right hand side value: {1, 3}
+
+{x, _, _} = {1, 2, 3}   # _ cannot be read
+x                       #> 1
+_      #> ** (CompileError) iex:9: invalid use of _. "_" represents a value to be ignored in a pattern and cannot be used in expressions
+
+n = 1 #> 1
+1 = n #> 1
+2 = n #> ** (MatchError) no match of right hand side value: 1
+n = 2 #> 2
+2 = z #> ** (CompileError) iex:3: undefined function z/0 (there is no such import)
+
+ # A limitation of pattern matching is that you can’t make function calls on the left-hand side of =:
+length([1,2]) = 2 #> ** (CompileError) iex:4: cannot invoke remote function :erlang.length/1 inside a match
+
+ # Pin operator
+president = "Biden"
+{president, veep} = {"Trump", "Pence"}
+president   #> "Trump"
+{^president, veep} = {"Biden", "Harris"}
+veep        #> "Harris"
+{^president, veep} = {"Trump", "Pence"} #> ** (MatchError) no match of right hand side value: {"Trump", "Pence"}
+
+  # Case statement
+case {"Theodore", "Roosevelt"} do
+  {"Franklin", "Roosevelt"}  -> "This clause won't match"
+  {"Abraham", "Lincoln"}     -> "Neither will this"
+  {firstname, "Roosevelt"}   -> "This matches and binds \"Theodore\" to the variable 'firstname'"
+  {"Theodore", lastname}     -> "This doesn't get evaluated because we already found a match above"
+  _                          -> "This is a failsafe clause that matches anything."
+end
+
+  # Pattern-matching on function parameters
+defmodule Recursor do
+  def sum(list) do
+    case list do
+      [] -> 0
+      [head | tail] -> head + sum(tail)
+    end
+  end
+end
+  # Is the same as...
+defmodule Recursor do
+  def sum([]) do
+    0
+  end
+  def sum([head | tail]) do
+    head + sum(tail)
+  end
+end
+IO.puts Recursor.sum([1,2,3,4]) #> 10
+IO.puts Recursor.sum([1,4,7,1]) #> 13
+
+  # Match on function param
+defmodule Translator do
+  def color("blue") do; "azul"; end
+  def color("red") do; "rojo"; end
+end
+Translator.color("mauve") #> => ** (FunctionClauseError) no function clause matching in Translator.color/1
+
+  # Can use Guard in fn clause
+defmodule Math do
+  def zero?(0) do;                      true; end
+  def zero?(x) when is_integer(x) do;   false; end
+end
+IO.puts Math.zero?(0)         #=> true
+IO.puts Math.zero?(1)         #=> false
+IO.puts Math.zero?([1, 2, 3]) #=> ** (FunctionClauseError)
+IO.puts Math.zero?(0.0)       #=> ** (FunctionClauseError)
+
+  # Match
+match?(%{a: 1}, %{a: 1, b: 2}) #> true
+match?(%{a: 2}, %{a: 1, b: 2}) #> false
+
+match?(x, 5) #> warning: variable "x" is unused (if the variable is not meant to be used, prefix it with an underscore)
+             #> true
+  # Can use pinned variable to get rid of warning
+x = 6
+match?(%{a: ^x}, %{a: 6}) #> true
+```
+</details>
+
 ### 8. Elixir Maps  
+
+- Are _key-value_ data structures similar to Ruby hashes.
+- Are written with `%{}`, as opposed to Ruby hashes which are written with `{}`.
+- Can be updated with the special syntax `%{map| key: value}`.
+- Can be accessed using `[]` (returns `nil` if key not found) 
+- or `.` syntax (atom keys only; raises an error if key not found.)
+
+<details><summary>Code</summary>
+
+```elixir
+foo = %{ a: 1, b: 2 }
+foo[:a] #> 1
+my_map = %{ 1 => "a", "x" => "b", [] => "c", 3.5 => "d" } #> Anything can be a key
+
+%{ a: 1, b: 2 } # is the same as
+%{ :a => 1, :b => 2 }
+
+  # Pattern match on maps
+%{name: name} =  %{name: "Harry"}
+name #> "Harry"
+%{name: name, house: "Slytherin"} =  %{name: "Harry", house: "Gryffindor"} #> ** (MatchError) no match of right hand side value: %{house: "Gryffindor", name: "Harry"}
+
+  # Keys must be on left, but optional on right
+  # This matches; additional keys other than 'name' are ignored:
+%{name: name} =  %{name: "Harry", house: "Gryffindor", broomstick: "Nimbus 2000"}
+name #> "Harry"
+  # This is a MatchError because the :house key is missing on the right:
+%{name: name, house: house} =  %{name: "Harry"} #> ** (MatchError) no match of right hand side value: %{name: "Harry"}
+
+  # Can assign whole map and pattern match vars
+def func(%{foo: foo, bar: bar} = map) do
+  IO.puts foo; IO.puts bar; IO.inspect map
+end
+
+func(%{foo: 1, bar: 2})
+  #> 1
+  #> 2
+  #> %{bar: 2, foo: 1}
+
+  # Common Map functions
+map_size(%{a: 1, b: 2, c: 3})
+Map.get(%{a: 1, b: 2}, :a)
+Map.put(%{a: 1, b: 2}, :c, 3)
+Map.keys(%{a: 1, b: 2})
+Map.values(%{a: 1, b: 2})
+Map.merge(%{a: 1, b: 2}, %{b: 3, c: 4}) #> %{a: 1, b: 3, c: 4}
+
+  # Update maps
+foo = %{a: 1, b: 2}
+%{ foo | b: 3 }         #> %{a: 1, b: 3}
+
+  # This syntax can only update an existing key, not add a new one. 
+foo = %{a: 1, b: 2}
+%{ foo | c: 3 }         #> ** (KeyError) key :c not found in: %{a: 1, b: 2}
+
+  # Can use . syntax
+foo = %{a: 1, b: 2}
+foo.a                   #> 1
+
+  # But only on atoms
+foo = %{"a" => 1}
+foo.a                   #> ** (KeyError) key :a not found in: %{"a" => 1}
+
+```
+</details>
+
 ### 9. Keyword Lists  
+
+- Maps (and Keyword) are what’s called an _associative data structure_ - they associate keys to values.
+- Are syntactic sugar over lists of two-element tuples.
+- Can have duplicate keys.
+- Can be manipulated using all the normal list operations and functions, as well as by the `Keyword` module.
+- Are mainly used for passing a list of options as the last argument to a function (in which case you can leave off the `/`)
+- Generally shouldn’t be pattern-matched on.
+- Are used to implement `do` blocks, e.g. for `if` and `def`.
+
 ### 10. Module attributes  
 ### 11. Elixir Structs  
 ### 12. Date and time  
