@@ -676,11 +676,56 @@ foo.a                   #> ** (KeyError) key :a not found in: %{"a" => 1}
 
 - Maps (and Keyword) are what’s called an _associative data structure_ - they associate keys to values.
 - Are syntactic sugar over lists of two-element tuples.
+- written with `[ ... ]`
 - Can have duplicate keys.
 - Can be manipulated using all the normal list operations and functions, as well as by the `Keyword` module.
 - Are mainly used for passing a list of options as the last argument to a function (in which case you can leave off the `/`)
 - Generally shouldn’t be pattern-matched on.
 - Are used to implement `do` blocks, e.g. for `if` and `def`.
+
+<details><summary>Code</summary>
+
+```elixir
+kwlist = [foo: 1, bar: 2]
+
+  # Cannot use . syntax
+kwlist.foo      #> ** (ArgumentError)
+
+  # Can have duplicate keys
+kwlist = [foo: 1, foo: 5, bar: 16, foo: 12]
+kwlist[:foo]                                    #> 1
+
+  # Just a list of tuples like `[{ }, {}]
+[name: "Bob", age: 25] == [{:name, "Bob"}, {:age, 25}]  #> true
+
+  # List functions work
+[foo: 1, bar: 2] ++ [fizz: 3, buzz: 4]
+[foo: 1, bar: 2] -- [foo: 1]          
+{:foo, 1}       in [foo: 1, bar: 2]         
+[{:boo, 0}      | [foo: 1, bar: 2]]
+List.first([foo: 1, bar: 2])
+
+  # Are ordered like List
+[foo: 1, bar: 2] == [bar: 2, foo: 1] #> false
+
+  # The main thing keyword lists are used for is to pass options to functions.
+String.split("I am your father", " ")                   #> ["I", "am", "your", "father"]
+  # split/3 has optional args
+String.split("I   am your  father", " ", [trim: true])  #> ["I", "am", "your", "father"]
+  # if passing single len list, leave off []
+String.split("I   am your  father", " ", trim: true)    #> ["I", "am", "your", "father"]
+
+  # When using List as optional params in your fn, 
+  # pattern matching is tricky since order is important in List
+  # Instead use Keyword funs
+Keyword.has_key?([trim: true, parts: false], :something_else)   #> false
+Keyword.get([trim: true, parts: false], :trim)                  #> true
+Keyword.fetch([trim: true, parts: false], :trim)                #> {:ok, true}
+Keyword.fetch([trim: true, parts: false], :not_there)           #> :error
+Keyword.fetch!([trim: true, parts: false], :not_there)          #> ** (KeyError) key :not_there not found in: [trim: true, parts: false]
+Keyword.delete([trim: true, parts: false], :parts)              #> [trim: true]
+```
+</details>
 
 ### 10. Module attributes  
 ### 11. Elixir Structs  
