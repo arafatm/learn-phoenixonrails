@@ -9,7 +9,7 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 :dog: 
 
-<details><summary>:ship: Install Elixir/Erlang w/ asdf </summary>
+<details><summary>:ship: Install Elixir/Erlang w/ asdf</summary>
 
 - `asdf install elixir 1.15.4-otp-25`
 - `asdf install erlang 25.3.2.5       # VSCode elixirLS does not support OTP 26`
@@ -27,42 +27,31 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 ### 2. Ruby vs. Elixir  
 
-Elixir _doesn't have classes_, but it has __modules__
+|                | Elixir                                      | Ruby                                                       |
+| ---            | ---                                         | ---                                                        |
+| paradigm       | Functional (w/ Modules)                                  | Object-oriented                                            |
+| Console        | `iex` (Press `Ctrl + C` twice to exit)      | `irb` (Press `Ctrl + D` to exit)                           |
+| Mutability     | Everything is immutable                     | Some (strings) are mutable, others (symbols) are immutable |
+| File extension | `.ex` or `.exs`                             | `.rb`                                                      |
+| Execution      | Compile `.ex` files, interpret `.exs` files | Interpreted                                                |
 
-###### Functional vs. Object-Oriented
 
-```elixir
-String.upcase(name) # vs Ruby: name.upcase
-```
-###### Immutability vs Mutability
+<details><summary>Code</summary>
 
 In Elixir, everything behaves like a Ruby symbol. There’s no equivalent of
 `capitalize!` on a Elixir string because Elixir __can’t mutate the string__ in
 place.
 
-###### Compiled vs Interpreted
+```elixir
+String.upcase(name) # vs Ruby: name.upcase
+```
 
-Elixir files end in `.ex`, and get compiled to BEAM files with extension `.beam`.
-
-<details><summary>Compiling `elixirc` vs `elixir` </summary>
+Compile and Excute
 
 ```bash
 elixirc math.ex # creates Elixir.Math.Bem
-
 elixir math.exs # Doesn't save .beam
 ```
-</details>
-
-<details><summary>Recap</summary>
-
-|                | Ruby                                                               | Elixir                                      |
-| ---            | ---                                                                | ---                                         |
-| paradigm       | Object-oriented                                                    | Functional                                  |
-| Console        | `irb` (Press `Ctrl + D` to exit)                                   | `iex` (Press `Ctrl + C` twice to exit)      |
-| Mutability     | Some objects (strings) are mutable, others (symbols) are immutable | Everything is immutable                     |
-| File extension | `.rb`                                                              | `.ex` or `.exs`                             |
-| Execution      | Interpreted                                                        | Compile `.ex` files, interpret `.exs` files |
-
 </details>
 
 ### 3. Basic Elixir syntax  
