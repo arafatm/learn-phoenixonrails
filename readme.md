@@ -54,7 +54,7 @@ elixir math.exs # Doesn't save .beam
 ```
 </details>
 
-###### Recap
+<details><summary>Recap</summary>
 
 |                | Ruby                                                               | Elixir                                      |
 | ---            | ---                                                                | ---                                         |
@@ -63,6 +63,8 @@ elixir math.exs # Doesn't save .beam
 | Mutability     | Some objects (strings) are mutable, others (symbols) are immutable | Everything is immutable                     |
 | File extension | `.rb`                                                              | `.ex` or `.exs`                             |
 | Execution      | Interpreted                                                        | Compile `.ex` files, interpret `.exs` files |
+
+</details>
 
 ### 3. Basic Elixir syntax  
 
@@ -309,24 +311,22 @@ alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 ```
 </details>
 
-#### Recap
+<details><summary>Recap</summary>
 
-##### Module
-
-|                            | Ruby                                     | Elixir                                                   |
+| Module                     | Ruby                                         | Elixir                                                       |
 | ---                        | ---                                          | ---                                                          |
 | create a module            | `module`                                     | `defmodule`                                                  |
 | using a module’s functions | mix in to a class with `include` or `extend` | call directly e.g. `Math.add(2, 2)`, or import with `import` |
 | private functions          | `private`                                    | `defp`                                                       |
 | protected functions        | `protected`                                  | don’t exist                                                  |
 
-##### Alias
-
-| Syntax                  | Result                                                       |
+| Alias                       | Result                                                           |
 | ---                         | ---                                                              |
 | `alias Foo.Bar, as: Bar`    | adds `Bar` as alternative name for `Foo`                         |
 | `alias Foo.Bar`             | shorthand for `alias Foo.Bar, as: Bar`                           |
 | `alias Foo.{Bar, Car, Dar}` | shorthand for `alias Foo.Bar`, `alias Foo.Car`, `alias Foo.Dar`. |
+
+</details>
 
 ### 5. Atoms, Lists and Tuples  
 
