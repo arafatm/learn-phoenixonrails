@@ -719,11 +719,28 @@ String.split("I   am your  father", " ", trim: true)    #> ["I", "am", "your", "
   # pattern matching is tricky since order is important in List
   # Instead use Keyword funs
 Keyword.has_key?([trim: true, parts: false], :something_else)   #> false
-Keyword.get([trim: true, parts: false], :trim)                  #> true
-Keyword.fetch([trim: true, parts: false], :trim)                #> {:ok, true}
-Keyword.fetch([trim: true, parts: false], :not_there)           #> :error
-Keyword.fetch!([trim: true, parts: false], :not_there)          #> ** (KeyError) key :not_there not found in: [trim: true, parts: false]
-Keyword.delete([trim: true, parts: false], :parts)              #> [trim: true]
+Keyword.get(     [trim: true, parts: false], :trim)             #> true
+Keyword.fetch(   [trim: true, parts: false], :trim)             #> {:ok, true}
+Keyword.fetch(   [trim: true, parts: false], :not_there)        #> :error
+Keyword.fetch!(  [trim: true, parts: false], :not_there)        #> ** (KeyError) key :not_there not found in: [trim: true, parts: false]
+Keyword.delete(  [trim: true, parts: false], :parts)            #> [trim: true]
+
+  # Allowing duplicate keys is helpful e.g. in `Ecto.Query`
+query =
+  from b in Book,
+    where: b.publication_year < 1990,
+    where: b.num_pages > 300,
+    where: b.type == "Hardback"
+books = Repo.all(query)
+
+  # if is a __macro__ `if/2` with a keyword list for arguments
+if some_condition do; "Something"; else; "Something else"; end
+  # same as
+if some_condition, do: "Something", else: "Something else"
+  # same as
+if(some_condition, [do: "Something", else: "Something else"])
+  # also works for other blocks
+def shout(str), do: IO.puts(String.upcase(str))
 ```
 </details>
 
