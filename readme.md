@@ -264,8 +264,8 @@ end
 
 ```elixir
 import Math
-add(2, 2)       #> 4
-subtract(5, 3)  #> 2
+add(2, 2)       #=> 4
+subtract(5, 3)  #=> 2
 
 import Math, only: [add: 2]
 ```
@@ -288,11 +288,11 @@ end
 
 ```elixir
 alias Math, as: M
-M.add(2, 2)     #> 4
+M.add(2, 2)     #=> 4
 
 defmodule PhoenixOnRails.Multiplication do ... end
 alias PhoenixOnRails.Multiplication # Now we can just refer to `Multiplication` without using its full name:
-Multiplication.multiply(3, 4)       #> 12
+Multiplication.multiply(3, 4)       #=> 12
 
   # Instead of writing this on separate lines:
 alias PhoenixOnRails.Foo
@@ -440,9 +440,9 @@ length(["fizz", "buzz"])  # 2
 <details><summary>Code</summary>
 
 ```elixir
-~w[crash bang wallop] #> ["crash", "bang", "wallop"]
+~w[crash bang wallop] #=> ["crash", "bang", "wallop"]
 
-~w[crash bang wallop]a #> [:crash, :bang, :wallop]
+~w[crash bang wallop]a #=> [:crash, :bang, :wallop]
                        # In Elixir use ~w[…]a to create an array of atoms. 
                        # That is, use the same syntax as for an array of strings, 
                        # but _add an a_ after the closing delimiter:
@@ -464,7 +464,7 @@ Regex.match?(~r/se[0-9]en/, "se7en") # ~r creates regex
  # With a different delimiter you don’t need to escape the slashes; 
  # e.g. you could write ~r(^https?//).
 
-~s(This is a string) #> "This is a string"
+~s(This is a string) #=> "This is a string"
  # Sigil, no need for escape characters:
 ~s(He said "I'm not sure") 
  # Equivalent with escaped double quotes: "He said \"I'm not sure\""
@@ -475,22 +475,22 @@ haiku = ~s"""
         Functional charm in each line,
         Concurrency thrives.
         """ 
-        #> "Elixir code flows free,\nFunctional charm in each line,\nConcurrency thrives.\n"
+        #=> "Elixir code flows free,\nFunctional charm in each line,\nConcurrency thrives.\n"
 
   # Note that the heredoc removes the opening indentation from each line:
 IO.puts(haiku)
-  #> Elixir code flows free,
-  #> Functional charm in each line,
-  #> Concurrency thrives.
+  #=> Elixir code flows free,
+  #=> Functional charm in each line,
+  #=> Concurrency thrives.
 
  # Sigils allow you to interpolate data using #{}, just like a string. 
  # Alternatively, if you use the capitalized version of the sigil (e.g. ~S), 
  # interpolation will be ignored:
-noun = "mat" #> "mat"
+noun = "mat" #=> "mat"
 
-~s(The cat sat on the #{noun}) #> "The cat sat on the mat"
+~s(The cat sat on the #{noun}) #=> "The cat sat on the mat"
 
-~S(The cat sat on the #{noun}) #> "The cat sat on the \#{noun}"
+~S(The cat sat on the #{noun}) #=> "The cat sat on the \#{noun}"
 ```
 </details>
 
@@ -510,41 +510,41 @@ noun = "mat" #> "mat"
 list = [1,2,3]
 [a, b, c] = list
 
-{x, y} = {1, 2, 3}  #> ** (MatchError) no match of right hand side value: {1, 2, 3}
-{x, x} = {10, 11}   #> ** (MatchError) no match of right hand side value: {10, 11}
+{x, y} = {1, 2, 3}  #=> ** (MatchError) no match of right hand side value: {1, 2, 3}
+{x, x} = {10, 11}   #=> ** (MatchError) no match of right hand side value: {10, 11}
 
 [head | tail] = ["a", "b", "c", "d"]
-head #> "a"
-tail #> ["b", "c", "d"]
+head #=> "a"
+tail #=> ["b", "c", "d"]
 
 [1 | tail] = [1, 1, 2, 3, 5]    
-tail                            #> [1, 2, 3, 5]
-[1 | tail] = [2, 3, 5, 7, 11]   #> ** (MatchError) no match of right hand side value: [2, 3, 5, 7, 11]
+tail                            #=> [1, 2, 3, 5]
+[1 | tail] = [2, 3, 5, 7, 11]   #=> ** (MatchError) no match of right hand side value: [2, 3, 5, 7, 11]
 
 {x, 2} = {1, 2}
-x               #> 1
-{x, 2} = {1, 3} #> ** (MatchError) no match of right hand side value: {1, 3}
+x               #=> 1
+{x, 2} = {1, 3} #=> ** (MatchError) no match of right hand side value: {1, 3}
 
 {x, _, _} = {1, 2, 3}   # _ cannot be read
-x                       #> 1
-_      #> ** (CompileError) iex:9: invalid use of _. "_" represents a value to be ignored in a pattern and cannot be used in expressions
+x                       #=> 1
+_      #=> ** (CompileError) iex:9: invalid use of _. "_" represents a value to be ignored in a pattern and cannot be used in expressions
 
-n = 1 #> 1
-1 = n #> 1
-2 = n #> ** (MatchError) no match of right hand side value: 1
-n = 2 #> 2
-2 = z #> ** (CompileError) iex:3: undefined function z/0 (there is no such import)
+n = 1 #=> 1
+1 = n #=> 1
+2 = n #=> ** (MatchError) no match of right hand side value: 1
+n = 2 #=> 2
+2 = z #=> ** (CompileError) iex:3: undefined function z/0 (there is no such import)
 
  # A limitation of pattern matching is that you can’t make function calls on the left-hand side of =:
-length([1,2]) = 2 #> ** (CompileError) iex:4: cannot invoke remote function :erlang.length/1 inside a match
+length([1,2]) = 2 #=> ** (CompileError) iex:4: cannot invoke remote function :erlang.length/1 inside a match
 
  # Pin operator
 president = "Biden"
 {president, veep} = {"Trump", "Pence"}
-president   #> "Trump"
+president   #=> "Trump"
 {^president, veep} = {"Biden", "Harris"}
-veep        #> "Harris"
-{^president, veep} = {"Trump", "Pence"} #> ** (MatchError) no match of right hand side value: {"Trump", "Pence"}
+veep        #=> "Harris"
+{^president, veep} = {"Trump", "Pence"} #=> ** (MatchError) no match of right hand side value: {"Trump", "Pence"}
 
   # Case statement
 case {"Theodore", "Roosevelt"} do
@@ -573,15 +573,15 @@ defmodule Recursor do
     head + sum(tail)
   end
 end
-IO.puts Recursor.sum([1,2,3,4]) #> 10
-IO.puts Recursor.sum([1,4,7,1]) #> 13
+IO.puts Recursor.sum([1,2,3,4]) #=> 10
+IO.puts Recursor.sum([1,4,7,1]) #=> 13
 
   # Match on function param
 defmodule Translator do
   def color("blue") do; "azul"; end
   def color("red") do; "rojo"; end
 end
-Translator.color("mauve") #> => ** (FunctionClauseError) no function clause matching in Translator.color/1
+Translator.color("mauve") #=> => ** (FunctionClauseError) no function clause matching in Translator.color/1
 
   # Can use Guard in fn clause
 defmodule Math do
@@ -594,14 +594,14 @@ IO.puts Math.zero?([1, 2, 3]) #=> ** (FunctionClauseError)
 IO.puts Math.zero?(0.0)       #=> ** (FunctionClauseError)
 
   # Match
-match?(%{a: 1}, %{a: 1, b: 2}) #> true
-match?(%{a: 2}, %{a: 1, b: 2}) #> false
+match?(%{a: 1}, %{a: 1, b: 2}) #=> true
+match?(%{a: 2}, %{a: 1, b: 2}) #=> false
 
-match?(x, 5) #> warning: variable "x" is unused (if the variable is not meant to be used, prefix it with an underscore)
-             #> true
+match?(x, 5) #=> warning: variable "x" is unused (if the variable is not meant to be used, prefix it with an underscore)
+             #=> true
   # Can use pinned variable to get rid of warning
 x = 6
-match?(%{a: ^x}, %{a: 6}) #> true
+match?(%{a: ^x}, %{a: 6}) #=> true
 ```
 </details>
 
@@ -617,23 +617,23 @@ match?(%{a: ^x}, %{a: 6}) #> true
 
 ```elixir
 foo = %{ a: 1, b: 2 }
-foo[:a] #> 1
-my_map = %{ 1 => "a", "x" => "b", [] => "c", 3.5 => "d" } #> Anything can be a key
+foo[:a] #=> 1
+my_map = %{ 1 => "a", "x" => "b", [] => "c", 3.5 => "d" } #=> Anything can be a key
 
 %{ a: 1, b: 2 } # is the same as
 %{ :a => 1, :b => 2 }
 
   # Pattern match on maps
 %{name: name} =  %{name: "Harry"}
-name #> "Harry"
-%{name: name, house: "Slytherin"} =  %{name: "Harry", house: "Gryffindor"} #> ** (MatchError) no match of right hand side value: %{house: "Gryffindor", name: "Harry"}
+name #=> "Harry"
+%{name: name, house: "Slytherin"} =  %{name: "Harry", house: "Gryffindor"} #=> ** (MatchError) no match of right hand side value: %{house: "Gryffindor", name: "Harry"}
 
   # Keys must be on left, but optional on right
   # This matches; additional keys other than 'name' are ignored:
 %{name: name} =  %{name: "Harry", house: "Gryffindor", broomstick: "Nimbus 2000"}
-name #> "Harry"
+name #=> "Harry"
   # This is a MatchError because the :house key is missing on the right:
-%{name: name, house: house} =  %{name: "Harry"} #> ** (MatchError) no match of right hand side value: %{name: "Harry"}
+%{name: name, house: house} =  %{name: "Harry"} #=> ** (MatchError) no match of right hand side value: %{name: "Harry"}
 
   # Can assign whole map and pattern match vars
 def func(%{foo: foo, bar: bar} = map) do
@@ -641,9 +641,9 @@ def func(%{foo: foo, bar: bar} = map) do
 end
 
 func(%{foo: 1, bar: 2})
-  #> 1
-  #> 2
-  #> %{bar: 2, foo: 1}
+  #=> 1
+  #=> 2
+  #=> %{bar: 2, foo: 1}
 
   # Common Map functions
 map_size(%{a: 1, b: 2, c: 3})
@@ -651,23 +651,23 @@ Map.get(%{a: 1, b: 2}, :a)
 Map.put(%{a: 1, b: 2}, :c, 3)
 Map.keys(%{a: 1, b: 2})
 Map.values(%{a: 1, b: 2})
-Map.merge(%{a: 1, b: 2}, %{b: 3, c: 4}) #> %{a: 1, b: 3, c: 4}
+Map.merge(%{a: 1, b: 2}, %{b: 3, c: 4}) #=> %{a: 1, b: 3, c: 4}
 
   # Update maps
 foo = %{a: 1, b: 2}
-%{ foo | b: 3 }         #> %{a: 1, b: 3}
+%{ foo | b: 3 }         #=> %{a: 1, b: 3}
 
   # This syntax can only update an existing key, not add a new one. 
 foo = %{a: 1, b: 2}
-%{ foo | c: 3 }         #> ** (KeyError) key :c not found in: %{a: 1, b: 2}
+%{ foo | c: 3 }         #=> ** (KeyError) key :c not found in: %{a: 1, b: 2}
 
   # Can use . syntax
 foo = %{a: 1, b: 2}
-foo.a                   #> 1
+foo.a                   #=> 1
 
   # But only on atoms
 foo = %{"a" => 1}
-foo.a                   #> ** (KeyError) key :a not found in: %{"a" => 1}
+foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 
 ```
 </details>
@@ -689,14 +689,14 @@ foo.a                   #> ** (KeyError) key :a not found in: %{"a" => 1}
 kwlist = [foo: 1, bar: 2]
 
   # Cannot use . syntax
-kwlist.foo      #> ** (ArgumentError)
+kwlist.foo      #=> ** (ArgumentError)
 
   # Can have duplicate keys
 kwlist = [foo: 1, foo: 5, bar: 16, foo: 12]
-kwlist[:foo]                                    #> 1
+kwlist[:foo]                                    #=> 1
 
   # Just a list of tuples like `[{ }, {}]
-[name: "Bob", age: 25] == [{:name, "Bob"}, {:age, 25}]  #> true
+[name: "Bob", age: 25] == [{:name, "Bob"}, {:age, 25}]  #=> true
 
   # List functions work
 [foo: 1, bar: 2] ++ [fizz: 3, buzz: 4]
@@ -706,24 +706,24 @@ kwlist[:foo]                                    #> 1
 List.first([foo: 1, bar: 2])
 
   # Are ordered like List
-[foo: 1, bar: 2] == [bar: 2, foo: 1] #> false
+[foo: 1, bar: 2] == [bar: 2, foo: 1] #=> false
 
   # The main thing keyword lists are used for is to pass options to functions.
-String.split("I am your father", " ")                   #> ["I", "am", "your", "father"]
+String.split("I am your father", " ")                   #=> ["I", "am", "your", "father"]
   # split/3 has optional args
-String.split("I   am your  father", " ", [trim: true])  #> ["I", "am", "your", "father"]
+String.split("I   am your  father", " ", [trim: true])  #=> ["I", "am", "your", "father"]
   # if passing single len list, leave off []
-String.split("I   am your  father", " ", trim: true)    #> ["I", "am", "your", "father"]
+String.split("I   am your  father", " ", trim: true)    #=> ["I", "am", "your", "father"]
 
   # When using List as optional params in your fn, 
   # pattern matching is tricky since order is important in List
   # Instead use Keyword funs
-Keyword.has_key?([trim: true, parts: false], :something_else)   #> false
-Keyword.get(     [trim: true, parts: false], :trim)             #> true
-Keyword.fetch(   [trim: true, parts: false], :trim)             #> {:ok, true}
-Keyword.fetch(   [trim: true, parts: false], :not_there)        #> :error
-Keyword.fetch!(  [trim: true, parts: false], :not_there)        #> ** (KeyError) key :not_there not found in: [trim: true, parts: false]
-Keyword.delete(  [trim: true, parts: false], :parts)            #> [trim: true]
+Keyword.has_key?([trim: true, parts: false], :something_else)   #=> false
+Keyword.get(     [trim: true, parts: false], :trim)             #=> true
+Keyword.fetch(   [trim: true, parts: false], :trim)             #=> {:ok, true}
+Keyword.fetch(   [trim: true, parts: false], :not_there)        #=> :error
+Keyword.fetch!(  [trim: true, parts: false], :not_there)        #=> ** (KeyError) key :not_there not found in: [trim: true, parts: false]
+Keyword.delete(  [trim: true, parts: false], :parts)            #=> [trim: true]
 
   # Allowing duplicate keys is helpful e.g. in `Ecto.Query`
 query =
