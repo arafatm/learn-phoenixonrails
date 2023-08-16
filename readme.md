@@ -976,8 +976,9 @@ bin/rails db:migrate RAILS_ENV=development
 ### 36. Deleting memories  
 
 - `mix --version`
-
 - `mix phx.new pensive` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/6a30419)
+- `mix ecto.create`
+- `mix phx.server` # To start the server
 
 xxx
 
