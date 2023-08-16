@@ -915,6 +915,8 @@ dt.time_zone  #> "Etc/UTC"
 
 ### 13. The pipe operator  
 
+For code analysis use [Credo](https://github.com/rrrene/credo)
+
 <details><summary>Code</summary>
 
 ```elixir
@@ -923,6 +925,18 @@ dt.time_zone  #> "Etc/UTC"
 |> String.downcase
 |> String.split
   #> ["mysubdomain", "example", "com", "au"]
+
+String.upcase("piping is fun") # sam as ...
+"piping is fun" |> String.upcase
+
+  # function call takes precedence over pipe operator
+  #> Does it work like this?   fizz(2 |> buzz 3)
+  # >Or like this?             fizz(2) |> buzz(3)
+fizz 2 |> buzz 3
+      #> warning: parentheses are required when piping into a function call. For example:
+      #>     foo 1 |> bar 2 |> baz 3
+      #> is ambiguous and should be written as
+      #>     foo(1) |> bar(2) |> baz(3)
 ```
 </details>
 
