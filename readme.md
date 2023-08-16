@@ -747,9 +747,9 @@ def shout(str), do: IO.puts(String.upcase(str))
 ### 10. Module attributes  
 
 - Define module attributes with this syntax: `@name "value"`.
+- Module attributes are evaluated at compile time.
 - Repeating a module attribute reassigns it, unless you configure it to accumulate with 
   `Module.register_attribute __MODULE__, :attr_name, accumulate: true`.
-- Module attributes are evaluated at compile time.
 - Use `@moduledoc` and `@doc` to document your modules and functions.
 
 <details><summary>Code</summary>
@@ -759,13 +759,173 @@ defmodule MyModule do
   @my_attribute "some value"
 end
 
+  # used to reduce repetition and make your code more readable
+defmodule Circle do
+  @pi 3.14159
 
+  def diameter(r), do: 2 * @pi * r
+  def area(r),  do: @pi * r ** 2 # evaluated at compile time, same as 
+                                 # def area(r), do: 3.14158 * r  ** 2
+end
+
+  # Can be reassigned
+defmodule MyModule do
+  @foo 4; @foo 8; def foo, do: @foo 
+end
+MyModule.first_foo #> 8
+
+  # Can be accumulated
+defmodule MyModule do
+  Module.register_attribute __MODULE__, :foo, accumulate: true
+  @foo 4; @foo 8; def foo, do: @foo 
+end
+MyModule.first_foo #> [8, 4]
+
+  # Certain module attributes have special behavior, and their names are reserved. 
+  # Two of the most commonly-used reserved ones are @moduledoc and @doc:
+defmodule Math do
+  @moduledoc "Mathematical functions"
+
+  @doc "Add two numbers together"
+  def add(a, b), do: a + b
+
+  @doc "Subtract one number from another number"
+  def subtract(a, b), do: a - b
+end
+
+  # You can also use h to view a module or function’s documentation in IEx:
+h Math #> Mathematical functions
+…
+h Math.add  #> def add(a, b)
+            # >Add two numbers together
+…
+h Math.subtract #> def subtract(a, b)
+                #> Subtract one number from another number
 ```
 </details>
 
 ### 11. Elixir Structs  
+
+- Structs are named maps with a defined list of keys.
+- Define a struct with `defstruct` inside a module.
+- Keys can have no default (i.e. default `nil`), a custom default, or can be
+  made mandatory with `@enforce_keys`.
+- Structs are fundamentally just maps, and all normal map functionality (like
+  the `Map` module and the `%{ …| … }` syntax) works on them.
+- A `%User{}` struct is represented internally as an Elixir map with the
+  special key `__struct__` that has value `User`.
+
+<details><summary>Code</summary>
+
+```elixir
+user = %{name: "Adam", email: "adam@example.com"} # Map doesn't enforce attrs and not named
+
+  # Struct
+defmodule User do; defstruct [:name, :email]; end
+user = %User{name: "Adam", email: "adam@example.com"}
+  # enforces keys
+kurt = %User{name: "Kurt", email: "kurt@nirvana.com", age: 27} #> ** (KeyError) key :age not found
+  # default to nil
+%User{name: "Emily"}                                    #> %User{email: nil, name: "Emily"}
+
+  # Can enforce with @enforce_keys
+defmodule User do
+  @enforce_keys [:name]
+  defstruct [:name, :email]
+end
+%User{email: "hello@example.com"} #> ** (ArgumentError) the following keys must also be given when building struct User: [:name]
+
+  # Or default value
+defmodule Guitar do; defstruct [num_strings: 6]; end
+%Guitar{} #=> %Guitar{num_strings: 6}
+
+  # defstruct is a module, can incl fns
+defmodule User do
+  defstruct [:name, :email]
+
+  def has_valid_email?(user), do: ...
+end
+
+  # Structs are maps
+user = %User{name: "Adam", email: "adam@example.com"}
+user.__struct__         #> User
+
+  # with Map fns
+user = %User{name: "Adam", email: "adam@example.com"}
+Map.get(user, :name)
+Map.put(user, :name, "Bill")
+Map.keys(user)
+Map.values(user)
+Map.merge(user, %{name: "Dave"})
+  # and can use %{ ... | ... | } syntax
+user = %User{name: "Adam", email: "adam@example.com"}
+%{user | email: "newaddress@example.com"}
+
+  # Can pattern-match
+%User{name: name} = %User{name: "Sarah", email: "stacey@company.com"}
+name        #> "Sarah"
+
+  # Can limit match on struct type
+defmodule Person do; defstruct [:name]; end
+defmodule Dog do; defstruct [:name]; end
+
+%{name: name} = %Person{name: "Jess"};     name #> "Jess"
+%Person{name: name} = %Person{name: "Ed"}; name #>  "Ed"
+%Person{name: name} = %Dog{name: "Rover"} #> ** (MatchError) no match of right hand side value: %Dog{name: "Rover"}
+
+  # This raises a FunctionClauseError if the first argument is not a Person:
+def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
+```
+</details>
+
 ### 12. Date and time  
+
+Elixir provides `Date`, `Time`, and `NaiveDateTime` structs which can be
+created with the sigils `~D`, `~T` and `~N` respectively. 
+There’s also `DateTime`, which doesn’t have a sigil.
+
+<details><summary>Code</summary>
+
+```elixir
+date = ~D[1926-04-21] #> ~D[1926-04-21]
+date.year             #> 1926
+date.struct           #> Date
+
+time = ~T[23:11:00] #> ~T[23:11:00]
+time.hour           #> 23
+time.__struct__     #> Time
+
+  # NaiveDateTime doesn't include timezone
+naive = ~N[1926-04-21 23:11:00] #> ~N[1926-04-21 23:11:00]
+naive.hour           #> 23
+naive.year           #> 1926
+naive.__struct__     #> NaiveDateTime
+
+dt = ~U[1926-04-21 23:11:00.00Z] #> ~U[1926-04-21 23:11:00.00Z]
+dt.hour       #> 23
+dt.year       #> 1926
+dt.time_zone  #> "Etc/UTC"
+dt.__struct__ #> DateTime
+
+{:ok, dt} = DateTime.new(~D[1926-04-21], ~T[23:11:00], "Etc/UTC", Calendar.UTCOnlyTimeZoneDatabase)
+              #> {:ok, ~U[1926-04-21 23:11:00Z]}
+dt.time_zone  #> "Etc/UTC"
+```
+</details>
+
 ### 13. The pipe operator  
+
+<details><summary>Code</summary>
+
+```elixir
+"MySubdomain.example.com.au    "
+|> String.trim
+|> String.downcase
+|> String.split
+  #> ["mysubdomain", "example", "com", "au"]
+```
+</details>
+
 ## Part 2. A simple CRUD app
 ### 14. A simple Rails app  
 ### 15. Creating a new Phoenix app  
