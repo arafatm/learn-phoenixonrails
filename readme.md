@@ -977,6 +977,8 @@ bin/rails db:migrate RAILS_ENV=development
 
 - `mix --version`
 
+- `mix phx.new pensive` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/6a30419)
+
 xxx
 
 ### 37. Recap  
