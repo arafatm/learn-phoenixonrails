@@ -942,6 +942,16 @@ fizz 2 |> buzz 3
 
 ## Part 2. A simple CRUD app
 ### 14. A simple Rails app  
+
+
+```
+rails new pensieve_rails
+cd pensieve_rails
+rails server
+rails g scaffold memory title:string content:text
+bin/rails db:migrate RAILS_ENV=development
+```
+
 ### 15. Creating a new Phoenix app  
 ### 16. Directory structure and mix.exs  
 ### 17. Routing and config  
@@ -964,7 +974,49 @@ fizz 2 |> buzz 3
 ### 34. Errors and I18n  
 ### 35. Edit and Update  
 ### 36. Deleting memories  
+
+xxx
+
 ### 37. Recap  
+
+Way back at the beginning, we scaffolded a simple Rails app with this command:
+
+```
+rails g scaffold memory title:string content:text
+```
+
+This generated a simple app providing the basic CRUD (create, read, update,
+destroy) operations on a `Memory` model, using the seven basic RESTful routes:
+`index`, `show`, `new`, `create`, `edit`, `update`, `destroy`.
+
+We’ve now recreated all of this functionality in Phoenix. Along the way, we’ve
+been introduced to most of the core Phoenix concepts, and seen how they compare
+to Rails:
+- The Phoenix **router** works just like a Rails router: 
+  - it takes an incoming HTTP request and decides which controller action to route it to.
+- Phoenix **controllers** take a request and are responsible for rendering a response.
+  - They’re very conceptually similar to Rails controllers.
+- Where Rails uses **views** to generate HTML response bodies 
+  - (or other types of output e.g. JSON), 
+  - Phoenix has both **views** and **templates**.
+  - Templates are convenience files that are compiled as functions within the views.
+- Rails **helpers** are modules containing helper code for the view layer.
+  - Phoenix doesn’t have dedicated “helper” modules like this, 
+  - but you can define helper functions directly within your view modules.
+- Rails’s default rendering engine is **ERb**, embedded Ruby.
+  - Phoenix uses **HEEx**, “HTML + Embedded Elixir”.
+  - ERb and HEEx use similar syntax, outputting code between `<%=` and `%>` tags.
+- Rails uses **ActiveRecord** models for data persistence, querying and validation.
+  - In Phoenix these responsibilities are divided within different parts of the **Ecto** library, 
+  - including `Ecto.Schema`, `Ecto.Query` (which we haven’t looked at yet), 
+  - `Ecto.Changeset` and `Ecto.Validation`.
+- Rails models also serve as a catch-all place to put your business logic.
+  - In Phoenix, business logic is organised into simple Elixir modules called **contexts**.
+- Rails and Phoenix both use **migrations** to make changes to your database schema: 
+  - `ActiveRecord::Migration` in Rails and `Ecto.Migration` in Phoenix.
+
+Of course, our app is still quite simple. In the next section, we’ll add some more features to the Pensieve codebase. We’ll introduce some of the more advanced Phoenix features that don’t always have a clear equivalent in Rails.
+
 ## Part 3. Advanced concepts
 ### 38. Dependency management  
 ### 39. Erlang libraries  
