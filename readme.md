@@ -975,6 +975,8 @@ bin/rails db:migrate RAILS_ENV=development
 ### 35. Edit and Update  
 ### 36. Deleting memories  
 
+- `mix --version`
+
 xxx
 
 ### 37. Recap  
