@@ -745,6 +745,24 @@ def shout(str), do: IO.puts(String.upcase(str))
 </details>
 
 ### 10. Module attributes  
+
+- Define module attributes with this syntax: `@name "value"`.
+- Repeating a module attribute reassigns it, unless you configure it to accumulate with 
+  `Module.register_attribute __MODULE__, :attr_name, accumulate: true`.
+- Module attributes are evaluated at compile time.
+- Use `@moduledoc` and `@doc` to document your modules and functions.
+
+<details><summary>Code</summary>
+
+```elixir
+defmodule MyModule do
+  @my_attribute "some value"
+end
+
+
+```
+</details>
+
 ### 11. Elixir Structs  
 ### 12. Date and time  
 ### 13. The pipe operator  
