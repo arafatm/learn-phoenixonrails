@@ -15,4 +15,4 @@ permissions:
 
 jobs:
   deploy:
-    uses: arafatm/ghp/.github/workflows/jekyll-gh-pages.yml@main
+    uses: arafatm/ghp/.github/workflows/ghp.yml@main
