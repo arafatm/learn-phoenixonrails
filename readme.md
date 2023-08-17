@@ -1056,6 +1056,57 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 
 
 
+<details><summary>:ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a> `PensiveWeb.Router`</summary>
+
+```diff
+
+diff --git a/pensive/lib/pensive_web/router.ex
+@@ -1,4 +1,5 @@
+ defmodule PensiveWeb.Router do
++  # make routing functions available in this module
+   use PensiveWeb, :router
+ 
+   pipeline :browser do
+@@ -14,9 +15,14 @@ defmodule PensiveWeb.Router do
+     plug :accepts, ["json"]
+   end
+ 
++  # 1st arg: all routes in this scope have paths starting with "/"
++  # 2nd arg: scope all controller in namespace `PensieveWeb`
++  #        - `PageController` == `PensieveWeb.PageController`
+   scope "/", PensiveWeb do
++    # pipe_through: apply the `pipeline :browser` to all routes
+     pipe_through :browser
+ 
++    # Default route when no path is given
+     get "/", PageController, :home
+   end
+ 
+```
+</details>
+
+<details><summary>Print routes</summary>
+
+`mix phx.routes`
+```
+GET  /                            PensieveWeb.PageController :home
+GET  /dev/dashboard               Phoenix.LiveDashboard.PageLive :home
+GET  /dev/dashboard/:page         Phoenix.LiveDashboard.PageLive :page
+GET  /dev/dashboard/:node/:page   Phoenix.LiveDashboard.PageLive :page
+*    /dev/mailbox                 Plug.Swoosh.MailboxPreview []
+WS   /live/websocket              Phoenix.LiveView.Socket
+GET  /live/longpoll               Phoenix.LiveView.Socket
+POST  /live/longpoll              Phoenix.LiveView.Socket
+```
+
+`mix phx.routes --info /`
+```
+Module: PensieveWeb.PageController
+Function: :home
+/path/to/your/repo/pensieve/lib/pensieve_web/controllers/page_controller.ex:4
+```
+</details>
+
 xxx
 
 ### 18. Controllers and templates  
