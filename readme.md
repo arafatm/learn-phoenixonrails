@@ -1005,6 +1005,22 @@ diff --git a/pensive/config/config.exs
 ```
 </details>
 
+<details><summary><a href="https://github.com/arafatm/learn-phoenixonrails/blob/main/pensive/mix.exs">mix.exs</a></summary>
+- contains basic configuration such as app name, versions
+- defines app deps in `defp deps do`
+- by default defines `:test`, `:dev`, `:prod`
+  - e.g. `{:phoenix_live_reload, "~> 1.2", only: :dev},`
+- Can also limit deps by runtime
+  - e.g. `{:esbuild, "~> 0.5", runtime: Mix.env() == :dev},`
+- `defp aliases` allows for cli aliases
+  - e.g. `setup: ["deps.get", "ecto.setup"]` allows `mix setup` instead of `mix deps.get && mix ecto.setup`
+</details>
+
+<details><summary>The lib directory</summary>
+
+
+</details>
+
 xxx
 
 ### 17. Routing and config  
