@@ -1050,8 +1050,6 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 
 We want to create a simple _about_ page
 
-
-
 xxx
 
 ### 18. Controllers and templates  
