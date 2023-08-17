@@ -1048,7 +1048,12 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 | Env-specific config | `config/<env>.exs`                      | `config/environments/<env>.rb`     |
 </details>
 
+We want to create a simple _about_ page
+
+
+
 xxx
+
 ### 18. Controllers and templates  
 ### 19. Tailwind  
 ### 20. Embedded Elixir  
