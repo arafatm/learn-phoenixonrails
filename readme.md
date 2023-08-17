@@ -1082,23 +1082,23 @@ diff --git a/pensive/lib/pensive_web/router.ex
 </details>
 <details><summary>Print routes</summary>
 
-`mix phx.routes`
 ```
-GET  /                            PensieveWeb.PageController :home
-GET  /dev/dashboard               Phoenix.LiveDashboard.PageLive :home
-GET  /dev/dashboard/:page         Phoenix.LiveDashboard.PageLive :page
-GET  /dev/dashboard/:node/:page   Phoenix.LiveDashboard.PageLive :page
-*    /dev/mailbox                 Plug.Swoosh.MailboxPreview []
-WS   /live/websocket              Phoenix.LiveView.Socket
-GET  /live/longpoll               Phoenix.LiveView.Socket
-POST  /live/longpoll              Phoenix.LiveView.Socket
+mix phx.routes #=>
+  GET  /                            PensieveWeb.PageController :home
+  GET  /dev/dashboard               Phoenix.LiveDashboard.PageLive :home
+  GET  /dev/dashboard/:page         Phoenix.LiveDashboard.PageLive :page
+  GET  /dev/dashboard/:node/:page   Phoenix.LiveDashboard.PageLive :page
+  *    /dev/mailbox                 Plug.Swoosh.MailboxPreview []
+  WS   /live/websocket              Phoenix.LiveView.Socket
+  GET  /live/longpoll               Phoenix.LiveView.Socket
+  POST  /live/longpoll              Phoenix.LiveView.Socket
 ```
 
-`mix phx.routes --info /`
 ```
-Module: PensieveWeb.PageController
-Function: :home
-/path/to/your/repo/pensieve/lib/pensieve_web/controllers/page_controller.ex:4
+mix phx.routes --info / #=>
+  Module: PensieveWeb.PageController
+  Function: :home
+  /path/to/your/repo/pensieve/lib/pensieve_web/controllers/page_controller.ex:4
 ```
 </details>
 
