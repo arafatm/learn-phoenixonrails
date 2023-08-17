@@ -1147,6 +1147,7 @@ diff --git a/pensive/lib/pensive_web/router.ex
    # Other scopes may use custom stacks.
 ```
 </details>
+
 ### 18. Controllers and templates  
 
 xxx
