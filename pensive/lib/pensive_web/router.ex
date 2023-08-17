@@ -24,6 +24,7 @@ defmodule PensiveWeb.Router do
 
     # Default route when no path is given
     get "/", PageController, :home
+    get "/about", PageController, :about
   end
 
   # Other scopes may use custom stacks.
