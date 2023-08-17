@@ -970,6 +970,42 @@ bin/rails db:migrate RAILS_ENV=development
 - `priv` keeps (from the docs) “resources that are necessary in production but are not directly part of your source code”. This includes things like database migrations and translation files.
 - `test` keeps your test files. Elixir tests use [ExUnit](https://hexdocs.pm/ex_unit/1.12/ExUnit.html) by default, while Rails apps are typically tested using [Minitest](https://github.com/minitest/minitest) or [RSpec](https://rspec.info/).
 
+<details><summary>:ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/9c3b262'>9c3b262</a> Upgrade mix_test_watch to 1.1 (latest</summary>
+
+```diff
+
+diff --git a/pensive/mix.exs
+@@ -50,7 +50,7 @@ defmodule Pensive.MixProject do
+       {:gettext, "~> 0.20"},
+       {:jason, "~> 1.2"},
+       {:plug_cowboy, "~> 2.5"},
+-      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false}
++      {:mix_test_watch, "~> 1.1", only: :dev, runtime: false}
+     ]
+   end
+```
+</details>
+
+- `mix deps.get` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/ae8e158)
+
+<details><summary>:ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/77fc1be'>77fc1be</a> Clear terminal on each test run</summary>
+
+```diff
+
+diff --git a/pensive/config/config.exs
+@@ -59,6 +59,10 @@ config :logger, :console,
+ # Use Jason for JSON parsing in Phoenix
+ config :phoenix, :json_library, Jason
+ 
++if Mix.env == :dev do
++  config :mix_test_watch, clear: true
++end
++
+ # Import environment specific config. This must remain at the bottom
+ # of this file so it overrides the configuration defined above.
+ import_config "#{config_env()}.exs"
+```
+</details>
 
 xxx
 
