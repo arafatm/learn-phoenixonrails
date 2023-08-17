@@ -953,15 +953,29 @@ bin/rails db:migrate RAILS_ENV=development
 ```
 
 ### 15. Creating a new Phoenix app  
+
+- `mix --version`
+- `mix phx.new pensive` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/6a30419)
+- `mix ecto.create`     # creates the DB
+- `mix phx.server`      # To start the server
+
 ### 16. Directory structure and mix.exs  
+
+- `_build` is where `mix` puts your compiled code. Don’t edit this directory directly, and don’t check into source code.
+- `deps` is where `mix` puts the source code for your app’s dependencies. Like `_build`, this shouldn’t be edited directly nor stored in source control.
+- `lib` contains your source code - the equivalent of Rails’s `app`. You’ll spend most of your time in `lib` when developing a Phoenix app.
+- `assets` is where you’ll put everything related to your front-end assets, like JavaScript and CSS files.
+- `config` keeps - you guessed it - your app’s config.
+- `priv` keeps (from the docs) “resources that are necessary in production but are not directly part of your source code”. This includes things like database migrations and translation files.
+- `test` keeps your test files. Elixir tests use [ExUnit](https://hexdocs.pm/ex_unit/1.12/ExUnit.html) by default, while Rails apps are typically tested using [Minitest](https://github.com/minitest/minitest) or [RSpec](https://rspec.info/).
+
 ### 17. Routing and config  
 ### 18. Controllers and templates  
 ### 19. Tailwind  
 ### 20. Embedded Elixir  
 ### 21. Layouts  
 ### 22. Phoenix views  
-### 23. Ecto.Migration  
-### 24. Ecto.Schema  
+### 23. Ecto.Migration  ### 24. Ecto.Schema  
 ### 25. Ecto.Repo  
 ### 26. Route helpers  
 ### 27. Index page  
@@ -974,11 +988,6 @@ bin/rails db:migrate RAILS_ENV=development
 ### 34. Errors and I18n  
 ### 35. Edit and Update  
 ### 36. Deleting memories  
-
-- `mix --version`
-- `mix phx.new pensive` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/6a30419)
-- `mix ecto.create`
-- `mix phx.server` # To start the server
 
 xxx
 
