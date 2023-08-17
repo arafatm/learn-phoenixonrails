@@ -1,4 +1,5 @@
 defmodule PensiveWeb.Router do
+  # make routing functions available in this module
   use PensiveWeb, :router
 
   pipeline :browser do
@@ -14,9 +15,14 @@ defmodule PensiveWeb.Router do
     plug :accepts, ["json"]
   end
 
+  # 1st arg: all routes in this scope have paths starting with "/"
+  # 2nd arg: scope all controller in namespace `PensieveWeb`
+  #        - `PageController` == `PensieveWeb.PageController`
   scope "/", PensiveWeb do
+    # pipe_through: apply the `pipeline :browser` to all routes
     pipe_through :browser
 
+    # Default route when no path is given
     get "/", PageController, :home
   end
 
