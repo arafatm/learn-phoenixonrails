@@ -1100,7 +1100,8 @@ mix phx.routes --info / #=>
   /path/to/your/repo/pensieve/lib/pensieve_web/controllers/page_controller.ex:4
 ```
 </details>
-
+<details><summary>Configuration</summary>
+</details>
 xxx
 
 ### 18. Controllers and templates  
