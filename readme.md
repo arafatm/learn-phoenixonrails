@@ -7,8 +7,6 @@ title: Phoenix on Rails
 
 Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
 
-:dog: 
-
 <details><summary>:ship: Install Elixir/Erlang w/ asdf</summary>
 
 - `asdf install elixir 1.15.4-otp-25`
@@ -26,6 +24,8 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 ### 2. Ruby vs. Elixir  
 
+<details><summary>Recap</summary>
+
 |                | Elixir                                      | Ruby                                                       |
 | ---            | ---                                         | ---                                                        |
 | paradigm       | Functional (w/ Modules)                                  | Object-oriented                                            |
@@ -33,6 +33,7 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 | Mutability     | Everything is immutable                     | Some (strings) are mutable, others (symbols) are immutable |
 | File extension | `.ex` or `.exs`                             | `.rb`                                                      |
 | Execution      | Compile `.ex` files, interpret `.exs` files | Interpreted                                                |
+</details>
 
 
 <details><summary>Code</summary>
@@ -55,11 +56,13 @@ elixir math.exs # Doesn't save .beam
 
 ### 3. Basic Elixir Syntax  
 
+<details><summary>Recap</summary>
+
 Just remember that:
 - Strings must use double quotes, not single quotes.
 - Functions and `if/unless` must have a do on their opening lines.
 - There are no `return` or `elsif` keywords.
-
+</details>
 
 <details><summary>Common Syntax</summary>
 
@@ -413,6 +416,8 @@ length(["fizz", "buzz"])  # 2
 
 ### 6. Sigils  
 
+<details><summary>Summary</summary>
+
 |                              |  Elixir                                  |  Ruby                   |
 | --                           |  --                                      |  --                     |
 | String (with interpolation)  |  `~s(…)`                                 |  `%(…)` or `%Q(…)`      |
@@ -422,6 +427,7 @@ length(["fizz", "buzz"])  # 2
 | Regex                        |  `~r(…)`                                 |  `%r(…)` or just /…/    |
 | Delimiter                    |  8 options `//  ||  ""  '' () [] {} <>`  |  any symbol             |
 | Interpolation with #{}       |  lowercase e.g. `~w[…]`                  |  uppercase e.g. `%W[…]` |
+</details>
 
 <details><summary>Code</summary>
 
@@ -482,11 +488,14 @@ noun = "mat" #=> "mat"
 
 ### 7. Pattern matching  
 
+<details><summary>Recap</summary>
+
 - Allows to assign more than one variable at once
 - e.g. with tuples or lists
 - can be used in `case`
 - allows pattern matching function params
 - `match/2`
+</details>
 
 <details><summary>Code</summary>
 
@@ -593,11 +602,14 @@ match?(%{a: ^x}, %{a: 6}) #=> true
 
 ### 8. Elixir Maps  
 
+<details><summary>Recap</summary>
+
 - Are _key-value_ data structures similar to Ruby hashes.
 - Are written with `%{}`, as opposed to Ruby hashes which are written with `{}`.
 - Can be updated with the special syntax `%{map| key: value}`.
 - Can be accessed using `[]` (returns `nil` if key not found) 
 - or `.` syntax (atom keys only; raises an error if key not found.)
+</details>
 
 <details><summary>Code</summary>
 
@@ -660,6 +672,8 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 
 ### 9. Keyword Lists  
 
+<details><summary>Recap</summary>
+
 - Maps (and Keyword) are what’s called an _associative data structure_ - they associate keys to values.
 - Are syntactic sugar over lists of two-element tuples.
 - written with `[ ... ]`
@@ -668,6 +682,7 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 - Are mainly used for passing a list of options as the last argument to a function (in which case you can leave off the `/`)
 - Generally shouldn’t be pattern-matched on.
 - Are used to implement `do` blocks, e.g. for `if` and `def`.
+</details>
 
 <details><summary>Code</summary>
 
@@ -732,11 +747,14 @@ def shout(str), do: IO.puts(String.upcase(str))
 
 ### 10. Module attributes  
 
+<details><summary>Recap</summary>
+
 - Define module attributes with this syntax: `@name "value"`.
 - Module attributes are evaluated at compile time.
 - Repeating a module attribute reassigns it, unless you configure it to accumulate with 
   `Module.register_attribute __MODULE__, :attr_name, accumulate: true`.
 - Use `@moduledoc` and `@doc` to document your modules and functions.
+</details>
 
 <details><summary>Code</summary>
 
@@ -792,6 +810,8 @@ h Math.subtract #> def subtract(a, b)
 
 ### 11. Elixir Structs  
 
+<details><summary>Recap</summary>
+
 - Structs are named maps with a defined list of keys.
 - Define a struct with `defstruct` inside a module.
 - Keys can have no default (i.e. default `nil`), a custom default, or can be
@@ -800,6 +820,7 @@ h Math.subtract #> def subtract(a, b)
   the `Map` module and the `%{ …| … }` syntax) works on them.
 - A `%User{}` struct is represented internally as an Elixir map with the
   special key `__struct__` that has value `User`.
+</details>
 
 <details><summary>Code</summary>
 
@@ -866,9 +887,12 @@ def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
 
 ### 12. Date and time  
 
-Elixir provides `Date`, `Time`, and `NaiveDateTime` structs which can be
-created with the sigils `~D`, `~T` and `~N` respectively. 
-There’s also `DateTime`, which doesn’t have a sigil.
+<details><summary>Recap</summary>
+
+- Elixir provides `Date`, `Time`, and `NaiveDateTime` structs 
+- which can be created with the sigils `~D`, `~T` and `~N` respectively. 
+- There’s also `DateTime`, which doesn’t have a sigil.
+</details>
 
 <details><summary>Code</summary>
 
@@ -901,8 +925,6 @@ dt.time_zone  #> "Etc/UTC"
 
 ### 13. The pipe operator  
 
-For code analysis use [Credo](https://github.com/rrrene/credo)
-
 <details><summary>Code</summary>
 
 ```elixir
@@ -926,9 +948,12 @@ fizz 2 |> buzz 3
 ```
 </details>
 
+<details><summary>:bulb: For code analysis use [Credo](https://github.com/rrrene/credo)</summary></details>
+
 ## Part 2. A simple CRUD app
 ### 14. A simple Rails app  
 
+<details><summary>rails new</summary>
 
 ```
 rails new pensieve_rails
@@ -937,14 +962,18 @@ rails server
 rails g scaffold memory title:string content:text
 bin/rails db:migrate RAILS_ENV=development
 ```
+</details>
 
 ### 15. Creating a new Phoenix app  
+
+<details><summary>Recap</summary>
 
 - `mix --version`
 - `mix phx.new pensive` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/6a30419)
 - `mix ecto.create`     # creates the DB
 - `mix phx.server`      # To start the server
 - `mix test`
+</details>
 
 <details><summary><a href="https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0">Continuous Testing with Elixir. There is great power in having your… | by Andrew Forward | Medium</a></summary>
 - <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9c3b262'>:ship: 9c3b262</a> Upgrade mix_test_watch to 1.1 (latest)
