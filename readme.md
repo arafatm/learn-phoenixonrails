@@ -20,7 +20,6 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
   - `sudo apt-get install postgresql postgresql-contrib postgresql-client`
   - `sudo service postgresql start` # For WSL
   - `sudo -u postgres psql postgres`
-
 </details>
 
 ## Part 1. An introduction to Elixir
@@ -132,7 +131,6 @@ floor; ceil; round; abs; max; min;
 - sytactic sugar for looping over enumerables
 - have 3 parts: generators, filters, and collectables
 </details>
-
 <details><summary>Functions</summary>
 
 ```elixir
@@ -178,7 +176,6 @@ Enum.map([1, 2, 3, 4], &(&1 ** 2))    # => [1, 4, 9, 16]
 Enum.reduce([1, 2, 3, 4], &(&1 + &2)) # => 10
 
 ```
-
 </details>
 <details><summary>Regex</summary>
 
@@ -191,7 +188,6 @@ Regex.match?(~r/se[0-9]en/, "se7en") # => true
 ~r'se[0-9]en'
 
 ```
-
 </details>
 <details><summary>Inspect & Exceptions</summary>
 
@@ -240,7 +236,6 @@ end
 Foo.bar   # => "rescued error"
 
 ```
-
 </details>
 
 ### 4. Elixir Modules  
@@ -259,7 +254,6 @@ defmodule Math do
 end
 ```
 </details>
-
 <details><summary>Import (only)</summary>
 
 ```elixir
@@ -270,7 +264,6 @@ subtract(5, 3)  #=> 2
 import Math, only: [add: 2]
 ```
 </details>
-
 <details><summary>Private</summary>
 
 _No protected methods_. `defp` for private
@@ -283,7 +276,6 @@ defmodule Math do
 end
 ```
 </details>
-
 <details><summary>Alias</summary>
 
 ```elixir
@@ -304,7 +296,6 @@ alias PhoenixOnRails.Buzz
 alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 ```
 </details>
-
 <details><summary>Recap</summary>
 
 | Module                     | Ruby                                         | Elixir                                                       |
@@ -334,7 +325,6 @@ Atoms are never garbage collected.
 :'like_this'
 ```
 </details>
-
 <details><summary>Lists </summary>
 
 Implemented as _linked lists_.
@@ -359,7 +349,6 @@ Enum.at(["James", "Kirk", "Lars", "Robert"], 2) # "Lars"
 ["foo" | []]    # ["foo"]
 ```
 </details>
-
 <details><summary>Tuples </summary>
 
 Tuples are fixed-size, ordered containers of elements.
@@ -375,7 +364,6 @@ File.read("file_that_exists.txt")       # {:ok, "this is the file's contents"}
 File.read("file_that_doesnt_exist.txt") # {:error, :enoent}
 ```
 </details>
-
 <details><summary>Lists vs. Tuples</summary>
 
 - Tuples are _contiguous in memory_. A tuple takes up a fixed, known amount of
@@ -395,7 +383,6 @@ Tuple.to_list({1,2,3}) # [1, 2, 3]
 List.to_tuple([1,2,3]) # {1, 2, 3}
 ```
 </details>
-
 <details><summary> Size vs Length</summary>
 
 - Since tuples are contiguous in memory, Elixir knows in advance how big it is
@@ -408,7 +395,6 @@ tuple_size({5, 1, 4})     # 3
 length(["fizz", "buzz"])  # 2
 ```
 </details>
-
 <details><summary>Recap</summary>
 
 - Elixir **atoms** are essentially the same thing as Ruby **symbols** and use
@@ -994,6 +980,7 @@ diff --git a/pensive/config/config.exs
 ### 16. Directory structure and mix.exs  
 
 <details><summary>Recap</summary>
+
 - There’s no app directory in Phoenix; only lib, which is divided into two main subdirectories:
   - an “app directory” (lib/<app_name>) for your core business logic.
   - a “web directory” (lib/<app_name>_web) for the parts of your code that are specific to serving the app over the web.
@@ -1005,8 +992,8 @@ diff --git a/pensive/config/config.exs
 | Environments        | `development`, `production`, `test` | `:dev`, `:prod`, `:test`
 | Get the current env | `Rails.env`                         | `Mix.env`
 </details>
-
 <details><summary>Directory Structure</summary>
+
 - `_build` is where `mix` puts your compiled code. Don’t edit this directory directly, and don’t check into source code.
 - `deps` is where `mix` puts the source code for your app’s dependencies. Like `_build`, this shouldn’t be edited directly nor stored in source control.
 - `lib` contains your source code - the equivalent of Rails’s `app`. You’ll spend most of your time in `lib` when developing a Phoenix app.
@@ -1015,8 +1002,8 @@ diff --git a/pensive/config/config.exs
 - `priv` keeps (from the docs) “resources that are necessary in production but are not directly part of your source code”. This includes things like database migrations and translation files.
 - `test` keeps your test files. Elixir tests use [ExUnit](https://hexdocs.pm/ex_unit/1.12/ExUnit.html) by default, while Rails apps are typically tested using [Minitest](https://github.com/minitest/minitest) or [RSpec](https://rspec.info/).
 </details>
-
 <details><summary><a href="https://github.com/arafatm/learn-phoenixonrails/blob/main/pensive/mix.exs">mix.exs</a></summary>
+
 - contains basic configuration such as app name, versions
 - defines app deps in `defp deps do`
 - by default defines `:test`, `:dev`, `:prod`
@@ -1026,7 +1013,6 @@ diff --git a/pensive/config/config.exs
 - `defp aliases` allows for cli aliases
   - e.g. `setup: ["deps.get", "ecto.setup"]` allows `mix setup` instead of `mix deps.get && mix ecto.setup`
 </details>
-
 <details><summary>The lib directory</summary>
 
 - `lib/pensieve` contains the app’s core business logic, such as code that queries and updates the database.
