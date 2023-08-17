@@ -6,7 +6,6 @@ title: Phoenix on Rails
 ## 1. Intro  
 
 Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
-
 <details><summary>:ship: Install Elixir/Erlang w/ asdf</summary>
 
 - `asdf install elixir 1.15.4-otp-25`
@@ -23,7 +22,6 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 ## Part 1. An introduction to Elixir
 
 ### 2. Ruby vs. Elixir  
-
 <details><summary>Recap</summary>
 
 |                | Elixir                                      | Ruby                                                       |
@@ -55,7 +53,6 @@ elixir math.exs # Doesn't save .beam
 </details>
 
 ### 3. Basic Elixir Syntax  
-
 <details><summary>Recap</summary>
 
 Just remember that:
@@ -242,6 +239,22 @@ Foo.bar   # => "rescued error"
 </details>
 
 ### 4. Elixir Modules  
+<details><summary>Recap</summary>
+
+| Module                     | Ruby                                         | Elixir                                                       |
+| ---                        | ---                                          | ---                                                          |
+| create a module            | `module`                                     | `defmodule`                                                  |
+| using a module’s functions | mix in to a class with `include` or `extend` | call directly e.g. `Math.add(2, 2)`, or import with `import` |
+| private functions          | `private`                                    | `defp`                                                       |
+| protected functions        | `protected`                                  | don’t exist                                                  |
+
+| Alias                       | Result                                                           |
+| ---                         | ---                                                              |
+| `alias Foo.Bar, as: Bar`    | adds `Bar` as alternative name for `Foo`                         |
+| `alias Foo.Bar`             | shorthand for `alias Foo.Bar, as: Bar`                           |
+| `alias Foo.{Bar, Car, Dar}` | shorthand for `alias Foo.Bar`, `alias Foo.Car`, `alias Foo.Dar`. |
+
+</details>
 
 <details><summary>Modules organize functions</summary>
 
@@ -299,24 +312,22 @@ alias PhoenixOnRails.Buzz
 alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 ```
 </details>
+### 5. Atoms, Lists and Tuples  
 <details><summary>Recap</summary>
 
-| Module                     | Ruby                                         | Elixir                                                       |
-| ---                        | ---                                          | ---                                                          |
-| create a module            | `module`                                     | `defmodule`                                                  |
-| using a module’s functions | mix in to a class with `include` or `extend` | call directly e.g. `Math.add(2, 2)`, or import with `import` |
-| private functions          | `private`                                    | `defp`                                                       |
-| protected functions        | `protected`                                  | don’t exist                                                  |
-
-| Alias                       | Result                                                           |
-| ---                         | ---                                                              |
-| `alias Foo.Bar, as: Bar`    | adds `Bar` as alternative name for `Foo`                         |
-| `alias Foo.Bar`             | shorthand for `alias Foo.Bar, as: Bar`                           |
-| `alias Foo.{Bar, Car, Dar}` | shorthand for `alias Foo.Bar`, `alias Foo.Car`, `alias Foo.Dar`. |
-
+- Elixir **atoms** are essentially the same thing as Ruby **symbols** and use
+  the `:same_syntax`.
+- Elixir **lists** are written with square brackets (`[`, `]`) and are
+  internally represented as linked lists.
+- Elixir **tuples** are written with curly braces (`{`, `}`) and are stored as
+  contiguous blocks of memory. They have no direct equivalent in Ruby.
+- Use tuples for compound values and fixed-size collections, and use lists for
+  sequences of data of indeterminate size.
+- `tuple_size/1` counts the number of elements in a tuple and runs in constant
+  time. `length/1` counts the number of elements in a list and runs in time
+  linear to the length of the list.
+- `String.length/1` returns the number of characters in a string.
 </details>
-
-### 5. Atoms, Lists and Tuples  
 
 <details><summary>Atoms</summary>
 
@@ -398,25 +409,8 @@ tuple_size({5, 1, 4})     # 3
 length(["fizz", "buzz"])  # 2
 ```
 </details>
-<details><summary>Recap</summary>
-
-- Elixir **atoms** are essentially the same thing as Ruby **symbols** and use
-  the `:same_syntax`.
-- Elixir **lists** are written with square brackets (`[`, `]`) and are
-  internally represented as linked lists.
-- Elixir **tuples** are written with curly braces (`{`, `}`) and are stored as
-  contiguous blocks of memory. They have no direct equivalent in Ruby.
-- Use tuples for compound values and fixed-size collections, and use lists for
-  sequences of data of indeterminate size.
-- `tuple_size/1` counts the number of elements in a tuple and runs in constant
-  time. `length/1` counts the number of elements in a list and runs in time
-  linear to the length of the list.
-- `String.length/1` returns the number of characters in a string.
-</details>
-
 ### 6. Sigils  
-
-<details><summary>Summary</summary>
+<details><summary>Recap</summary>
 
 |                              |  Elixir                                  |  Ruby                   |
 | --                           |  --                                      |  --                     |
@@ -487,7 +481,6 @@ noun = "mat" #=> "mat"
 </details>
 
 ### 7. Pattern matching  
-
 <details><summary>Recap</summary>
 
 - Allows to assign more than one variable at once
@@ -601,7 +594,6 @@ match?(%{a: ^x}, %{a: 6}) #=> true
 </details>
 
 ### 8. Elixir Maps  
-
 <details><summary>Recap</summary>
 
 - Are _key-value_ data structures similar to Ruby hashes.
@@ -671,7 +663,6 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 </details>
 
 ### 9. Keyword Lists  
-
 <details><summary>Recap</summary>
 
 - Maps (and Keyword) are what’s called an _associative data structure_ - they associate keys to values.
@@ -746,7 +737,6 @@ def shout(str), do: IO.puts(String.upcase(str))
 </details>
 
 ### 10. Module attributes  
-
 <details><summary>Recap</summary>
 
 - Define module attributes with this syntax: `@name "value"`.
@@ -809,7 +799,6 @@ h Math.subtract #> def subtract(a, b)
 </details>
 
 ### 11. Elixir Structs  
-
 <details><summary>Recap</summary>
 
 - Structs are named maps with a defined list of keys.
@@ -886,7 +875,6 @@ def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
 </details>
 
 ### 12. Date and time  
-
 <details><summary>Recap</summary>
 
 - Elixir provides `Date`, `Time`, and `NaiveDateTime` structs 
@@ -924,7 +912,6 @@ dt.time_zone  #> "Etc/UTC"
 </details>
 
 ### 13. The pipe operator  
-
 <details><summary>Code</summary>
 
 ```elixir
@@ -951,8 +938,8 @@ fizz 2 |> buzz 3
 <details><summary>:bulb: For code analysis use [Credo](https://github.com/rrrene/credo)</summary></details>
 
 ## Part 2. A simple CRUD app
-### 14. A simple Rails app  
 
+### 14. A simple Rails app  
 <details><summary>rails new</summary>
 
 ```
@@ -965,7 +952,6 @@ bin/rails db:migrate RAILS_ENV=development
 </details>
 
 ### 15. Creating a new Phoenix app  
-
 <details><summary>Recap</summary>
 
 - `mix --version`
@@ -1007,7 +993,6 @@ diff --git a/pensive/config/config.exs
 </details>
 
 ### 16. Directory structure and mix.exs  
-
 <details><summary>Recap</summary>
 
 - There’s no app directory in Phoenix; only lib, which is divided into two main subdirectories:
@@ -1051,7 +1036,6 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 </details>
 
 ### 17. Routing and config  
-
 <details><summary>Recap</summary>
 
 |                     | **Phoenix**                             | **Rails**                          |
