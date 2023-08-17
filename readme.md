@@ -1021,9 +1021,21 @@ diff --git a/pensive/config/config.exs
 Separation of `_web` allows for distinction between _web only_ and general app logic
 </details>
 
-xxx
-
 ### 17. Routing and config  
+
+<details><summary>Recap</summary>
+
+|                     | **Phoenix**                             | **Rails**                          |
+| ---                 | ---                                     | ---                                |
+| Router file         | `lib/<app_name>_web/router.ex`          | `config/routes.rb`                 |
+| Print routes at cli | `mix phx.routes`                        | `rails routes`                     |
+| Define a GET route  | `get "/path", ThingController, :action` | `get "/path", to: "things#action"` |
+| Other HTTP verbs    | `post`, `patch`, `delete`, etc.         | Same on both                       |
+| General config      | `config/config.exs`                     | `config/application.rb`            |
+| Env-specific config | `config/<env>.exs`                      | `config/environments/<env>.rb`     |
+</details>
+
+xxx
 ### 18. Controllers and templates  
 ### 19. Tailwind  
 ### 20. Embedded Elixir  
