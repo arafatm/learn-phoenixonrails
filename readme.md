@@ -962,9 +962,10 @@ bin/rails db:migrate RAILS_ENV=development
 </details>
 
 <details><summary><a href="https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0">Continuous Testing with Elixir. There is great power in having your… | by Andrew Forward | Medium</a></summary>
-- <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9c3b262'>:ship: 9c3b262</a> Upgrade mix_test_watch to 1.1 (latest)
+
+- :ship: Upgrade mix_test_watch to 1.1 (latest) <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9c3b262'>9c3b262</a>
 - `mix deps.get` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/ae8e158)
-- <a href='https://github.com/arafatm/learn-phoenixonrails/commit/77fc1be'>:ship: 77fc1be</a> Clear terminal on each test run
+- :ship: Clear terminal on each test run <a href='https://github.com/arafatm/learn-phoenixonrails/commit/77fc1be'>77fc1be</a>
 - `mix test.watch`
 ```diff
 diff --git a/pensive/mix.exs
@@ -1047,13 +1048,12 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 | General config      | `config/config.exs`                     | `config/application.rb`            |
 | Env-specific config | `config/<env>.exs`                      | `config/environments/<env>.rb`     |
 </details>
-
 <details><summary>To create a simple _about_ page</summary>
 
 - In Rails we need route, controller, view
 - In Phx we need route, controller, _views and templates_
 </details>
-<details><summary>:ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a> <code>PensiveWeb.Router</code></summary>
+<details><summary>:ship: PensiveWeb.Router<a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a></summary>
 
 ```diff
 diff --git a/pensive/lib/pensive_web/router.ex
@@ -1100,31 +1100,24 @@ mix phx.routes --info / #=>
   /path/to/your/repo/pensieve/lib/pensieve_web/controllers/page_controller.ex:4
 ```
 </details>
-<details><summary>:ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a> Env specific configs</summary>
+<details><summary>:ship: Env specific configs <a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a></summary>
 
 ```diff
-
 diff --git a/pensive/config/dev.exs
 @@ -1,3 +1,4 @@
 +# `:dev` specific configs
  import Config
  
- # Configure your database
-
 diff --git a/pensive/config/prod.exs
 @@ -1,3 +1,4 @@
 +# `:prod` specific configs
  import Config
  
- # Note we also include the path to a cache manifest
-
 diff --git a/pensive/config/test.exs
 @@ -1,3 +1,4 @@
 +# `:test` specific config
  import Config
  
- # Configure your database
-
 diff --git a/pensive/lib/pensive_web/router.ex
 @@ -31,6 +31,8 @@ defmodule PensiveWeb.Router do
    #   pipe_through :api
@@ -1138,10 +1131,24 @@ diff --git a/pensive/lib/pensive_web/router.ex
 ```
 `live_dashboard` can be access in dev at http://localhost:4000/dev/dashboard
 </details>
+<details><summary>:ship: route /about <a href='https://github.com/arafatm/learn-phoenixonrails/commit/39bf15c'>39bf15c</a></summary>
+
+```diff
+diff --git a/pensive/lib/pensive_web/router.ex
+@@ -24,6 +24,7 @@ defmodule PensiveWeb.Router do
+ 
+     # Default route when no path is given
+     get "/", PageController, :home
++    get "/about", PageController, :about
+   end
+ 
+   # Other scopes may use custom stacks.
+```
+</details>
+### 18. Controllers and templates  
 
 xxx
 
-### 18. Controllers and templates  
 ### 19. Tailwind  
 ### 20. Embedded Elixir  
 ### 21. Layouts  
