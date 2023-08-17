@@ -1054,7 +1054,6 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 - In Phx we need route, controller, _views and templates_
 </details>
 
-
 xxx
 
 ### 18. Controllers and templates  
@@ -1075,14 +1074,13 @@ xxx
 ### 34. Errors and I18n  
 ### 35. Edit and Update  
 ### 36. Deleting memories  
-
 ### 37. Recap  
+
+<details><summary>Recap</summary>
 
 Way back at the beginning, we scaffolded a simple Rails app with this command:
 
-```
-rails g scaffold memory title:string content:text
-```
+`rails g scaffold memory title:string content:text`
 
 This generated a simple app providing the basic CRUD (create, read, update,
 destroy) operations on a `Memory` model, using the seven basic RESTful routes:
@@ -1115,6 +1113,7 @@ to Rails:
   - `ActiveRecord::Migration` in Rails and `Ecto.Migration` in Phoenix.
 
 Of course, our app is still quite simple. In the next section, we’ll add some more features to the Pensieve codebase. We’ll introduce some of the more advanced Phoenix features that don’t always have a clear equivalent in Rails.
+</details>
 
 ## Part 3. Advanced concepts
 ### 38. Dependency management  
