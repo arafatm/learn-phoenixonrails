@@ -1053,8 +1053,6 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 - In Rails we need route, controller, view
 - In Phx we need route, controller, _views and templates_
 </details>
-
-
 <details><summary>:ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a><code>PensiveWeb.Router</code></summary>
 
 ```diff
@@ -1082,7 +1080,6 @@ diff --git a/pensive/lib/pensive_web/router.ex
  
 ```
 </details>
-
 <details><summary>Print routes</summary>
 
 `mix phx.routes`
