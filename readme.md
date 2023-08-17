@@ -1093,7 +1093,6 @@ mix phx.routes #=>
   GET  /live/longpoll               Phoenix.LiveView.Socket
   POST  /live/longpoll              Phoenix.LiveView.Socket
 ```
-
 ```
 mix phx.routes --info / #=>
   Module: PensieveWeb.PageController
