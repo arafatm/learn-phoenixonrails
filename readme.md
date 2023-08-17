@@ -1156,7 +1156,8 @@ xxx
 ### 20. Embedded Elixir  
 ### 21. Layouts  
 ### 22. Phoenix views  
-### 23. Ecto.Migration  ### 24. Ecto.Schema  
+### 23. Ecto.Migration  
+### 24. Ecto.Schema  
 ### 25. Ecto.Repo  
 ### 26. Route helpers  
 ### 27. Index page  
