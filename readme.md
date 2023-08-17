@@ -970,7 +970,7 @@ bin/rails db:migrate RAILS_ENV=development
 - `priv` keeps (from the docs) “resources that are necessary in production but are not directly part of your source code”. This includes things like database migrations and translation files.
 - `test` keeps your test files. Elixir tests use [ExUnit](https://hexdocs.pm/ex_unit/1.12/ExUnit.html) by default, while Rails apps are typically tested using [Minitest](https://github.com/minitest/minitest) or [RSpec](https://rspec.info/).
 
-<details><summary>[Continuous Testing with Elixir. There is great power in having your… | by Andrew Forward | Medium](https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0)</summary>
+<details><summary><a href="https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0">Continuous Testing with Elixir. There is great power in having your… | by Andrew Forward | Medium</a></summary>
 
 - :ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/9c3b262'>9c3b262</a> Upgrade mix_test_watch to 1.1 (latest)
 - `mix deps.get` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/ae8e158)
