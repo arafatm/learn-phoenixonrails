@@ -1048,7 +1048,12 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 | Env-specific config | `config/<env>.exs`                      | `config/environments/<env>.rb`     |
 </details>
 
-We want to create a simple _about_ page
+<details>Test
+<summary>To create a simple _about_ page</summary>
+- In Rails we need route, controller, view
+- In Phx we need route, controller, _views and templates_
+</details>
+
 
 xxx
 
