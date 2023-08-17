@@ -967,6 +967,7 @@ bin/rails db:migrate RAILS_ENV=development
 - `mix deps.get` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/ae8e158)
 - :ship: Clear terminal on each test run <a href='https://github.com/arafatm/learn-phoenixonrails/commit/77fc1be'>77fc1be</a>
 - `mix test.watch`
+
 ```diff
 diff --git a/pensive/mix.exs
 @@ -50,7 +50,7 @@ defmodule Pensive.MixProject do
