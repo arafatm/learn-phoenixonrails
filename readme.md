@@ -994,14 +994,16 @@ diff --git a/pensive/config/config.exs
 ### 16. Directory structure and mix.exs  
 
 <details><summary>Recap</summary>
-There’s no app directory in Phoenix; only lib, which is divided into two main subdirectories:
-an “app directory” (lib/<app_name>) for your core business logic.
-a “web directory” (lib/<app_name>_web) for the parts of your code that are specific to serving the app over the web.
-Ruby (Bundler)	Elixir (Mix)
-Define deps in	Gemfile	deps function within mix.exs
-Lockfile	Gemfile.lock	mix.lock
-Environments	"development", "production", "test"	:dev, :prod, :test
-Get the current env	Rails.env	Mix.env
+- There’s no app directory in Phoenix; only lib, which is divided into two main subdirectories:
+  - an “app directory” (lib/<app_name>) for your core business logic.
+  - a “web directory” (lib/<app_name>_web) for the parts of your code that are specific to serving the app over the web.
+
+|                     | Ruby (Bundler)                      | Elixir (Mix)                     |
+| -                   | -                                   | -                                |
+| Define deps in      | `Gemfile`                           | `deps` function within `mix.exs`
+| Lockfile            | `Gemfile.lock`                      | `mix.lock`
+| Environments        | `development`, `production`, `test` | `:dev`, `:prod`, `:test`
+| Get the current env | `Rails.env`                         | `Mix.env`
 </details>
 
 <details><summary>Directory Structure</summary>
