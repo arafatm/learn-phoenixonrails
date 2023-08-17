@@ -1023,7 +1023,6 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 
 xxx
 
-
 ### 17. Routing and config  
 ### 18. Controllers and templates  
 ### 19. Tailwind  
