@@ -1,3 +1,4 @@
+# `:test` specific config
 import Config
 
 # Configure your database

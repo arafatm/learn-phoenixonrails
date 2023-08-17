@@ -1,3 +1,4 @@
+# `:prod` specific configs
 import Config
 
 # Note we also include the path to a cache manifest

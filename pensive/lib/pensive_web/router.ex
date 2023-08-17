@@ -31,6 +31,8 @@ defmodule PensiveWeb.Router do
   #   pipe_through :api
   # end
 
+  # Additional routes only for development and only if the `:dev_routes` env is set.
+  # access at localhost:4000/dev/dashboard
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:pensive, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put
