@@ -972,9 +972,9 @@ bin/rails db:migrate RAILS_ENV=development
 
 <details><summary><a href="https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0">Continuous Testing with Elixir. There is great power in having your… | by Andrew Forward | Medium</a></summary>
 
-- :ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/9c3b262'>9c3b262</a> Upgrade mix_test_watch to 1.1 (latest)
+- <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9c3b262'>:ship: 9c3b262</a> Upgrade mix_test_watch to 1.1 (latest)
 - `mix deps.get` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/ae8e158)
-- :ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/77fc1be'>77fc1be</a> Clear terminal on each test run
+- <a href='https://github.com/arafatm/learn-phoenixonrails/commit/77fc1be'>:ship: 77fc1be</a> Clear terminal on each test run
 - `mix test.watch`
 
 ```diff
