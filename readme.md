@@ -984,6 +984,7 @@ diff --git a/pensive/config/config.exs
 @@ -59,6 +59,10 @@ config :logger, :console,
  # Use Jason for JSON parsing in Phoenix
  config :phoenix, :json_library, Jason
++
 +if Mix.env == :dev do
 +  config :mix_test_watch, clear: true
 +end
@@ -1054,7 +1055,7 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 - In Rails we need route, controller, view
 - In Phx we need route, controller, _views and templates_
 </details>
-<details><summary>:ship: PensiveWeb.Router<a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a></summary>
+<details><summary>:ship: PensiveWeb.Router <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a></summary>
 
 ```diff
 diff --git a/pensive/lib/pensive_web/router.ex
