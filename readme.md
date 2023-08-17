@@ -958,6 +958,7 @@ bin/rails db:migrate RAILS_ENV=development
 - `mix phx.new pensive` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/6a30419)
 - `mix ecto.create`     # creates the DB
 - `mix phx.server`      # To start the server
+- `mix test`
 
 ### 16. Directory structure and mix.exs  
 
@@ -968,6 +969,9 @@ bin/rails db:migrate RAILS_ENV=development
 - `config` keeps - you guessed it - your app’s config.
 - `priv` keeps (from the docs) “resources that are necessary in production but are not directly part of your source code”. This includes things like database migrations and translation files.
 - `test` keeps your test files. Elixir tests use [ExUnit](https://hexdocs.pm/ex_unit/1.12/ExUnit.html) by default, while Rails apps are typically tested using [Minitest](https://github.com/minitest/minitest) or [RSpec](https://rspec.info/).
+
+
+xxx
 
 ### 17. Routing and config  
 ### 18. Controllers and templates  
@@ -988,8 +992,6 @@ bin/rails db:migrate RAILS_ENV=development
 ### 34. Errors and I18n  
 ### 35. Edit and Update  
 ### 36. Deleting memories  
-
-xxx
 
 ### 37. Recap  
 
