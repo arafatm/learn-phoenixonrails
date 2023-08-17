@@ -1100,8 +1100,45 @@ mix phx.routes --info / #=>
   /path/to/your/repo/pensieve/lib/pensieve_web/controllers/page_controller.ex:4
 ```
 </details>
-<details><summary>Configuration</summary>
+<details><summary>:ship:<a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a> Env specific configs</summary>
+
+```diff
+
+diff --git a/pensive/config/dev.exs
+@@ -1,3 +1,4 @@
++# `:dev` specific configs
+ import Config
+ 
+ # Configure your database
+
+diff --git a/pensive/config/prod.exs
+@@ -1,3 +1,4 @@
++# `:prod` specific configs
+ import Config
+ 
+ # Note we also include the path to a cache manifest
+
+diff --git a/pensive/config/test.exs
+@@ -1,3 +1,4 @@
++# `:test` specific config
+ import Config
+ 
+ # Configure your database
+
+diff --git a/pensive/lib/pensive_web/router.ex
+@@ -31,6 +31,8 @@ defmodule PensiveWeb.Router do
+   #   pipe_through :api
+   # end
+ 
++  # Additional routes only for development and only if the `:dev_routes` env is set.
++  # access at localhost:4000/dev/dashboard
+   # Enable LiveDashboard and Swoosh mailbox preview in development
+   if Application.compile_env(:pensive, :dev_routes) do
+     # If you want to use the LiveDashboard in production, you should put
+```
+`live_dashboard` can be access in dev at http://localhost:4000/dev/dashboard
 </details>
+
 xxx
 
 ### 18. Controllers and templates  
