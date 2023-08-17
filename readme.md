@@ -960,23 +960,11 @@ bin/rails db:migrate RAILS_ENV=development
 - `mix phx.server`      # To start the server
 - `mix test`
 
-### 16. Directory structure and mix.exs  
-
-- `_build` is where `mix` puts your compiled code. Don’t edit this directory directly, and don’t check into source code.
-- `deps` is where `mix` puts the source code for your app’s dependencies. Like `_build`, this shouldn’t be edited directly nor stored in source control.
-- `lib` contains your source code - the equivalent of Rails’s `app`. You’ll spend most of your time in `lib` when developing a Phoenix app.
-- `assets` is where you’ll put everything related to your front-end assets, like JavaScript and CSS files.
-- `config` keeps - you guessed it - your app’s config.
-- `priv` keeps (from the docs) “resources that are necessary in production but are not directly part of your source code”. This includes things like database migrations and translation files.
-- `test` keeps your test files. Elixir tests use [ExUnit](https://hexdocs.pm/ex_unit/1.12/ExUnit.html) by default, while Rails apps are typically tested using [Minitest](https://github.com/minitest/minitest) or [RSpec](https://rspec.info/).
-
 <details><summary><a href="https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0">Continuous Testing with Elixir. There is great power in having your… | by Andrew Forward | Medium</a></summary>
-
 - <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9c3b262'>:ship: 9c3b262</a> Upgrade mix_test_watch to 1.1 (latest)
 - `mix deps.get` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/ae8e158)
 - <a href='https://github.com/arafatm/learn-phoenixonrails/commit/77fc1be'>:ship: 77fc1be</a> Clear terminal on each test run
 - `mix test.watch`
-
 ```diff
 diff --git a/pensive/mix.exs
 @@ -50,7 +50,7 @@ defmodule Pensive.MixProject do
@@ -988,13 +976,11 @@ diff --git a/pensive/mix.exs
      ]
    end
 ```
-
 ```diff
 diff --git a/pensive/config/config.exs
 @@ -59,6 +59,10 @@ config :logger, :console,
  # Use Jason for JSON parsing in Phoenix
  config :phoenix, :json_library, Jason
- 
 +if Mix.env == :dev do
 +  config :mix_test_watch, clear: true
 +end
@@ -1003,6 +989,29 @@ diff --git a/pensive/config/config.exs
  # of this file so it overrides the configuration defined above.
  import_config "#{config_env()}.exs"
 ```
+</details>
+
+### 16. Directory structure and mix.exs  
+
+<details><summary>Recap</summary>
+There’s no app directory in Phoenix; only lib, which is divided into two main subdirectories:
+an “app directory” (lib/<app_name>) for your core business logic.
+a “web directory” (lib/<app_name>_web) for the parts of your code that are specific to serving the app over the web.
+Ruby (Bundler)	Elixir (Mix)
+Define deps in	Gemfile	deps function within mix.exs
+Lockfile	Gemfile.lock	mix.lock
+Environments	"development", "production", "test"	:dev, :prod, :test
+Get the current env	Rails.env	Mix.env
+</details>
+
+<details><summary>Directory Structure</summary>
+- `_build` is where `mix` puts your compiled code. Don’t edit this directory directly, and don’t check into source code.
+- `deps` is where `mix` puts the source code for your app’s dependencies. Like `_build`, this shouldn’t be edited directly nor stored in source control.
+- `lib` contains your source code - the equivalent of Rails’s `app`. You’ll spend most of your time in `lib` when developing a Phoenix app.
+- `assets` is where you’ll put everything related to your front-end assets, like JavaScript and CSS files.
+- `config` keeps - you guessed it - your app’s config.
+- `priv` keeps (from the docs) “resources that are necessary in production but are not directly part of your source code”. This includes things like database migrations and translation files.
+- `test` keeps your test files. Elixir tests use [ExUnit](https://hexdocs.pm/ex_unit/1.12/ExUnit.html) by default, while Rails apps are typically tested using [Minitest](https://github.com/minitest/minitest) or [RSpec](https://rspec.info/).
 </details>
 
 <details><summary><a href="https://github.com/arafatm/learn-phoenixonrails/blob/main/pensive/mix.exs">mix.exs</a></summary>
@@ -1018,10 +1027,14 @@ diff --git a/pensive/config/config.exs
 
 <details><summary>The lib directory</summary>
 
+- `lib/pensieve` contains the app’s core business logic, such as code that queries and updates the database.
+- `lib/pensieve_web` handles only the things that are specifically related to serving the app over the web, such as routing HTTP requests and rendering HTML.
 
+Separation of `_web` allows for distinction between _web only_ and general app logic
 </details>
 
 xxx
+
 
 ### 17. Routing and config  
 ### 18. Controllers and templates  
