@@ -1150,6 +1150,19 @@ diff --git a/pensive/lib/pensive_web/router.ex
 
 ### 18. Controllers and templates  
 
+<details><summary>Recap</summary>
+
+|                | Phoenix                                                      | Rails                                           |
+| --             | --                                                           | --                                              |
+| ctrlr define   | `use PensieveWeb, :controller`                               | `< ApplicationController`
+| ctrlr live in  | `lib/pensieve_web/controllers`                               | `app/controllers`
+| ctrlr naming   | singular e.g. `PagesController`                              | pluralized e.g. `PagesController`
+| ctrlr actions  | `%Plug.Conn{}` + params struct; must return a `%Plug.Conn{}` | take no args; can return anything
+| ctrlr `params` | must be passed in as second arg to action (even if unused)   | available by magic
+| HTML templates | “templates” in e.g. `lib/pensieve_web/controllers/page_html` | “views” in e.g. `app/views/pages`
+| rendering      | call `render `explicitly, e.g. `render(conn, :index)`        | render view with same name as action by default
+</details>
+
 xxx
 
 ### 19. Tailwind  
