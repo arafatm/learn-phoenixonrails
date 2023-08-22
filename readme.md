@@ -1221,6 +1221,11 @@ to Rails:
 - Rails and Phoenix both use **migrations** to make changes to your database schema: 
   - `ActiveRecord::Migration` in Rails and `Ecto.Migration` in Phoenix.
 
+<details><summary>Test</summary>
+
+Some text to test
+</details>
+
 Of course, our app is still quite simple. In the next section, we’ll add some more features to the Pensieve codebase. We’ll introduce some of the more advanced Phoenix features that don’t always have a clear equivalent in Rails.
 </details>
 
