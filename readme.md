@@ -1220,7 +1220,6 @@ to Rails:
   - In Phoenix, business logic is organised into simple Elixir modules called **contexts**.
 - Rails and Phoenix both use **migrations** to make changes to your database schema: 
   - `ActiveRecord::Migration` in Rails and `Ecto.Migration` in Phoenix.
-
 </details>
 
 ## Part 3. Advanced concepts
