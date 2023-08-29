@@ -1163,6 +1163,14 @@ diff --git a/pensive/lib/pensive_web/router.ex
 | rendering      | call `render `explicitly, e.g. `render(conn, :index)`        | render view with same name as action by default
 </details>
 
+<details><summary>Plug.Conn</summary>
+
+A `%Plug.Conn{}` represents an HTTP request and response
+- actions _must_ return a `%Plug.Conn{}`
+- can also `render` or return a `404`
+
+</details>
+
 xxx
 
 ### 19. Tailwind  
