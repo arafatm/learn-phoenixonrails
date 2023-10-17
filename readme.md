@@ -968,7 +968,7 @@ bin/rails db:migrate RAILS_ENV=development
 - :ship: Clear terminal on each test run <a href='https://github.com/arafatm/learn-phoenixonrails/commit/77fc1be'>77fc1be</a>
 - `mix test.watch`
 
-```diff
+```elixir
 diff --git a/pensive/mix.exs
 @@ -50,7 +50,7 @@ defmodule Pensive.MixProject do
        {:gettext, "~> 0.20"},
@@ -979,7 +979,7 @@ diff --git a/pensive/mix.exs
      ]
    end
 ```
-```diff
+```elixir
 diff --git a/pensive/config/config.exs
 @@ -59,6 +59,10 @@ config :logger, :console,
  # Use Jason for JSON parsing in Phoenix
@@ -1057,7 +1057,7 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 </details>
 <details><summary>:ship: PensiveWeb.Router <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a></summary>
 
-```diff
+```elixir
 diff --git a/pensive/lib/pensive_web/router.ex
 @@ -1,4 +1,5 @@
  defmodule PensiveWeb.Router do
@@ -1104,7 +1104,7 @@ mix phx.routes --info / #=>
 </details>
 <details><summary>:ship: Env specific configs <a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a></summary>
 
-```diff
+```elixir
 diff --git a/pensive/config/dev.exs
 @@ -1,3 +1,4 @@
 +# `:dev` specific configs
@@ -1135,7 +1135,7 @@ diff --git a/pensive/lib/pensive_web/router.ex
 </details>
 <details><summary>:ship: route /about <a href='https://github.com/arafatm/learn-phoenixonrails/commit/39bf15c'>39bf15c</a></summary>
 
-```diff
+```elixir
 diff --git a/pensive/lib/pensive_web/router.ex
 @@ -24,6 +24,7 @@ defmodule PensiveWeb.Router do
  
