@@ -163,7 +163,7 @@ sum.(1, 2)                    # => 3
   # Can be passed as argument to other fns
 Enum.map([1, 2, 3, 4], fn n -> n ** 2 end)          # => [1, 4, 9, 16]
 Enum.reduce([1, 2, 3, 4], fn x, acc -> x + acc end) # => 10
-                            
+
   # Shorthand syntax for anonymous fns
 sum1= fn x, y -> x + y end
 sum2 = &(&1 + &2)           # Is equivalent to previous line
