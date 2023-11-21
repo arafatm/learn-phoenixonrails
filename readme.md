@@ -260,39 +260,35 @@ Enum.reduce([1, 2, 3, 4], &(&1 + &2)) # => 10
 
 #### Regex
 
-```elixir
 Regex
 ```elixir
-```
 Regex.match?(~r/se[0-9]en/, "se7en") # => true
+```
+
 These are all equivalent:
 ```elixir
-```
 ~r/se[0-9]en/
 ~r(se[0-9]en)
 ~r'se[0-9]en'
-
 ```
 
 #### Inspect & Exceptions
 
-```elixir
-
 inspect
 ```elixir
-```
 puts :symbol  # => symbol
 p :symbol     # => :symbol
 
 p == IO.inspect
-```elixir
 ```
+
+```elixir
 IO.puts "string"    # => string
 IO.inspect "string" # => "string"
+```
 
 Exceptions
 ```elixir
-```
 raise "something's wrong!" # => ** (RuntimeError) something's wrong!
 
 try do
@@ -312,17 +308,14 @@ try do
 catch
   x -> "#{x} was caught"
 end                       # => "1 was caught"
+```
 
 There’s almost always a better, more readable way to solve a problem 
-```elixir
-```
 than with throw and catch. 
-```elixir
-```
-Don’t use them unless you truly have no other choice!
-```elixir
-```
 
+Don’t use them unless you truly have no other choice!
+
+```elixir
 defmodule Foo do
   def bar do
     raise "something's wrong"
@@ -331,8 +324,8 @@ defmodule Foo do
   end
 end
 Foo.bar   # => "rescued error"
-
 ```
+
 
 ## 4. Elixir Modules  
 
@@ -394,18 +387,18 @@ M.add(2, 2)     #=> 4
 defmodule PhoenixOnRails.Multiplication do ... end
 alias PhoenixOnRails.Multiplication # Now we can just refer to `Multiplication` without using its full name:
 Multiplication.multiply(3, 4)       #=> 12
+```
 
 Instead of writing this on separate lines:
 ```elixir
-```
 alias PhoenixOnRails.Foo
 alias PhoenixOnRails.Bar
 alias PhoenixOnRails.Fizz
 alias PhoenixOnRails.Buzz
+```
 
 You can write it like this:
 ```elixir
-```
 alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 ```
 
@@ -454,10 +447,8 @@ List.starts_with?([1, 1, 2, 3, 5, 8], [1, 1])   # true
 Enum.at(["James", "Kirk", "Lars", "Robert"], 2) # "Lars"
 
 [head | tail]
-```elixir
-```
-[0 | [1,2,3,4]] # [0, 1, 2, 3, 4]
-["foo" | []]    # ["foo"]
+  # => [0 | [1,2,3,4]] # [0, 1, 2, 3, 4]
+  # => ["foo" | []]    # ["foo"]
 ```
 
 #### Tuples 
@@ -466,13 +457,12 @@ Tuples are fixed-size, ordered containers of elements.
 
 ```elixir
 {"Biden", "president@whitehouse.gov"}
-
 elem {"Biden", "president@whitehouse.gov"}, 0 # "Biden"
 elem {"Biden", "president@whitehouse.gov"}, 1 # "president@whitehouse.gov"
+```
 
 commonly used in function return with status
 ```elixir
-```
 File.read("file_that_exists.txt")       # {:ok, "this is the file's contents"}
 File.read("file_that_doesnt_exist.txt") # {:error, :enoent}
 ```
@@ -482,11 +472,15 @@ File.read("file_that_doesnt_exist.txt") # {:error, :enoent}
 - Tuples are _contiguous in memory_. A tuple takes up a fixed, known amount of
   memory, and accessing a tuple element by its index will always run in
   constant time.
-  - If you know exactly _how many elements you want to store, and this number won’t change_, then you probably want a tuple. 
+  - If you know exactly 
+  - _how many elements you want to store_, 
+  - _and this number won’t change_, 
+  - then you probably want a `tuple`. 
 - Lists, on the other hand, are represented internally as _linked lists_. This
   means that to get an element from a list, you must traverse the list’s
   elements one by one, which can be slow if the list is long.
-  - Lists are better suited when the _number of elements is variable_ or not known in advance.
+  - Lists are better suited when the _number of elements is variable_ 
+  - or _not known in advance_.
 
 ```elixir
 president_tuple = {"Biden", "president@whitehouse.gov"}
@@ -522,18 +516,13 @@ length(["fizz", "buzz"])  # 2
 
 ```elixir
 ~w[crash bang wallop] #=> ["crash", "bang", "wallop"]
-
 ~w[crash bang wallop]a #=> [:crash, :bang, :wallop]
-In Elixir use ~w[…]a to create an array of atoms. 
-```elixir
 ```
+
+In Elixir use `~w[…]a` to create an array of atoms. 
 That is, use the same syntax as for an array of strings, 
-```elixir
-```
 but _add an a_ after the closing delimiter:
 ```elixir
-```
-
 ~w/crash bang wallop/ # ONLY theseeight lines create the array:
 ~w|crash bang wallop| # Unlike Ruby (which can use any delimiter)
 ~w"crash bang wallop"
@@ -542,70 +531,60 @@ but _add an a_ after the closing delimiter:
 ~w[crash bang wallop]
 ~w{crash bang wallop}
 ~w<crash bang wallop>
+```
 
-Regex.match?(~r/se[0-9]en/, "se7en") # ~r creates regex
-Your choice of delimiter affects which characters must be escaped with \.
+~r creates regex
 ```elixir
+`Regex.match?(~r/se[0-9]en/, "se7en")` 
 ```
-For example, to write a regex that matches the string http//, 
-```elixir
-```
-you might not want to use / as your delimiter, 
-```elixir
-```
-because then you’d need to write ~r/^https?\/\//, which is a bit hard to read.
-```elixir
-```
+
+Your choice of delimiter affects which characters must be escaped with \. For
+example, to write a regex that matches the string `http//`, you might not want
+to use `/` as your delimiter, because then you’d need to write
+`~r/^https?\/\//`, which is a bit hard to read.
+
 With a different delimiter you don’t need to escape the slashes; 
-```elixir
-```
-e.g. you could write ~r(^https?//).
-```elixir
-```
+e.g. you could write `~r(^https?//)`.
 
-~s(This is a string) #=> "This is a string"
 Sigil, no need for escape characters:
 ```elixir
+~s(This is a string) #=> "This is a string"
 ```
-~s(He said "I'm not sure") 
+
 Equivalent with escaped double quotes: "He said \"I'm not sure\""
 ```elixir
+~s(He said "I'm not sure") 
 ```
 
 To create a multiline string, called a heredoc, use ~s with three double or single quotes:
 ```elixir
-```
 haiku = ~s"""
         Elixir code flows free,
         Functional charm in each line,
         Concurrency thrives.
         """ 
         #=> "Elixir code flows free,\nFunctional charm in each line,\nConcurrency thrives.\n"
+```
 
 Note that the heredoc removes the opening indentation from each line:
 ```elixir
-```
 IO.puts(haiku)
   #=> Elixir code flows free,
   #=> Functional charm in each line,
   #=> Concurrency thrives.
+```
 
 Sigils allow you to interpolate data using #{}, just like a string. 
+
+Alternatively, if you use the capitalized version of the sigil (e.g. ~S),
+_interpolation will be ignored_:
 ```elixir
-```
-Alternatively, if you use the capitalized version of the sigil (e.g. ~S), 
-```elixir
-```
-interpolation will be ignored:
-```elixir
-```
 noun = "mat" #=> "mat"
-
 ~s(The cat sat on the #{noun}) #=> "The cat sat on the mat"
-
 ~S(The cat sat on the #{noun}) #=> "The cat sat on the \#{noun}"
 ```
 
+xxx
 ## 7. Pattern matching  
 
 - Allows to assign more than one variable at once
