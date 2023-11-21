@@ -10,70 +10,46 @@ title: Phoenix on Rails
           * [:ship: Install Elixir/Erlang w/ asdf](#ship-install-elixirerlang-w-asdf)
   * [Part 1. An introduction to Elixir](#part-1-an-introduction-to-elixir)
     * [2. Ruby vs. Elixir](#2-ruby-vs-elixir)
-      * [Recap](#recap)
-      * [Code](#code)
   * [3. Basic Elixir Syntax](#3-basic-elixir-syntax)
-      * [Recap](#recap-1)
       * [Common Syntax](#common-syntax)
       * [Functions](#functions)
       * [Regex](#regex)
       * [Inspect & Exceptions](#inspect--exceptions)
   * [4. Elixir Modules](#4-elixir-modules)
-      * [Recap](#recap-2)
       * [Modules organize functions](#modules-organize-functions)
       * [Import (only)](#import-only)
       * [Private](#private)
       * [Alias](#alias)
   * [5. Atoms, Lists and Tuples](#5-atoms-lists-and-tuples)
-      * [Recap](#recap-3)
       * [Atoms](#atoms)
       * [Lists](#lists)
       * [Tuples](#tuples)
       * [Lists vs. Tuples](#lists-vs-tuples)
       * [Size vs Length](#size-vs-length)
   * [6. Sigils](#6-sigils)
-      * [Recap](#recap-4)
-      * [Code](#code-1)
   * [7. Pattern matching](#7-pattern-matching)
-      * [Recap](#recap-5)
-      * [Code](#code-2)
   * [8. Elixir Maps](#8-elixir-maps)
-      * [Recap](#recap-6)
-      * [Code](#code-3)
   * [9. Keyword Lists](#9-keyword-lists)
-      * [Recap](#recap-7)
-      * [Code](#code-4)
     * [10. Module attributes](#10-module-attributes)
-      * [Recap](#recap-8)
-      * [Code](#code-5)
     * [11. Elixir Structs](#11-elixir-structs)
-      * [Recap](#recap-9)
-      * [Code](#code-6)
   * [12. Date and time](#12-date-and-time)
-      * [Recap](#recap-10)
-      * [Code](#code-7)
   * [13. The pipe operator](#13-the-pipe-operator)
-      * [Code](#code-8)
 * [Part 2. A simple CRUD app](#part-2-a-simple-crud-app)
     * [14. A simple Rails app](#14-a-simple-rails-app)
       * [rails new](#rails-new)
     * [15. Creating a new Phoenix app](#15-creating-a-new-phoenix-app)
-      * [Recap](#recap-11)
-      * [<a href="https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0">Continuous Testing with Elixir. There is great power in having your… | by Andrew Forward | Medium</a>](#a-hrefhttpsmediumcoma4wordcontinuous-testing-with-elixir-ddc1107c5cc0continuous-testing-with-elixir-there-is-great-power-in-having-your--by-andrew-forward--mediuma)
+      * [Continuous Testing with Elixir](#continuous-testing-with-elixir)
     * [16. Directory structure and mix.exs](#16-directory-structure-and-mixexs)
-      * [Recap](#recap-12)
       * [Directory Structure](#directory-structure)
       * [<a href="https://github.com/arafatm/learn-phoenixonrails/blob/main/pensive/mix.exs">mix.exs</a>](#a-hrefhttpsgithubcomarafatmlearn-phoenixonrailsblobmainpensivemixexsmixexsa)
       * [The lib directory](#the-lib-directory)
     * [17. Routing and config](#17-routing-and-config)
-      * [Recap](#recap-13)
       * [To create a simple _about_ page](#to-create-a-simple-_about_-page)
           * [:ship: PensiveWeb.Router <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a>](#ship-pensivewebrouter-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommit9b98a189b98a18a)
       * [Print routes](#print-routes)
           * [:ship: Env specific configs <a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a>](#ship-env-specific-configs-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommitba654c2ba654c2a)
           * [:ship: route /about <a href='https://github.com/arafatm/learn-phoenixonrails/commit/39bf15c'>39bf15c</a>](#ship-route-about-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommit39bf15c39bf15ca)
     * [18. Controllers and templates](#18-controllers-and-templates)
-      * [Recap](#recap-14)
       * [Plug.Conn](#plugconn)
     * [19. Tailwind](#19-tailwind)
     * [20. Embedded Elixir](#20-embedded-elixir)
@@ -94,7 +70,6 @@ title: Phoenix on Rails
     * [35. Edit and Update](#35-edit-and-update)
     * [36. Deleting memories](#36-deleting-memories)
     * [37. Recap](#37-recap)
-      * [Recap](#recap-15)
   * [Part 3. Advanced concepts](#part-3-advanced-concepts)
     * [38. Dependency management](#38-dependency-management)
     * [39. Erlang libraries](#39-erlang-libraries)
@@ -146,8 +121,6 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 ### 2. Ruby vs. Elixir  
 
-#### Recap
-
 |                | Elixir                                      | Ruby                                                       |
 | ---            | ---                                         | ---                                                        |
 | paradigm       | Functional (w/ Modules)                                  | Object-oriented                                            |
@@ -155,8 +128,6 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 | Mutability     | Everything is immutable                     | Some (strings) are mutable, others (symbols) are immutable |
 | File extension | `.ex` or `.exs`                             | `.rb`                                                      |
 | Execution      | Compile `.ex` files, interpret `.exs` files | Interpreted                                                |
-
-#### Code
 
 In Elixir, everything behaves like a Ruby symbol. There’s no equivalent of
 `capitalize!` on a Elixir string because Elixir __can’t mutate the string__ in
@@ -174,8 +145,6 @@ elixir math.exs # Doesn't save .beam
 ```
 
 ## 3. Basic Elixir Syntax  
-
-#### Recap
 
 Just remember that:
 - Strings must use double quotes, not single quotes.
@@ -360,8 +329,6 @@ Foo.bar   # => "rescued error"
 
 ## 4. Elixir Modules  
 
-#### Recap
-
 | Module                     | Ruby                                         | Elixir                                                       |
 | ---                        | ---                                          | ---                                                          |
 | create a module            | `module`                                     | `defmodule`                                                  |
@@ -432,8 +399,6 @@ alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 ```
 
 ## 5. Atoms, Lists and Tuples  
-
-#### Recap
 
 - Elixir **atoms** are essentially the same thing as Ruby **symbols** and use
   the `:same_syntax`.
@@ -530,8 +495,6 @@ length(["fizz", "buzz"])  # 2
 
 ## 6. Sigils  
 
-#### Recap
-
 |                              |  Elixir                                  |  Ruby                   |
 | --                           |  --                                      |  --                     |
 | String (with interpolation)  |  `~s(…)`                                 |  `%(…)` or `%Q(…)`      |
@@ -541,8 +504,6 @@ length(["fizz", "buzz"])  # 2
 | Regex                        |  `~r(…)`                                 |  `%r(…)` or just /…/    |
 | Delimiter                    |  8 options `//  ||  ""  '' () [] {} <>`  |  any symbol             |
 | Interpolation with #{}       |  lowercase e.g. `~w[…]`                  |  uppercase e.g. `%W[…]` |
-
-#### Code
 
 ```elixir
 ~w[crash bang wallop] #=> ["crash", "bang", "wallop"]
@@ -600,15 +561,11 @@ noun = "mat" #=> "mat"
 
 ## 7. Pattern matching  
 
-#### Recap
-
 - Allows to assign more than one variable at once
 - e.g. with tuples or lists
 - can be used in `case`
 - allows pattern matching function params
 - `match/2`
-
-#### Code
 
 ```elixir
 {x, y} = {1, 2}
@@ -712,15 +669,11 @@ match?(%{a: ^x}, %{a: 6}) #=> true
 
 ## 8. Elixir Maps  
 
-#### Recap
-
 - Are _key-value_ data structures similar to Ruby hashes.
 - Are written with `%{}`, as opposed to Ruby hashes which are written with `{}`.
 - Can be updated with the special syntax `%{map| key: value}`.
 - Can be accessed using `[]` (returns `nil` if key not found) 
 - or `.` syntax (atom keys only; raises an error if key not found.)
-
-#### Code
 
 ```elixir
 foo = %{ a: 1, b: 2 }
@@ -780,8 +733,6 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 
 ## 9. Keyword Lists  
 
-#### Recap
-
 - Maps (and Keyword) are what’s called an _associative data structure_ - they associate keys to values.
 - Are syntactic sugar over lists of two-element tuples.
 - written with `[ ... ]`
@@ -790,8 +741,6 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 - Are mainly used for passing a list of options as the last argument to a function (in which case you can leave off the `/`)
 - Generally shouldn’t be pattern-matched on.
 - Are used to implement `do` blocks, e.g. for `if` and `def`.
-
-#### Code
 
 ```elixir
 kwlist = [foo: 1, bar: 2]
@@ -853,15 +802,11 @@ def shout(str), do: IO.puts(String.upcase(str))
 
 ### 10. Module attributes  
 
-#### Recap
-
 - Define module attributes with this syntax: `@name "value"`.
 - Module attributes are evaluated at compile time.
 - Repeating a module attribute reassigns it, unless you configure it to accumulate with 
   `Module.register_attribute __MODULE__, :attr_name, accumulate: true`.
 - Use `@moduledoc` and `@doc` to document your modules and functions.
-
-#### Code
 
 ```elixir
 defmodule MyModule do
@@ -914,8 +859,6 @@ h Math.subtract #> def subtract(a, b)
 
 ### 11. Elixir Structs  
 
-#### Recap
-
 - Structs are named maps with a defined list of keys.
 - Define a struct with `defstruct` inside a module.
 - Keys can have no default (i.e. default `nil`), a custom default, or can be
@@ -924,8 +867,6 @@ h Math.subtract #> def subtract(a, b)
   the `Map` module and the `%{ …| … }` syntax) works on them.
 - A `%User{}` struct is represented internally as an Elixir map with the
   special key `__struct__` that has value `User`.
-
-#### Code
 
 ```elixir
 user = %{name: "Adam", email: "adam@example.com"} # Map doesn't enforce attrs and not named
@@ -989,13 +930,9 @@ def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
 
 ## 12. Date and time  
 
-#### Recap
-
 - Elixir provides `Date`, `Time`, and `NaiveDateTime` structs 
 - which can be created with the sigils `~D`, `~T` and `~N` respectively. 
 - There’s also `DateTime`, which doesn’t have a sigil.
-
-#### Code
 
 ```elixir
 date = ~D[1926-04-21] #> ~D[1926-04-21]
@@ -1024,8 +961,6 @@ dt.time_zone  #> "Etc/UTC"
 ```
 
 ## 13. The pipe operator  
-
-#### Code
 
 ```elixir
 "MySubdomain.example.com.au    "
@@ -1065,15 +1000,13 @@ bin/rails db:migrate RAILS_ENV=development
 
 ### 15. Creating a new Phoenix app  
 
-#### Recap
-
 - `mix --version`
 - `mix phx.new pensive` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/6a30419)
 - `mix ecto.create`     # creates the DB
 - `mix phx.server`      # To start the server
 - `mix test`
 
-#### <a href="https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0">Continuous Testing with Elixir. There is great power in having your… | by Andrew Forward | Medium</a>
+#### [Continuous Testing with Elixir](https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0) 
 
 - :ship: Upgrade mix_test_watch to 1.1 (latest) <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9c3b262'>9c3b262</a>
 - `mix deps.get` # [diff](https://github.com/arafatm/learn-phoenixonrails/commit/ae8e158)
@@ -1108,11 +1041,9 @@ diff --git a/pensive/config/config.exs
 
 ### 16. Directory structure and mix.exs  
 
-#### Recap
-
 - There’s no app directory in Phoenix; only lib, which is divided into two main subdirectories:
-  - an “app directory” (lib/<app_name>) for your core business logic.
-  - a “web directory” (lib/<app_name>_web) for the parts of your code that are specific to serving the app over the web.
+  - an “app directory” `lib/<appname>` for your core business logic.
+  - a “web directory” `lib/<app_name>_web` for the parts of your code that are specific to serving the app over the web.
 
 |                     | Ruby (Bundler)                      | Elixir (Mix)                     |
 | -                   | -                                   | -                                |
@@ -1150,8 +1081,6 @@ diff --git a/pensive/config/config.exs
 Separation of `_web` allows for distinction between _web only_ and general app logic
 
 ### 17. Routing and config  
-
-#### Recap
 
 |                     | **Phoenix**                             | **Rails**                          |
 | ---                 | ---                                     | ---                                |
@@ -1261,8 +1190,6 @@ diff --git a/pensive/lib/pensive_web/router.ex
 
 ### 18. Controllers and templates  
 
-#### Recap
-
 |                | Phoenix                                                      | Rails                                           |
 | --             | --                                                           | --                                              |
 | ctrlr define   | `use PensieveWeb, :controller`                               | `< ApplicationController`
@@ -1318,8 +1245,6 @@ xxx
 ### 36. Deleting memories  
 
 ### 37. Recap  
-
-#### Recap
 
 Way back at the beginning, we scaffolded a simple Rails app with this command:
 
