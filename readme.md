@@ -9,6 +9,7 @@ title: Phoenix on Rails
 Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
 
 </details>
+
 ###### :ship: Install Elixir/Erlang w/ asdf
 <details><summary></summary>
 
@@ -23,15 +24,19 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
   - `sudo -u postgres psql postgres`
 
 </details>
+
 </details>
+
 ## Part 1. An introduction to Elixir
 <details><summary></summary>
 
 </details>
+
 ### 2. Ruby vs. Elixir  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -44,6 +49,7 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 | Execution      | Compile `.ex` files, interpret `.exs` files | Interpreted                                                |
 
 </details>
+
 #### Code
 <details><summary></summary>
 
@@ -63,10 +69,12 @@ elixir math.exs # Doesn't save .beam
 ```
 
 </details>
+
 ### 3. Basic Elixir Syntax  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -76,6 +84,7 @@ Just remember that:
 - There are no `return` or `elsif` keywords.
 
 </details>
+
 #### Common Syntax
 <details><summary></summary>
 
@@ -148,6 +157,7 @@ floor; ceil; round; abs; max; min;
 - have 3 parts: generators, filters, and collectables
 
 </details>
+
 #### Functions
 <details><summary></summary>
 
@@ -196,6 +206,7 @@ Enum.reduce([1, 2, 3, 4], &(&1 + &2)) # => 10
 ```
 
 </details>
+
 #### Regex
 <details><summary></summary>
 ```elixir
@@ -209,6 +220,7 @@ Regex.match?(~r/se[0-9]en/, "se7en") # => true
 ```
 
 </details>
+
 #### Inspect & Exceptions
 <details><summary></summary>
 
@@ -259,10 +271,12 @@ Foo.bar   # => "rescued error"
 ```
 
 </details>
+
 ### 4. Elixir Modules  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -280,6 +294,7 @@ Foo.bar   # => "rescued error"
 | `alias Foo.{Bar, Car, Dar}` | shorthand for `alias Foo.Bar`, `alias Foo.Car`, `alias Foo.Dar`. |
 
 </details>
+
 #### Modules organize functions
 <details><summary></summary>
 
@@ -296,6 +311,7 @@ end
 ```
 
 </details>
+
 #### Import (only)
 <details><summary></summary>
 
@@ -308,6 +324,7 @@ import Math, only: [add: 2]
 ```
 
 </details>
+
 #### Private
 <details><summary></summary>
 
@@ -322,6 +339,7 @@ end
 ```
 
 </details>
+
 #### Alias
 <details><summary></summary>
 
@@ -344,10 +362,12 @@ alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 ```
 
 </details>
+
 ### 5. Atoms, Lists and Tuples  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -365,6 +385,7 @@ alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 - `String.length/1` returns the number of characters in a string.
 
 </details>
+
 #### Atoms
 <details><summary></summary>
 
@@ -377,6 +398,7 @@ Atoms are never garbage collected.
 ```
 
 </details>
+
 #### Lists 
 <details><summary></summary>
 
@@ -403,6 +425,7 @@ Enum.at(["James", "Kirk", "Lars", "Robert"], 2) # "Lars"
 ```
 
 </details>
+
 #### Tuples 
 <details><summary></summary>
 
@@ -420,6 +443,7 @@ File.read("file_that_doesnt_exist.txt") # {:error, :enoent}
 ```
 
 </details>
+
 #### Lists vs. Tuples
 <details><summary></summary>
 
@@ -441,6 +465,7 @@ List.to_tuple([1,2,3]) # {1, 2, 3}
 ```
 
 </details>
+
 ####  Size vs Length
 <details><summary></summary>
 
@@ -455,10 +480,12 @@ length(["fizz", "buzz"])  # 2
 ```
 
 </details>
+
 ### 6. Sigils  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -473,6 +500,7 @@ length(["fizz", "buzz"])  # 2
 | Interpolation with #{}       |  lowercase e.g. `~w[…]`                  |  uppercase e.g. `%W[…]` |
 
 </details>
+
 #### Code
 <details><summary></summary>
 
@@ -531,10 +559,12 @@ noun = "mat" #=> "mat"
 ```
 
 </details>
+
 ### 7. Pattern matching  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -545,6 +575,7 @@ noun = "mat" #=> "mat"
 - `match/2`
 
 </details>
+
 #### Code
 <details><summary></summary>
 
@@ -649,10 +680,12 @@ match?(%{a: ^x}, %{a: 6}) #=> true
 ```
 
 </details>
+
 ### 8. Elixir Maps  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -663,6 +696,7 @@ match?(%{a: ^x}, %{a: 6}) #=> true
 - or `.` syntax (atom keys only; raises an error if key not found.)
 
 </details>
+
 #### Code
 <details><summary></summary>
 
@@ -723,10 +757,12 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 ```
 
 </details>
+
 ### 9. Keyword Lists  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -740,6 +776,7 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 - Are used to implement `do` blocks, e.g. for `if` and `def`.
 
 </details>
+
 #### Code
 <details><summary></summary>
 
@@ -802,10 +839,12 @@ def shout(str), do: IO.puts(String.upcase(str))
 ```
 
 </details>
+
 ### 10. Module attributes  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -816,6 +855,7 @@ def shout(str), do: IO.puts(String.upcase(str))
 - Use `@moduledoc` and `@doc` to document your modules and functions.
 
 </details>
+
 #### Code
 <details><summary></summary>
 
@@ -869,10 +909,12 @@ h Math.subtract #> def subtract(a, b)
 ```
 
 </details>
+
 ### 11. Elixir Structs  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -886,6 +928,7 @@ h Math.subtract #> def subtract(a, b)
   special key `__struct__` that has value `User`.
 
 </details>
+
 #### Code
 <details><summary></summary>
 
@@ -950,10 +993,12 @@ def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
 ```
 
 </details>
+
 ### 12. Date and time  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -962,6 +1007,7 @@ def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
 - There’s also `DateTime`, which doesn’t have a sigil.
 
 </details>
+
 #### Code
 <details><summary></summary>
 
@@ -992,10 +1038,12 @@ dt.time_zone  #> "Etc/UTC"
 ```
 
 </details>
+
 ### 13. The pipe operator  
 <details><summary></summary>
 
 </details>
+
 #### Code
 <details><summary></summary>
 
@@ -1020,18 +1068,22 @@ fizz 2 |> buzz 3
 ```
 
 </details>
+
 #### :bulb: For code analysis use [Credo](https://github.com/rrrene/credo)
 <details><summary></summary>
 
 </details>
+
 ## Part 2. A simple CRUD app
 <details><summary></summary>
 
 </details>
+
 ### 14. A simple Rails app  
 <details><summary></summary>
 
 </details>
+
 #### rails new
 <details><summary></summary>
 
@@ -1044,10 +1096,12 @@ bin/rails db:migrate RAILS_ENV=development
 ```
 
 </details>
+
 ### 15. Creating a new Phoenix app  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -1058,6 +1112,7 @@ bin/rails db:migrate RAILS_ENV=development
 - `mix test`
 
 </details>
+
 #### <a href="https://medium.com/@a4word/continuous-testing-with-elixir-ddc1107c5cc0">Continuous Testing with Elixir. There is great power in having your… | by Andrew Forward | Medium</a>
 <details><summary></summary>
 
@@ -1093,10 +1148,12 @@ diff --git a/pensive/config/config.exs
 ```
 
 </details>
+
 ### 16. Directory structure and mix.exs  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -1112,6 +1169,7 @@ diff --git a/pensive/config/config.exs
 | Get the current env | `Rails.env`                         | `Mix.env`
 
 </details>
+
 #### Directory Structure
 <details><summary></summary>
 
@@ -1124,6 +1182,7 @@ diff --git a/pensive/config/config.exs
 - `test` keeps your test files. Elixir tests use [ExUnit](https://hexdocs.pm/ex_unit/1.12/ExUnit.html) by default, while Rails apps are typically tested using [Minitest](https://github.com/minitest/minitest) or [RSpec](https://rspec.info/).
 
 </details>
+
 #### <a href="https://github.com/arafatm/learn-phoenixonrails/blob/main/pensive/mix.exs">mix.exs</a>
 <details><summary></summary>
 
@@ -1137,6 +1196,7 @@ diff --git a/pensive/config/config.exs
   - e.g. `setup: ["deps.get", "ecto.setup"]` allows `mix setup` instead of `mix deps.get && mix ecto.setup`
 
 </details>
+
 #### The lib directory
 <details><summary></summary>
 
@@ -1146,10 +1206,12 @@ diff --git a/pensive/config/config.exs
 Separation of `_web` allows for distinction between _web only_ and general app logic
 
 </details>
+
 ### 17. Routing and config  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -1163,6 +1225,7 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 | Env-specific config | `config/<env>.exs`                      | `config/environments/<env>.rb`     |
 
 </details>
+
 #### To create a simple _about_ page
 <details><summary></summary>
 
@@ -1170,6 +1233,7 @@ Separation of `_web` allows for distinction between _web only_ and general app l
 - In Phx we need route, controller, _views and templates_
 
 </details>
+
 ###### :ship: PensiveWeb.Router <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a>
 <details><summary></summary>
 
@@ -1199,6 +1263,7 @@ diff --git a/pensive/lib/pensive_web/router.ex
 ```
 
 </details>
+
 #### Print routes
 <details><summary></summary>
 
@@ -1221,6 +1286,7 @@ mix phx.routes --info / #=>
 ```
 
 </details>
+
 ###### :ship: Env specific configs <a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a>
 <details><summary></summary>
 
@@ -1254,6 +1320,7 @@ diff --git a/pensive/lib/pensive_web/router.ex
 `live_dashboard` can be access in dev at http://localhost:4000/dev/dashboard
 
 </details>
+
 ###### :ship: route /about <a href='https://github.com/arafatm/learn-phoenixonrails/commit/39bf15c'>39bf15c</a>
 <details><summary></summary>
 
@@ -1270,10 +1337,12 @@ diff --git a/pensive/lib/pensive_web/router.ex
 ```
 
 </details>
+
 ### 18. Controllers and templates  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -1288,6 +1357,7 @@ diff --git a/pensive/lib/pensive_web/router.ex
 | rendering      | call `render `explicitly, e.g. `render(conn, :index)`        | render view with same name as action by default
 
 </details>
+
 #### Plug.Conn
 <details><summary></summary>
 
@@ -1298,82 +1368,102 @@ A `%Plug.Conn{}` represents an HTTP request and response
 xxx
 
 </details>
+
 ### 19. Tailwind  
 <details><summary></summary>
 
 </details>
+
 ### 20. Embedded Elixir  
 <details><summary></summary>
 
 </details>
+
 ### 21. Layouts  
 <details><summary></summary>
 
 </details>
+
 ### 22. Phoenix views  
 <details><summary></summary>
 
 </details>
+
 ### 23. Ecto.Migration  
 <details><summary></summary>
 
 </details>
+
 ### 24. Ecto.Schema  
 <details><summary></summary>
 
 </details>
+
 ### 25. Ecto.Repo  
 <details><summary></summary>
 
 </details>
+
 ### 26. Route helpers  
 <details><summary></summary>
 
 </details>
+
 ### 27. Index page  
 <details><summary></summary>
 
 </details>
+
 ### 28. Function components  
 <details><summary></summary>
 
 </details>
+
 ### 29. Core components  
 <details><summary></summary>
 
 </details>
+
 ### 30. Phoenix contexts  
 <details><summary></summary>
 
 </details>
+
 ### 31. Helper functions  
 <details><summary></summary>
 
 </details>
+
 ### 32. Ecto.Changeset  
 <details><summary></summary>
 
 </details>
+
 ### 33. New and Create  
 <details><summary></summary>
 
 </details>
+
 ### 34. Errors and I18n  
 <details><summary></summary>
 
 </details>
+
 ### 35. Edit and Update  
 <details><summary></summary>
 
 </details>
+
 ### 36. Deleting memories  
 <details><summary></summary>
 
 </details>
+
 ### 37. Recap  
 <details><summary></summary>
 
 </details>
+
 #### Recap
 <details><summary></summary>
 
@@ -1412,113 +1502,141 @@ to Rails:
   - `ActiveRecord::Migration` in Rails and `Ecto.Migration` in Phoenix.
 
 </details>
+
 ## Part 3. Advanced concepts
 <details><summary></summary>
 
 </details>
+
 ### 38. Dependency management  
 <details><summary></summary>
 
 </details>
+
 ### 39. Erlang libraries  
 <details><summary></summary>
 
 </details>
+
 ### 40. use  
 <details><summary></summary>
 
 </details>
+
 ### 41. Plug and pipelines  
 <details><summary></summary>
 
 </details>
+
 ### 42. Scaffolding  
 <details><summary></summary>
 
 </details>
+
 ### 43. with  
 <details><summary></summary>
 
 </details>
+
 ### 44. Ecto.Query  
 <details><summary></summary>
 
 </details>
+
 ### 45. LiveView  
 <details><summary></summary>
 
 </details>
+
 ## Part 4. Twittex
 <details><summary></summary>
 
 </details>
+
 ### 46. phx.gen.auth  
 <details><summary></summary>
 
 </details>
+
 ### 47. Database indexes  
 <details><summary></summary>
 
 </details>
+
 ### 48. The User schema  
 <details><summary></summary>
 
 </details>
+
 ### 49. Uniqueness validations  
 <details><summary></summary>
 
 </details>
+
 ### 50. User registration  
 <details><summary></summary>
 
 </details>
+
 ### 51. User sessions  
 <details><summary></summary>
 
 </details>
+
 ### 52. Auth routes and plugs  
 <details><summary></summary>
 
 </details>
+
 ### 53. Static files  
 <details><summary></summary>
 
 </details>
+
 ### 54. Assets and esbuild  
 <details><summary></summary>
 
 </details>
+
 ### 55. Phoenix.Param  
 <details><summary></summary>
 
 </details>
+
 ### 56. Associations  
 <details><summary></summary>
 
 </details>
+
 ### 57. Preloads  
 <details><summary></summary>
 
 </details>
+
 ### 58. Emails and password resets  
 <details><summary></summary>
 
 </details>
+
 ### 59. LiveView sessions  
 <details><summary></summary>
 
 </details>
+
 ### 60. LiveView forms  
 <details><summary></summary>
 
 </details>
+
 ### 61. File uploads  
 <details><summary></summary>
 
 </details>
+
 ### 62. Follows  
 <details><summary></summary>
 
 </details>
+
 ### Conclusion
 <details><summary></summary>
