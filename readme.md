@@ -7,7 +7,6 @@ title: Phoenix on Rails
 
 Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
 <details><summary>:ship: Install Elixir/Erlang w/ asdf</summary>
-
 - `asdf install elixir 1.15.4-otp-25`
 - `asdf install erlang 25.3.2.5       # VSCode elixirLS does not support OTP 26`
 - `mix local.hex`
@@ -178,7 +177,6 @@ Enum.reduce([1, 2, 3, 4], &(&1 + &2)) # => 10
 ```
 </details>
 <details><summary>Regex</summary>
-
 ```elixir
   # Regex
 Regex.match?(~r/se[0-9]en/, "se7en") # => true
