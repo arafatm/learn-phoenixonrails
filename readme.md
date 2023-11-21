@@ -4,7 +4,6 @@ title: Phoenix on Rails
 ---
 
 ## 1. Intro  
-<details><summary></summary>
 
 Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
 
@@ -23,14 +22,10 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 </details>
 
-</details>
 ## Part 1. An introduction to Elixir
-<details><summary></summary>
 
 ### 2. Ruby vs. Elixir  
 <details><summary></summary>
-
-</details>
 
 #### Recap
 <details><summary></summary>
@@ -65,10 +60,7 @@ elixir math.exs # Doesn't save .beam
 
 </details>
 
-### 3. Basic Elixir Syntax  
-<details><summary></summary>
-
-</details>
+## 3. Basic Elixir Syntax  
 
 #### Recap
 <details><summary></summary>
@@ -267,10 +259,7 @@ Foo.bar   # => "rescued error"
 
 </details>
 
-### 4. Elixir Modules  
-<details><summary></summary>
-
-</details>
+## 4. Elixir Modules  
 
 #### Recap
 <details><summary></summary>
@@ -358,10 +347,7 @@ alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 
 </details>
 
-### 5. Atoms, Lists and Tuples  
-<details><summary></summary>
-
-</details>
+## 5. Atoms, Lists and Tuples  
 
 #### Recap
 <details><summary></summary>
@@ -476,10 +462,7 @@ length(["fizz", "buzz"])  # 2
 
 </details>
 
-### 6. Sigils  
-<details><summary></summary>
-
-</details>
+## 6. Sigils  
 
 #### Recap
 <details><summary></summary>
@@ -555,10 +538,7 @@ noun = "mat" #=> "mat"
 
 </details>
 
-### 7. Pattern matching  
-<details><summary></summary>
-
-</details>
+## 7. Pattern matching  
 
 #### Recap
 <details><summary></summary>
@@ -676,10 +656,7 @@ match?(%{a: ^x}, %{a: 6}) #=> true
 
 </details>
 
-### 8. Elixir Maps  
-<details><summary></summary>
-
-</details>
+## 8. Elixir Maps  
 
 #### Recap
 <details><summary></summary>
@@ -753,10 +730,7 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 
 </details>
 
-### 9. Keyword Lists  
-<details><summary></summary>
-
-</details>
+## 9. Keyword Lists  
 
 #### Recap
 <details><summary></summary>
@@ -835,10 +809,10 @@ def shout(str), do: IO.puts(String.upcase(str))
 
 </details>
 
+</details>
+
 ### 10. Module attributes  
 <details><summary></summary>
-
-</details>
 
 #### Recap
 <details><summary></summary>
@@ -905,10 +879,10 @@ h Math.subtract #> def subtract(a, b)
 
 </details>
 
+</details>
+
 ### 11. Elixir Structs  
 <details><summary></summary>
-
-</details>
 
 #### Recap
 <details><summary></summary>
@@ -989,10 +963,7 @@ def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
 
 </details>
 
-### 12. Date and time  
-<details><summary></summary>
-
-</details>
+## 12. Date and time  
 
 #### Recap
 <details><summary></summary>
@@ -1034,10 +1005,7 @@ dt.time_zone  #> "Etc/UTC"
 
 </details>
 
-### 13. The pipe operator  
-<details><summary></summary>
-
-</details>
+## 13. The pipe operator  
 
 #### Code
 <details><summary></summary>
@@ -1068,7 +1036,9 @@ fizz 2 |> buzz 3
 
 </details>
 
-## Part 2. A simple CRUD app
+</details>
+
+# Part 2. A simple CRUD app
 <details><summary></summary>
 
 ### 14. A simple Rails app  
@@ -1495,10 +1465,7 @@ to Rails:
 
 </details>
 
-</details>
-
 ## Part 3. Advanced concepts
-<details><summary></summary>
 
 ### 38. Dependency management  
 <details><summary></summary>
@@ -1540,10 +1507,7 @@ to Rails:
 
 </details>
 
-</details>
-
 ## Part 4. Twittex
-<details><summary></summary>
 
 ### 46. phx.gen.auth  
 <details><summary></summary>
@@ -1632,3 +1596,4 @@ to Rails:
 
 ### Conclusion
 <details><summary></summary>
+</details>
