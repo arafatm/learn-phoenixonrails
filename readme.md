@@ -8,8 +8,6 @@ title: Phoenix on Rails
 
 Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://github.com/asdf-vm/asdf-elixir)
 
-</details>
-
 ###### :ship: Install Elixir/Erlang w/ asdf
 <details><summary></summary>
 
