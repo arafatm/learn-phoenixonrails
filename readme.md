@@ -24,11 +24,8 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 </details>
 
 </details>
-
 ## Part 1. An introduction to Elixir
 <details><summary></summary>
-
-</details>
 
 ### 2. Ruby vs. Elixir  
 <details><summary></summary>
@@ -1068,14 +1065,11 @@ fizz 2 |> buzz 3
 </details>
 
 #### :bulb: For code analysis use [Credo](https://github.com/rrrene/credo)
-<details><summary></summary>
 
 </details>
 
 ## Part 2. A simple CRUD app
 <details><summary></summary>
-
-</details>
 
 ### 14. A simple Rails app  
 <details><summary></summary>
@@ -1501,10 +1495,10 @@ to Rails:
 
 </details>
 
+</details>
+
 ## Part 3. Advanced concepts
 <details><summary></summary>
-
-</details>
 
 ### 38. Dependency management  
 <details><summary></summary>
@@ -1546,10 +1540,10 @@ to Rails:
 
 </details>
 
+</details>
+
 ## Part 4. Twittex
 <details><summary></summary>
-
-</details>
 
 ### 46. phx.gen.auth  
 <details><summary></summary>
