@@ -6,98 +6,62 @@ title: Phoenix on Rails
 
 <!-- vim-markdown-toc GFM -->
 
-  * [1. Intro](#1-intro)
-          * [:ship: Install Elixir/Erlang w/ asdf](#ship-install-elixirerlang-w-asdf)
-  * [Part 1. An introduction to Elixir](#part-1-an-introduction-to-elixir)
-    * [2. Ruby vs. Elixir](#2-ruby-vs-elixir)
-  * [3. Basic Elixir Syntax](#3-basic-elixir-syntax)
-      * [Common Syntax](#common-syntax)
-      * [Functions](#functions)
-      * [Regex](#regex)
-      * [Inspect & Exceptions](#inspect--exceptions)
-  * [4. Elixir Modules](#4-elixir-modules)
-      * [Modules organize functions](#modules-organize-functions)
-      * [Import (only)](#import-only)
-      * [Private](#private)
-      * [Alias](#alias)
-  * [5. Atoms, Lists and Tuples](#5-atoms-lists-and-tuples)
-      * [Atoms](#atoms)
-      * [Lists](#lists)
-      * [Tuples](#tuples)
-      * [Lists vs. Tuples](#lists-vs-tuples)
-      * [Size vs Length](#size-vs-length)
-  * [6. Sigils](#6-sigils)
-  * [7. Pattern matching](#7-pattern-matching)
-  * [8. Elixir Maps](#8-elixir-maps)
-  * [9. Keyword Lists](#9-keyword-lists)
-    * [10. Module attributes](#10-module-attributes)
-    * [11. Elixir Structs](#11-elixir-structs)
-  * [12. Date and time](#12-date-and-time)
-  * [13. The pipe operator](#13-the-pipe-operator)
-* [Part 2. A simple CRUD app](#part-2-a-simple-crud-app)
-    * [14. A simple Rails app](#14-a-simple-rails-app)
-      * [rails new](#rails-new)
-    * [15. Creating a new Phoenix app](#15-creating-a-new-phoenix-app)
-      * [Continuous Testing with Elixir](#continuous-testing-with-elixir)
-    * [16. Directory structure and mix.exs](#16-directory-structure-and-mixexs)
-      * [Directory Structure](#directory-structure)
-      * [<a href="https://github.com/arafatm/learn-phoenixonrails/blob/main/pensive/mix.exs">mix.exs</a>](#a-hrefhttpsgithubcomarafatmlearn-phoenixonrailsblobmainpensivemixexsmixexsa)
-      * [The lib directory](#the-lib-directory)
-    * [17. Routing and config](#17-routing-and-config)
-      * [To create a simple _about_ page](#to-create-a-simple-_about_-page)
-          * [:ship: PensiveWeb.Router <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a>](#ship-pensivewebrouter-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommit9b98a189b98a18a)
-      * [Print routes](#print-routes)
-          * [:ship: Env specific configs <a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a>](#ship-env-specific-configs-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommitba654c2ba654c2a)
-          * [:ship: route /about <a href='https://github.com/arafatm/learn-phoenixonrails/commit/39bf15c'>39bf15c</a>](#ship-route-about-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommit39bf15c39bf15ca)
-    * [18. Controllers and templates](#18-controllers-and-templates)
-      * [Plug.Conn](#plugconn)
-    * [19. Tailwind](#19-tailwind)
-    * [20. Embedded Elixir](#20-embedded-elixir)
-    * [21. Layouts](#21-layouts)
-    * [22. Phoenix views](#22-phoenix-views)
-    * [23. Ecto.Migration](#23-ectomigration)
-    * [24. Ecto.Schema](#24-ectoschema)
-    * [25. Ecto.Repo](#25-ectorepo)
-    * [26. Route helpers](#26-route-helpers)
-    * [27. Index page](#27-index-page)
-    * [28. Function components](#28-function-components)
-    * [29. Core components](#29-core-components)
-    * [30. Phoenix contexts](#30-phoenix-contexts)
-    * [31. Helper functions](#31-helper-functions)
-    * [32. Ecto.Changeset](#32-ectochangeset)
-    * [33. New and Create](#33-new-and-create)
-    * [34. Errors and I18n](#34-errors-and-i18n)
-    * [35. Edit and Update](#35-edit-and-update)
-    * [36. Deleting memories](#36-deleting-memories)
-    * [37. Recap](#37-recap)
-  * [Part 3. Advanced concepts](#part-3-advanced-concepts)
-    * [38. Dependency management](#38-dependency-management)
-    * [39. Erlang libraries](#39-erlang-libraries)
-    * [40. use](#40-use)
-    * [41. Plug and pipelines](#41-plug-and-pipelines)
-    * [42. Scaffolding](#42-scaffolding)
-    * [43. with](#43-with)
-    * [44. Ecto.Query](#44-ectoquery)
-    * [45. LiveView](#45-liveview)
-  * [Part 4. Twittex](#part-4-twittex)
-    * [46. phx.gen.auth](#46-phxgenauth)
-    * [47. Database indexes](#47-database-indexes)
-    * [48. The User schema](#48-the-user-schema)
-    * [49. Uniqueness validations](#49-uniqueness-validations)
-    * [50. User registration](#50-user-registration)
-    * [51. User sessions](#51-user-sessions)
-    * [52. Auth routes and plugs](#52-auth-routes-and-plugs)
-    * [53. Static files](#53-static-files)
-    * [54. Assets and esbuild](#54-assets-and-esbuild)
-    * [55. Phoenix.Param](#55-phoenixparam)
-    * [56. Associations](#56-associations)
-    * [57. Preloads](#57-preloads)
-    * [58. Emails and password resets](#58-emails-and-password-resets)
-    * [59. LiveView sessions](#59-liveview-sessions)
-    * [60. LiveView forms](#60-liveview-forms)
-    * [61. File uploads](#61-file-uploads)
-    * [62. Follows](#62-follows)
-    * [Conclusion](#conclusion)
+* [1. Intro](#1-intro)
+        * [:ship: Install Elixir/Erlang w/ asdf](#ship-install-elixirerlang-w-asdf)
+* [Part 1. An introduction to Elixir](#part-1-an-introduction-to-elixir)
+  * [2. Ruby vs. Elixir](#2-ruby-vs-elixir)
+* [3. Basic Elixir Syntax](#3-basic-elixir-syntax)
+    * [Common Syntax](#common-syntax)
+    * [Functions](#functions)
+  * [18. Controllers and templates](#18-controllers-and-templates)
+    * [Plug.Conn](#plugconn)
+  * [19. Tailwind](#19-tailwind)
+  * [20. Embedded Elixir](#20-embedded-elixir)
+  * [21. Layouts](#21-layouts)
+  * [22. Phoenix views](#22-phoenix-views)
+  * [23. Ecto.Migration](#23-ectomigration)
+  * [24. Ecto.Schema](#24-ectoschema)
+  * [25. Ecto.Repo](#25-ectorepo)
+  * [26. Route helpers](#26-route-helpers)
+  * [27. Index page](#27-index-page)
+  * [28. Function components](#28-function-components)
+  * [29. Core components](#29-core-components)
+  * [30. Phoenix contexts](#30-phoenix-contexts)
+  * [31. Helper functions](#31-helper-functions)
+  * [32. Ecto.Changeset](#32-ectochangeset)
+  * [33. New and Create](#33-new-and-create)
+  * [34. Errors and I18n](#34-errors-and-i18n)
+  * [35. Edit and Update](#35-edit-and-update)
+  * [36. Deleting memories](#36-deleting-memories)
+  * [37. Recap](#37-recap)
+* [Part 3. Advanced concepts](#part-3-advanced-concepts)
+  * [38. Dependency management](#38-dependency-management)
+  * [39. Erlang libraries](#39-erlang-libraries)
+  * [40. use](#40-use)
+  * [41. Plug and pipelines](#41-plug-and-pipelines)
+  * [42. Scaffolding](#42-scaffolding)
+  * [43. with](#43-with)
+  * [44. Ecto.Query](#44-ectoquery)
+  * [45. LiveView](#45-liveview)
+* [Part 4. Twittex](#part-4-twittex)
+  * [46. phx.gen.auth](#46-phxgenauth)
+  * [47. Database indexes](#47-database-indexes)
+  * [48. The User schema](#48-the-user-schema)
+  * [49. Uniqueness validations](#49-uniqueness-validations)
+  * [50. User registration](#50-user-registration)
+  * [51. User sessions](#51-user-sessions)
+  * [52. Auth routes and plugs](#52-auth-routes-and-plugs)
+  * [53. Static files](#53-static-files)
+  * [54. Assets and esbuild](#54-assets-and-esbuild)
+  * [55. Phoenix.Param](#55-phoenixparam)
+  * [56. Associations](#56-associations)
+  * [57. Preloads](#57-preloads)
+  * [58. Emails and password resets](#58-emails-and-password-resets)
+  * [59. LiveView sessions](#59-liveview-sessions)
+  * [60. LiveView forms](#60-liveview-forms)
+  * [61. File uploads](#61-file-uploads)
+  * [62. Follows](#62-follows)
+  * [Conclusion](#conclusion)
 
 <!-- vim-markdown-toc -->
 
@@ -138,7 +102,6 @@ String.upcase(name) # vs Ruby: name.upcase
 ```
 
 Compile and Excute
-
 ```bash
 elixirc math.ex # creates Elixir.Math.Bem
 elixir math.exs # Doesn't save .beam
@@ -155,68 +118,87 @@ Just remember that:
 
 ```elixir
 IO.puts("Hello, world!")
+```
 
-  # Vars
+Vars
+```elixir
 some_number = 1
-  # variable names can end with ? or !:
+```
+
+variable names can end with ? or !:
+```elixir
 valid? = true 
 password! = "foobar"
+```
 
-  # Strings
+Strings
+```elixir
 "Hello" <> " " <> "there" # contat
 "The name's #{name}"      # interpolate
+```
 
-  # No multiline comments
-
-  # Conditionals
+Conditionals
+```elixir
 unless age >= 18 do
   "Minor"
 else
   "Adult"
 end
+```
 
-  # blocks are scoped
+blocks are scoped
+```elixir
 x = "Something"
 if true do
   x = "Something else"
 end
 x #=> "Something"
+```
 
-  # return value to assign
+return value to assign
+```elixir
 x = if true do
   "Something"
 else
   "Something else"
 end
 x #=>"Something"
+```
 
-  # No elsif
+No elsif
+```elixir
 cond do
   age >= 18 -> "Adult"
   age >= 13 -> "Teenager"
   true -> "Child"           # fallback clause
 end
+```
 
-  # for loops are expressions that return a value
+for loops are expressions that return a value
+```elixir
 squares = for n <- [1,2,3,4] do
   n * n
 end
 IO.puts squares #=> [1,4,9,16]
+```
 
-  # Math
+Math
+```elixir
 5/2       # => 2.5
 div(5,2)  # => 2 
 rem(6,4)  # => 2
 2 ** 4    # => 16
 floor; ceil; round; abs; max; min;
+```
 
-  # equals vs exactly equals...
+equals vs exactly equals...
+```elixir
 2 ==  2   # true
 2 === 2   # true
 2 ==  2.0 # true
 2 === 2.0 # false
-
 ```
+
 [Comprehensions - The Elixir programming language](https://elixir-lang.org/getting-started/comprehensions.html)
 - sytactic sugar for looping over enumerables
 - have 3 parts: generators, filters, and collectables
@@ -224,37 +206,47 @@ floor; ceil; round; abs; max; min;
 #### Functions
 
 ```elixir
-  # Elixir doesn’t have a return statement. 
-  # You can’t “exit early” from an Elixir function - 
-  # the only way to return something is to make it be the 
-  # value of the function’s final expression.
+Elixir doesn’t have a return statement. The only way to return something is to make it be the value of the function’s final expression.
+```elixir
 def add(a, b) do
+```
 
-  # Default argument
+Default argument
+```elixir
 def choose_color(color \\ "black") do
+```
 
-  # By convention, functions with ? return a bool
+By convention, functions with ? return a bool
+```elixir
 String.contains?("England", "gland")
+```
 
-  # And functions that end an ! raise an exception in their error cases
+And functions that end an ! raise an exception in their error cases
+```elixir
 File.read("file_that_doesnt_exist.txt") # => {:error, :enoent}
 File.read!("file_that_doesnt_exist.txt") 
-  # => ** (File.Error) could not read file 
-  # => file_that_doesnt_exist.txt: no such file or directory
+=> ** (File.Error) could not read file 
+=> file_that_doesnt_exist.txt: no such file or directory
+```
 
-  # Anonymous Fn
+Anonymous Fn
+```elixir
 fn x, y ->
   x + y
 end
 
 sum = fn x, y -> x + y end    # call with '.'
 sum.(1, 2)                    # => 3
+```
 
-  # Can be passed as argument to other fns
+Can be passed as argument to other fns
+```elixir
 Enum.map([1, 2, 3, 4], fn n -> n ** 2 end)          # => [1, 4, 9, 16]
 Enum.reduce([1, 2, 3, 4], fn x, acc -> x + acc end) # => 10
+```
 
-  # Shorthand syntax for anonymous fns
+Shorthand syntax for anonymous fns
+```elixir
 sum1= fn x, y -> x + y end
 sum2 = &(&1 + &2)           # Is equivalent to previous line
 sum2.(3,4)                  # => 7
@@ -264,15 +256,18 @@ sum3.(3,4)                  # => 7
 
 Enum.map([1, 2, 3, 4], &(&1 ** 2))    # => [1, 4, 9, 16]
 Enum.reduce([1, 2, 3, 4], &(&1 + &2)) # => 10
-
 ```
 
 #### Regex
 
 ```elixir
-  # Regex
+Regex
+```elixir
+```
 Regex.match?(~r/se[0-9]en/, "se7en") # => true
-  # These are all equivalent:
+These are all equivalent:
+```elixir
+```
 ~r/se[0-9]en/
 ~r(se[0-9]en)
 ~r'se[0-9]en'
@@ -283,15 +278,21 @@ Regex.match?(~r/se[0-9]en/, "se7en") # => true
 
 ```elixir
 
-  # inspect
+inspect
+```elixir
+```
 puts :symbol  # => symbol
 p :symbol     # => :symbol
 
-  # p == IO.inspect
+p == IO.inspect
+```elixir
+```
 IO.puts "string"    # => string
 IO.inspect "string" # => "string"
 
-  # Exceptions
+Exceptions
+```elixir
+```
 raise "something's wrong!" # => ** (RuntimeError) something's wrong!
 
 try do
@@ -312,9 +313,15 @@ catch
   x -> "#{x} was caught"
 end                       # => "1 was caught"
 
-  # There’s almost always a better, more readable way to solve a problem 
-  # than with throw and catch. 
-  # Don’t use them unless you truly have no other choice!
+There’s almost always a better, more readable way to solve a problem 
+```elixir
+```
+than with throw and catch. 
+```elixir
+```
+Don’t use them unless you truly have no other choice!
+```elixir
+```
 
 defmodule Foo do
   def bar do
@@ -388,13 +395,17 @@ defmodule PhoenixOnRails.Multiplication do ... end
 alias PhoenixOnRails.Multiplication # Now we can just refer to `Multiplication` without using its full name:
 Multiplication.multiply(3, 4)       #=> 12
 
-  # Instead of writing this on separate lines:
+Instead of writing this on separate lines:
+```elixir
+```
 alias PhoenixOnRails.Foo
 alias PhoenixOnRails.Bar
 alias PhoenixOnRails.Fizz
 alias PhoenixOnRails.Buzz
 
-  # You can write it like this:
+You can write it like this:
+```elixir
+```
 alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 ```
 
@@ -442,7 +453,9 @@ length ["James", "Kirk", "Lars", "Robert"]    # 4
 List.starts_with?([1, 1, 2, 3, 5, 8], [1, 1])   # true
 Enum.at(["James", "Kirk", "Lars", "Robert"], 2) # "Lars"
 
-  # [head | tail]
+[head | tail]
+```elixir
+```
 [0 | [1,2,3,4]] # [0, 1, 2, 3, 4]
 ["foo" | []]    # ["foo"]
 ```
@@ -457,7 +470,9 @@ Tuples are fixed-size, ordered containers of elements.
 elem {"Biden", "president@whitehouse.gov"}, 0 # "Biden"
 elem {"Biden", "president@whitehouse.gov"}, 1 # "president@whitehouse.gov"
 
-  # commonly used in function return with status
+commonly used in function return with status
+```elixir
+```
 File.read("file_that_exists.txt")       # {:ok, "this is the file's contents"}
 File.read("file_that_doesnt_exist.txt") # {:error, :enoent}
 ```
@@ -509,9 +524,15 @@ length(["fizz", "buzz"])  # 2
 ~w[crash bang wallop] #=> ["crash", "bang", "wallop"]
 
 ~w[crash bang wallop]a #=> [:crash, :bang, :wallop]
-                       # In Elixir use ~w[…]a to create an array of atoms. 
-                       # That is, use the same syntax as for an array of strings, 
-                       # but _add an a_ after the closing delimiter:
+In Elixir use ~w[…]a to create an array of atoms. 
+```elixir
+```
+That is, use the same syntax as for an array of strings, 
+```elixir
+```
+but _add an a_ after the closing delimiter:
+```elixir
+```
 
 ~w/crash bang wallop/ # ONLY theseeight lines create the array:
 ~w|crash bang wallop| # Unlike Ruby (which can use any delimiter)
@@ -523,19 +544,37 @@ length(["fizz", "buzz"])  # 2
 ~w<crash bang wallop>
 
 Regex.match?(~r/se[0-9]en/, "se7en") # ~r creates regex
- # Your choice of delimiter affects which characters must be escaped with \.
- # For example, to write a regex that matches the string http//, 
- # you might not want to use / as your delimiter, 
- # because then you’d need to write ~r/^https?\/\//, which is a bit hard to read.
- # With a different delimiter you don’t need to escape the slashes; 
- # e.g. you could write ~r(^https?//).
+Your choice of delimiter affects which characters must be escaped with \.
+```elixir
+```
+For example, to write a regex that matches the string http//, 
+```elixir
+```
+you might not want to use / as your delimiter, 
+```elixir
+```
+because then you’d need to write ~r/^https?\/\//, which is a bit hard to read.
+```elixir
+```
+With a different delimiter you don’t need to escape the slashes; 
+```elixir
+```
+e.g. you could write ~r(^https?//).
+```elixir
+```
 
 ~s(This is a string) #=> "This is a string"
- # Sigil, no need for escape characters:
+Sigil, no need for escape characters:
+```elixir
+```
 ~s(He said "I'm not sure") 
- # Equivalent with escaped double quotes: "He said \"I'm not sure\""
+Equivalent with escaped double quotes: "He said \"I'm not sure\""
+```elixir
+```
 
-  # To create a multiline string, called a heredoc, use ~s with three double or single quotes:
+To create a multiline string, called a heredoc, use ~s with three double or single quotes:
+```elixir
+```
 haiku = ~s"""
         Elixir code flows free,
         Functional charm in each line,
@@ -543,15 +582,23 @@ haiku = ~s"""
         """ 
         #=> "Elixir code flows free,\nFunctional charm in each line,\nConcurrency thrives.\n"
 
-  # Note that the heredoc removes the opening indentation from each line:
+Note that the heredoc removes the opening indentation from each line:
+```elixir
+```
 IO.puts(haiku)
   #=> Elixir code flows free,
   #=> Functional charm in each line,
   #=> Concurrency thrives.
 
- # Sigils allow you to interpolate data using #{}, just like a string. 
- # Alternatively, if you use the capitalized version of the sigil (e.g. ~S), 
- # interpolation will be ignored:
+Sigils allow you to interpolate data using #{}, just like a string. 
+```elixir
+```
+Alternatively, if you use the capitalized version of the sigil (e.g. ~S), 
+```elixir
+```
+interpolation will be ignored:
+```elixir
+```
 noun = "mat" #=> "mat"
 
 ~s(The cat sat on the #{noun}) #=> "The cat sat on the mat"
@@ -598,10 +645,14 @@ n = 1 #=> 1
 n = 2 #=> 2
 2 = z #=> ** (CompileError) iex:3: undefined function z/0 (there is no such import)
 
- # A limitation of pattern matching is that you can’t make function calls on the left-hand side of =:
+A limitation of pattern matching is that you can’t make function calls on the left-hand side of =:
+```elixir
+```
 length([1,2]) = 2 #=> ** (CompileError) iex:4: cannot invoke remote function :erlang.length/1 inside a match
 
- # Pin operator
+Pin operator
+```elixir
+```
 president = "Biden"
 {president, veep} = {"Trump", "Pence"}
 president   #=> "Trump"
@@ -609,7 +660,9 @@ president   #=> "Trump"
 veep        #=> "Harris"
 {^president, veep} = {"Trump", "Pence"} #=> ** (MatchError) no match of right hand side value: {"Trump", "Pence"}
 
-  # Case statement
+Case statement
+```elixir
+```
 case {"Theodore", "Roosevelt"} do
   {"Franklin", "Roosevelt"}  -> "This clause won't match"
   {"Abraham", "Lincoln"}     -> "Neither will this"
@@ -618,7 +671,9 @@ case {"Theodore", "Roosevelt"} do
   _                          -> "This is a failsafe clause that matches anything."
 end
 
-  # Pattern-matching on function parameters
+Pattern-matching on function parameters
+```elixir
+```
 defmodule Recursor do
   def sum(list) do
     case list do
@@ -627,7 +682,9 @@ defmodule Recursor do
     end
   end
 end
-  # Is the same as...
+Is the same as...
+```elixir
+```
 defmodule Recursor do
   def sum([]) do
     0
@@ -639,14 +696,18 @@ end
 IO.puts Recursor.sum([1,2,3,4]) #=> 10
 IO.puts Recursor.sum([1,4,7,1]) #=> 13
 
-  # Match on function param
+Match on function param
+```elixir
+```
 defmodule Translator do
   def color("blue") do; "azul"; end
   def color("red") do; "rojo"; end
 end
 Translator.color("mauve") #=> => ** (FunctionClauseError) no function clause matching in Translator.color/1
 
-  # Can use Guard in fn clause
+Can use Guard in fn clause
+```elixir
+```
 defmodule Math do
   def zero?(0) do;                      true; end
   def zero?(x) when is_integer(x) do;   false; end
@@ -656,13 +717,17 @@ IO.puts Math.zero?(1)         #=> false
 IO.puts Math.zero?([1, 2, 3]) #=> ** (FunctionClauseError)
 IO.puts Math.zero?(0.0)       #=> ** (FunctionClauseError)
 
-  # Match
+Match
+```elixir
+```
 match?(%{a: 1}, %{a: 1, b: 2}) #=> true
 match?(%{a: 2}, %{a: 1, b: 2}) #=> false
 
 match?(x, 5) #=> warning: variable "x" is unused (if the variable is not meant to be used, prefix it with an underscore)
              #=> true
-  # Can use pinned variable to get rid of warning
+Can use pinned variable to get rid of warning
+```elixir
+```
 x = 6
 match?(%{a: ^x}, %{a: 6}) #=> true
 ```
@@ -683,19 +748,29 @@ my_map = %{ 1 => "a", "x" => "b", [] => "c", 3.5 => "d" } #=> Anything can be a 
 %{ a: 1, b: 2 } # is the same as
 %{ :a => 1, :b => 2 }
 
-  # Pattern match on maps
+Pattern match on maps
+```elixir
+```
 %{name: name} =  %{name: "Harry"}
 name #=> "Harry"
 %{name: name, house: "Slytherin"} =  %{name: "Harry", house: "Gryffindor"} #=> ** (MatchError) no match of right hand side value: %{house: "Gryffindor", name: "Harry"}
 
-  # Keys must be on left, but optional on right
-  # This matches; additional keys other than 'name' are ignored:
+Keys must be on left, but optional on right
+```elixir
+```
+This matches; additional keys other than 'name' are ignored:
+```elixir
+```
 %{name: name} =  %{name: "Harry", house: "Gryffindor", broomstick: "Nimbus 2000"}
 name #=> "Harry"
-  # This is a MatchError because the :house key is missing on the right:
+This is a MatchError because the :house key is missing on the right:
+```elixir
+```
 %{name: name, house: house} =  %{name: "Harry"} #=> ** (MatchError) no match of right hand side value: %{name: "Harry"}
 
-  # Can assign whole map and pattern match vars
+Can assign whole map and pattern match vars
+```elixir
+```
 def func(%{foo: foo, bar: bar} = map) do
   IO.puts foo; IO.puts bar; IO.inspect map
 end
@@ -705,7 +780,9 @@ func(%{foo: 1, bar: 2})
   #=> 2
   #=> %{bar: 2, foo: 1}
 
-  # Common Map functions
+Common Map functions
+```elixir
+```
 map_size(%{a: 1, b: 2, c: 3})
 Map.get(%{a: 1, b: 2}, :a)
 Map.put(%{a: 1, b: 2}, :c, 3)
@@ -713,19 +790,27 @@ Map.keys(%{a: 1, b: 2})
 Map.values(%{a: 1, b: 2})
 Map.merge(%{a: 1, b: 2}, %{b: 3, c: 4}) #=> %{a: 1, b: 3, c: 4}
 
-  # Update maps
+Update maps
+```elixir
+```
 foo = %{a: 1, b: 2}
 %{ foo | b: 3 }         #=> %{a: 1, b: 3}
 
-  # This syntax can only update an existing key, not add a new one. 
+This syntax can only update an existing key, not add a new one. 
+```elixir
+```
 foo = %{a: 1, b: 2}
 %{ foo | c: 3 }         #=> ** (KeyError) key :c not found in: %{a: 1, b: 2}
 
-  # Can use . syntax
+Can use . syntax
+```elixir
+```
 foo = %{a: 1, b: 2}
 foo.a                   #=> 1
 
-  # But only on atoms
+But only on atoms
+```elixir
+```
 foo = %{"a" => 1}
 foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 
@@ -745,36 +830,58 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 ```elixir
 kwlist = [foo: 1, bar: 2]
 
-  # Cannot use . syntax
+Cannot use . syntax
+```elixir
+```
 kwlist.foo      #=> ** (ArgumentError)
 
-  # Can have duplicate keys
+Can have duplicate keys
+```elixir
+```
 kwlist = [foo: 1, foo: 5, bar: 16, foo: 12]
 kwlist[:foo]                                    #=> 1
 
-  # Just a list of tuples like `[{ }, {}]
+Just a list of tuples like `[{ }, {}]
+```elixir
+```
 [name: "Bob", age: 25] == [{:name, "Bob"}, {:age, 25}]  #=> true
 
-  # List functions work
+List functions work
+```elixir
+```
 [foo: 1, bar: 2] ++ [fizz: 3, buzz: 4]
 [foo: 1, bar: 2] -- [foo: 1]          
 {:foo, 1}       in [foo: 1, bar: 2]         
 [{:boo, 0}      | [foo: 1, bar: 2]]
 List.first([foo: 1, bar: 2])
 
-  # Are ordered like List
+Are ordered like List
+```elixir
+```
 [foo: 1, bar: 2] == [bar: 2, foo: 1] #=> false
 
-  # The main thing keyword lists are used for is to pass options to functions.
+The main thing keyword lists are used for is to pass options to functions.
+```elixir
+```
 String.split("I am your father", " ")                   #=> ["I", "am", "your", "father"]
-  # split/3 has optional args
+split/3 has optional args
+```elixir
+```
 String.split("I   am your  father", " ", [trim: true])  #=> ["I", "am", "your", "father"]
-  # if passing single len list, leave off []
+if passing single len list, leave off []
+```elixir
+```
 String.split("I   am your  father", " ", trim: true)    #=> ["I", "am", "your", "father"]
 
-  # When using List as optional params in your fn, 
-  # pattern matching is tricky since order is important in List
-  # Instead use Keyword funs
+When using List as optional params in your fn, 
+```elixir
+```
+pattern matching is tricky since order is important in List
+```elixir
+```
+Instead use Keyword funs
+```elixir
+```
 Keyword.has_key?([trim: true, parts: false], :something_else)   #=> false
 Keyword.get(     [trim: true, parts: false], :trim)             #=> true
 Keyword.fetch(   [trim: true, parts: false], :trim)             #=> {:ok, true}
@@ -782,7 +889,9 @@ Keyword.fetch(   [trim: true, parts: false], :not_there)        #=> :error
 Keyword.fetch!(  [trim: true, parts: false], :not_there)        #=> ** (KeyError) key :not_there not found in: [trim: true, parts: false]
 Keyword.delete(  [trim: true, parts: false], :parts)            #=> [trim: true]
 
-  # Allowing duplicate keys is helpful e.g. in `Ecto.Query`
+Allowing duplicate keys is helpful e.g. in `Ecto.Query`
+```elixir
+```
 query =
   from b in Book,
     where: b.publication_year < 1990,
@@ -790,13 +899,21 @@ query =
     where: b.type == "Hardback"
 books = Repo.all(query)
 
-  # if is a __macro__ `if/2` with a keyword list for arguments
+if is a __macro__ `if/2` with a keyword list for arguments
+```elixir
+```
 if some_condition do; "Something"; else; "Something else"; end
-  # same as
+same as
+```elixir
+```
 if some_condition, do: "Something", else: "Something else"
-  # same as
+same as
+```elixir
+```
 if(some_condition, [do: "Something", else: "Something else"])
-  # also works for other blocks
+also works for other blocks
+```elixir
+```
 def shout(str), do: IO.puts(String.upcase(str))
 ```
 
@@ -813,30 +930,42 @@ defmodule MyModule do
   @my_attribute "some value"
 end
 
-  # used to reduce repetition and make your code more readable
+used to reduce repetition and make your code more readable
+```elixir
+```
 defmodule Circle do
   @pi 3.14159
 
   def diameter(r), do: 2 * @pi * r
   def area(r),  do: @pi * r ** 2 # evaluated at compile time, same as 
-                                 # def area(r), do: 3.14158 * r  ** 2
+def area(r), do: 3.14158 * r  ** 2
+```elixir
+```
 end
 
-  # Can be reassigned
+Can be reassigned
+```elixir
+```
 defmodule MyModule do
   @foo 4; @foo 8; def foo, do: @foo 
 end
 MyModule.first_foo #> 8
 
-  # Can be accumulated
+Can be accumulated
+```elixir
+```
 defmodule MyModule do
   Module.register_attribute __MODULE__, :foo, accumulate: true
   @foo 4; @foo 8; def foo, do: @foo 
 end
 MyModule.first_foo #> [8, 4]
 
-  # Certain module attributes have special behavior, and their names are reserved. 
-  # Two of the most commonly-used reserved ones are @moduledoc and @doc:
+Certain module attributes have special behavior, and their names are reserved. 
+```elixir
+```
+Two of the most commonly-used reserved ones are @moduledoc and @doc:
+```elixir
+```
 defmodule Math do
   @moduledoc "Mathematical functions"
 
@@ -847,11 +976,15 @@ defmodule Math do
   def subtract(a, b), do: a - b
 end
 
-  # You can also use h to view a module or function’s documentation in IEx:
+You can also use h to view a module or function’s documentation in IEx:
+```elixir
+```
 h Math #> Mathematical functions
 …
 h Math.add  #> def add(a, b)
-            # >Add two numbers together
+>Add two numbers together
+```elixir
+```
 …
 h Math.subtract #> def subtract(a, b)
                 #> Subtract one number from another number
@@ -871,52 +1004,74 @@ h Math.subtract #> def subtract(a, b)
 ```elixir
 user = %{name: "Adam", email: "adam@example.com"} # Map doesn't enforce attrs and not named
 
-  # Struct
+Struct
+```elixir
+```
 defmodule User do; defstruct [:name, :email]; end
 user = %User{name: "Adam", email: "adam@example.com"}
-  # enforces keys
+enforces keys
+```elixir
+```
 kurt = %User{name: "Kurt", email: "kurt@nirvana.com", age: 27} #> ** (KeyError) key :age not found
-  # default to nil
+default to nil
+```elixir
+```
 %User{name: "Emily"}                                    #> %User{email: nil, name: "Emily"}
 
-  # Can enforce with @enforce_keys
+Can enforce with @enforce_keys
+```elixir
+```
 defmodule User do
   @enforce_keys [:name]
   defstruct [:name, :email]
 end
 %User{email: "hello@example.com"} #> ** (ArgumentError) the following keys must also be given when building struct User: [:name]
 
-  # Or default value
+Or default value
+```elixir
+```
 defmodule Guitar do; defstruct [num_strings: 6]; end
 %Guitar{} #=> %Guitar{num_strings: 6}
 
-  # defstruct is a module, can incl fns
+defstruct is a module, can incl fns
+```elixir
+```
 defmodule User do
   defstruct [:name, :email]
 
   def has_valid_email?(user), do: ...
 end
 
-  # Structs are maps
+Structs are maps
+```elixir
+```
 user = %User{name: "Adam", email: "adam@example.com"}
 user.__struct__         #> User
 
-  # with Map fns
+with Map fns
+```elixir
+```
 user = %User{name: "Adam", email: "adam@example.com"}
 Map.get(user, :name)
 Map.put(user, :name, "Bill")
 Map.keys(user)
 Map.values(user)
 Map.merge(user, %{name: "Dave"})
-  # and can use %{ ... | ... | } syntax
+and can use %{ ... | ... | } syntax
+```elixir
+```
 user = %User{name: "Adam", email: "adam@example.com"}
 %{user | email: "newaddress@example.com"}
 
-  # Can pattern-match
+Can pattern-match
+```elixir
+```
 %User{name: name} = %User{name: "Sarah", email: "stacey@company.com"}
 name        #> "Sarah"
 
-  # Can limit match on struct type
+Can limit match on struct type
+```elixir
+```
 defmodule Person do; defstruct [:name]; end
 defmodule Dog do; defstruct [:name]; end
 
@@ -924,7 +1079,9 @@ defmodule Dog do; defstruct [:name]; end
 %Person{name: name} = %Person{name: "Ed"}; name #>  "Ed"
 %Person{name: name} = %Dog{name: "Rover"} #> ** (MatchError) no match of right hand side value: %Dog{name: "Rover"}
 
-  # This raises a FunctionClauseError if the first argument is not a Person:
+This raises a FunctionClauseError if the first argument is not a Person:
+```elixir
+```
 def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
 ```
 
@@ -943,7 +1100,9 @@ time = ~T[23:11:00] #> ~T[23:11:00]
 time.hour           #> 23
 time.__struct__     #> Time
 
-  # NaiveDateTime doesn't include timezone
+NaiveDateTime doesn't include timezone
+```elixir
+```
 naive = ~N[1926-04-21 23:11:00] #> ~N[1926-04-21 23:11:00]
 naive.hour           #> 23
 naive.year           #> 1926
@@ -972,9 +1131,13 @@ dt.time_zone  #> "Etc/UTC"
 String.upcase("piping is fun") # sam as ...
 "piping is fun" |> String.upcase
 
-  # function call takes precedence over pipe operator
+function call takes precedence over pipe operator
+```elixir
+```
   #> Does it work like this?   fizz(2 |> buzz 3)
-  # >Or like this?             fizz(2) |> buzz(3)
+>Or like this?             fizz(2) |> buzz(3)
+```elixir
+```
 fizz 2 |> buzz 3
       #> warning: parentheses are required when piping into a function call. For example:
       #>     foo 1 |> bar 2 |> baz 3
@@ -1027,15 +1190,21 @@ diff --git a/pensive/mix.exs
 ```elixir
 diff --git a/pensive/config/config.exs
 @@ -59,6 +59,10 @@ config :logger, :console,
- # Use Jason for JSON parsing in Phoenix
+Use Jason for JSON parsing in Phoenix
+```elixir
+```
  config :phoenix, :json_library, Jason
 +
 +if Mix.env == :dev do
 +  config :mix_test_watch, clear: true
 +end
 +
- # Import environment specific config. This must remain at the bottom
- # of this file so it overrides the configuration defined above.
+Import environment specific config. This must remain at the bottom
+```elixir
+```
+of this file so it overrides the configuration defined above.
+```elixir
+```
  import_config "#{config_env()}.exs"
 ```
 
@@ -1163,14 +1332,22 @@ diff --git a/pensive/config/test.exs
  
 diff --git a/pensive/lib/pensive_web/router.ex
 @@ -31,6 +31,8 @@ defmodule PensiveWeb.Router do
-   #   pipe_through :api
-   # end
+  pipe_through :api
+```elixir
+```
+end
+```elixir
+```
  
 +  # Additional routes only for development and only if the `:dev_routes` env is set.
 +  # access at localhost:4000/dev/dashboard
-   # Enable LiveDashboard and Swoosh mailbox preview in development
+Enable LiveDashboard and Swoosh mailbox preview in development
+```elixir
+```
    if Application.compile_env(:pensive, :dev_routes) do
-     # If you want to use the LiveDashboard in production, you should put
+If you want to use the LiveDashboard in production, you should put
+```elixir
+```
 ```
 `live_dashboard` can be access in dev at http://localhost:4000/dev/dashboard
 
@@ -1180,12 +1357,16 @@ diff --git a/pensive/lib/pensive_web/router.ex
 diff --git a/pensive/lib/pensive_web/router.ex
 @@ -24,6 +24,7 @@ defmodule PensiveWeb.Router do
  
-     # Default route when no path is given
+Default route when no path is given
+```elixir
+```
      get "/", PageController, :home
 +    get "/about", PageController, :about
    end
  
-   # Other scopes may use custom stacks.
+Other scopes may use custom stacks.
+```elixir
+```
 ```
 
 ### 18. Controllers and templates  
