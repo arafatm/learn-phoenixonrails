@@ -979,7 +979,6 @@ h Math.subtract #> def subtract(a, b)
 ```
 
 ### 11. Elixir Structs  
-xxx
 
 - Structs are named maps with a defined list of keys.
 - Define a struct with `defstruct` inside a module.
@@ -996,85 +995,84 @@ user = %{name: "Adam", email: "adam@example.com"} # Map doesn't enforce attrs an
 
 Struct
 ```elixir
-```
 defmodule User do; defstruct [:name, :email]; end
 user = %User{name: "Adam", email: "adam@example.com"}
+```
 
 enforces keys
 ```elixir
-```
 kurt = %User{name: "Kurt", email: "kurt@nirvana.com", age: 27} #> ** (KeyError) key :age not found
+```
 
 default to nil
 ```elixir
-```
 %User{name: "Emily"}                                    #> %User{email: nil, name: "Emily"}
+```
 
 Can enforce with @enforce_keys
 ```elixir
-```
 defmodule User do
   @enforce_keys [:name]
   defstruct [:name, :email]
 end
 %User{email: "hello@example.com"} #> ** (ArgumentError) the following keys must also be given when building struct User: [:name]
+```
 
 Or default value
 ```elixir
-```
 defmodule Guitar do; defstruct [num_strings: 6]; end
 %Guitar{} #=> %Guitar{num_strings: 6}
+```
 
 defstruct is a module, can incl fns
 ```elixir
-```
 defmodule User do
   defstruct [:name, :email]
 
   def has_valid_email?(user), do: ...
 end
+```
 
 Structs are maps
 ```elixir
-```
 user = %User{name: "Adam", email: "adam@example.com"}
 user.__struct__         #> User
+```
 
 with Map fns
 ```elixir
-```
 user = %User{name: "Adam", email: "adam@example.com"}
 Map.get(user, :name)
 Map.put(user, :name, "Bill")
 Map.keys(user)
 Map.values(user)
 Map.merge(user, %{name: "Dave"})
+```
 
 and can use %{ ... | ... | } syntax
 ```elixir
-```
 user = %User{name: "Adam", email: "adam@example.com"}
 %{user | email: "newaddress@example.com"}
+```
 
 Can pattern-match
 ```elixir
-```
 %User{name: name} = %User{name: "Sarah", email: "stacey@company.com"}
 name        #> "Sarah"
+```
 
 Can limit match on struct type
 ```elixir
-```
 defmodule Person do; defstruct [:name]; end
 defmodule Dog do; defstruct [:name]; end
 
 %{name: name} = %Person{name: "Jess"};     name #> "Jess"
 %Person{name: name} = %Person{name: "Ed"}; name #>  "Ed"
 %Person{name: name} = %Dog{name: "Rover"} #> ** (MatchError) no match of right hand side value: %Dog{name: "Rover"}
+```
 
 This raises a FunctionClauseError if the first argument is not a Person:
 ```elixir
-```
 def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
 ```
 
@@ -1092,10 +1090,10 @@ date.struct           #> Date
 time = ~T[23:11:00] #> ~T[23:11:00]
 time.hour           #> 23
 time.__struct__     #> Time
+```
 
 NaiveDateTime doesn't include timezone
 ```elixir
-```
 naive = ~N[1926-04-21 23:11:00] #> ~N[1926-04-21 23:11:00]
 naive.hour           #> 23
 naive.year           #> 1926
@@ -1121,17 +1119,21 @@ dt.time_zone  #> "Etc/UTC"
 |> String.split
   #> ["mysubdomain", "example", "com", "au"]
 
-String.upcase("piping is fun") # sam as ...
+String.upcase("piping is fun") # same as ...
 "piping is fun" |> String.upcase
+```
 
 function call takes precedence over pipe operator
 ```elixir
-```
   #> Does it work like this?   fizz(2 |> buzz 3)
-
->Or like this?             fizz(2) |> buzz(3)
-```elixir
 ```
+
+Or like this?             
+```elixir
+fizz(2) |> buzz(3)
+```
+
+```elixir
 fizz 2 |> buzz 3
       #> warning: parentheses are required when piping into a function call. For example:
       #>     foo 1 |> bar 2 |> baz 3
@@ -1180,29 +1182,25 @@ diff --git a/pensive/mix.exs
 +      {:mix_test_watch, "~> 1.1", only: :dev, runtime: false}
      ]
    end
-
 ```
+
 ```elixir
 diff --git a/pensive/config/config.exs
 @@ -59,6 +59,10 @@ config :logger, :console,
+```
 
 Use Jason for JSON parsing in Phoenix
 ```elixir
-```
  config :phoenix, :json_library, Jason
 +
 +if Mix.env == :dev do
 +  config :mix_test_watch, clear: true
 +end
-+
+```
 
 Import environment specific config. This must remain at the bottom
-```elixir
-```
-
 of this file so it overrides the configuration defined above.
 ```elixir
-```
  import_config "#{config_env()}.exs"
 ```
 
@@ -1287,28 +1285,24 @@ diff --git a/pensive/lib/pensive_web/router.ex
 +    # Default route when no path is given
      get "/", PageController, :home
    end
- 
 ```
 
 #### Print routes
 
-```
-mix phx.routes #=>
-  GET  /                            PensieveWeb.PageController :home
-  GET  /dev/dashboard               Phoenix.LiveDashboard.PageLive :home
-  GET  /dev/dashboard/:page         Phoenix.LiveDashboard.PageLive :page
-  GET  /dev/dashboard/:node/:page   Phoenix.LiveDashboard.PageLive :page
-  *    /dev/mailbox                 Plug.Swoosh.MailboxPreview []
-  WS   /live/websocket              Phoenix.LiveView.Socket
-  GET  /live/longpoll               Phoenix.LiveView.Socket
-  POST  /live/longpoll              Phoenix.LiveView.Socket
-```
-```
-mix phx.routes --info / #=>
-  Module: PensieveWeb.PageController
-  Function: :home
-  /path/to/your/repo/pensieve/lib/pensieve_web/controllers/page_controller.ex:4
-```
+    mix phx.routes #=>
+      GET  /                            PensieveWeb.PageController :home
+      GET  /dev/dashboard               Phoenix.LiveDashboard.PageLive :home
+      GET  /dev/dashboard/:page         Phoenix.LiveDashboard.PageLive :page
+      GET  /dev/dashboard/:node/:page   Phoenix.LiveDashboard.PageLive :page
+      *    /dev/mailbox                 Plug.Swoosh.MailboxPreview []
+      WS   /live/websocket              Phoenix.LiveView.Socket
+      GET  /live/longpoll               Phoenix.LiveView.Socket
+      POST  /live/longpoll              Phoenix.LiveView.Socket
+
+    mix phx.routes --info / #=>
+      Module: PensieveWeb.PageController
+      Function: :home
+      /path/to/your/repo/pensieve/lib/pensieve_web/controllers/page_controller.ex:4
 
 ###### :ship: Env specific configs <a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a>
 
@@ -1317,61 +1311,55 @@ diff --git a/pensive/config/dev.exs
 @@ -1,3 +1,4 @@
 +# `:dev` specific configs
  import Config
- 
+
 diff --git a/pensive/config/prod.exs
 @@ -1,3 +1,4 @@
 +# `:prod` specific configs
  import Config
- 
+
 diff --git a/pensive/config/test.exs
 @@ -1,3 +1,4 @@
 +# `:test` specific config
  import Config
- 
+
 diff --git a/pensive/lib/pensive_web/router.ex
 @@ -31,6 +31,8 @@ defmodule PensiveWeb.Router do
 
   pipe_through :api
-```elixir
-```
-
 end
+
 ```elixir
-```
- 
 +  # Additional routes only for development and only if the `:dev_routes` env is set.
 +  # access at localhost:4000/dev/dashboard
+```
 
 Enable LiveDashboard and Swoosh mailbox preview in development
 ```elixir
-```
    if Application.compile_env(:pensive, :dev_routes) do
+```
 
 If you want to use the LiveDashboard in production, you should put
 ```elixir
-```
-```
 `live_dashboard` can be access in dev at http://localhost:4000/dev/dashboard
+```
 
 ###### :ship: route /about <a href='https://github.com/arafatm/learn-phoenixonrails/commit/39bf15c'>39bf15c</a>
 
 ```elixir
 diff --git a/pensive/lib/pensive_web/router.ex
 @@ -24,6 +24,7 @@ defmodule PensiveWeb.Router do
+```
  
 
 Default route when no path is given
 ```elixir
-```
      get "/", PageController, :home
 +    get "/about", PageController, :about
    end
+```
  
 
 Other scopes may use custom stacks.
-```elixir
-```
-```
 
 ### 18. Controllers and templates  
 
