@@ -3,7 +3,6 @@ source: https://phoenixonrails.com
 title: Phoenix on Rails
 ---
 
-
 <!-- vim-markdown-toc GFM -->
 
 * [1. Intro](#1-intro)
@@ -13,6 +12,25 @@ title: Phoenix on Rails
 * [3. Basic Elixir Syntax](#3-basic-elixir-syntax)
     * [Common Syntax](#common-syntax)
     * [Functions](#functions)
+    * [Regex](#regex)
+    * [Inspect & Exceptions](#inspect--exceptions)
+* [4. Elixir Modules](#4-elixir-modules)
+    * [Modules organize functions](#modules-organize-functions)
+    * [Import (only)](#import-only)
+    * [Private](#private)
+    * [Alias](#alias)
+* [5. Atoms, Lists and Tuples](#5-atoms-lists-and-tuples)
+    * [Atoms](#atoms)
+    * [Lists](#lists)
+    * [Tuples](#tuples)
+    * [Lists vs. Tuples](#lists-vs-tuples)
+    * [Size vs Length](#size-vs-length)
+* [6. Sigils](#6-sigils)
+* [7. Pattern matching](#7-pattern-matching)
+* [8. Elixir Maps](#8-elixir-maps)
+* [9. Keyword Lists](#9-keyword-lists)
+  * [10. Module attributes](#10-module-attributes)
+  * [11. Elixir Structs](#11-elixir-structs)
   * [18. Controllers and templates](#18-controllers-and-templates)
     * [Plug.Conn](#plugconn)
   * [19. Tailwind](#19-tailwind)
@@ -87,7 +105,7 @@ Using [asdf-vm/asdf-elixir: Elixir plugin for asdf version manager](https://gith
 
 |                | Elixir                                      | Ruby                                                       |
 | ---            | ---                                         | ---                                                        |
-| paradigm       | Functional (w/ Modules)                                  | Object-oriented                                            |
+| paradigm       | Functional (w/ Modules)                     | Object-oriented                                            |
 | Console        | `iex` (Press `Ctrl + C` twice to exit)      | `irb` (Press `Ctrl + D` to exit)                           |
 | Mutability     | Everything is immutable                     | Some (strings) are mutable, others (symbols) are immutable |
 | File extension | `.ex` or `.exs`                             | `.rb`                                                      |
@@ -101,7 +119,7 @@ place.
 String.upcase(name) # vs Ruby: name.upcase
 ```
 
-Compile and Excute
+Compile and Execute
 ```bash
 elixirc math.ex # creates Elixir.Math.Bem
 elixir math.exs # Doesn't save .beam
@@ -205,7 +223,6 @@ equals vs exactly equals...
 
 #### Functions
 
-```elixir
 Elixir doesn’t have a return statement. The only way to return something is to make it be the value of the function’s final expression.
 ```elixir
 def add(a, b) do
@@ -325,7 +342,6 @@ defmodule Foo do
 end
 Foo.bar   # => "rescued error"
 ```
-
 
 ## 4. Elixir Modules  
 
@@ -521,6 +537,7 @@ length(["fizz", "buzz"])  # 2
 
 In Elixir use `~w[…]a` to create an array of atoms. 
 That is, use the same syntax as for an array of strings, 
+
 but _add an a_ after the closing delimiter:
 ```elixir
 ~w/crash bang wallop/ # ONLY theseeight lines create the array:
@@ -577,6 +594,7 @@ IO.puts(haiku)
 Sigils allow you to interpolate data using #{}, just like a string. 
 
 Alternatively, if you use the capitalized version of the sigil (e.g. ~S),
+
 _interpolation will be ignored_:
 ```elixir
 noun = "mat" #=> "mat"
@@ -584,7 +602,6 @@ noun = "mat" #=> "mat"
 ~S(The cat sat on the #{noun}) #=> "The cat sat on the \#{noun}"
 ```
 
-xxx
 ## 7. Pattern matching  
 
 - Allows to assign more than one variable at once
@@ -623,25 +640,27 @@ n = 1 #=> 1
 2 = n #=> ** (MatchError) no match of right hand side value: 1
 n = 2 #=> 2
 2 = z #=> ** (CompileError) iex:3: undefined function z/0 (there is no such import)
-
-A limitation of pattern matching is that you can’t make function calls on the left-hand side of =:
-```elixir
 ```
+
+A limitation of pattern matching is that you can’t make function calls on the
+
+left-hand side of `=:`
+```elixir
 length([1,2]) = 2 #=> ** (CompileError) iex:4: cannot invoke remote function :erlang.length/1 inside a match
+```
 
 Pin operator
 ```elixir
-```
 president = "Biden"
 {president, veep} = {"Trump", "Pence"}
 president   #=> "Trump"
 {^president, veep} = {"Biden", "Harris"}
 veep        #=> "Harris"
 {^president, veep} = {"Trump", "Pence"} #=> ** (MatchError) no match of right hand side value: {"Trump", "Pence"}
+```
 
 Case statement
 ```elixir
-```
 case {"Theodore", "Roosevelt"} do
   {"Franklin", "Roosevelt"}  -> "This clause won't match"
   {"Abraham", "Lincoln"}     -> "Neither will this"
@@ -649,10 +668,10 @@ case {"Theodore", "Roosevelt"} do
   {"Theodore", lastname}     -> "This doesn't get evaluated because we already found a match above"
   _                          -> "This is a failsafe clause that matches anything."
 end
+```
 
 Pattern-matching on function parameters
 ```elixir
-```
 defmodule Recursor do
   def sum(list) do
     case list do
@@ -661,9 +680,10 @@ defmodule Recursor do
     end
   end
 end
+```
+
 Is the same as...
 ```elixir
-```
 defmodule Recursor do
   def sum([]) do
     0
@@ -674,19 +694,19 @@ defmodule Recursor do
 end
 IO.puts Recursor.sum([1,2,3,4]) #=> 10
 IO.puts Recursor.sum([1,4,7,1]) #=> 13
+```
 
 Match on function param
 ```elixir
-```
 defmodule Translator do
   def color("blue") do; "azul"; end
   def color("red") do; "rojo"; end
 end
 Translator.color("mauve") #=> => ** (FunctionClauseError) no function clause matching in Translator.color/1
-
-Can use Guard in fn clause
-```elixir
 ```
+
+Can use `Guard` in fn clause
+```elixir
 defmodule Math do
   def zero?(0) do;                      true; end
   def zero?(x) when is_integer(x) do;   false; end
@@ -695,18 +715,18 @@ IO.puts Math.zero?(0)         #=> true
 IO.puts Math.zero?(1)         #=> false
 IO.puts Math.zero?([1, 2, 3]) #=> ** (FunctionClauseError)
 IO.puts Math.zero?(0.0)       #=> ** (FunctionClauseError)
+```
 
 Match
 ```elixir
-```
 match?(%{a: 1}, %{a: 1, b: 2}) #=> true
 match?(%{a: 2}, %{a: 1, b: 2}) #=> false
-
 match?(x, 5) #=> warning: variable "x" is unused (if the variable is not meant to be used, prefix it with an underscore)
              #=> true
+```
+
 Can use pinned variable to get rid of warning
 ```elixir
-```
 x = 6
 match?(%{a: ^x}, %{a: 6}) #=> true
 ```
@@ -726,30 +746,30 @@ my_map = %{ 1 => "a", "x" => "b", [] => "c", 3.5 => "d" } #=> Anything can be a 
 
 %{ a: 1, b: 2 } # is the same as
 %{ :a => 1, :b => 2 }
+```
 
 Pattern match on maps
 ```elixir
-```
 %{name: name} =  %{name: "Harry"}
-name #=> "Harry"
+name                                                                       #=> "Harry"
 %{name: name, house: "Slytherin"} =  %{name: "Harry", house: "Gryffindor"} #=> ** (MatchError) no match of right hand side value: %{house: "Gryffindor", name: "Harry"}
-
-Keys must be on left, but optional on right
-```elixir
 ```
+
+Keys must be on left, but optional on right.
+
 This matches; additional keys other than 'name' are ignored:
 ```elixir
-```
 %{name: name} =  %{name: "Harry", house: "Gryffindor", broomstick: "Nimbus 2000"}
 name #=> "Harry"
+```
+
 This is a MatchError because the :house key is missing on the right:
 ```elixir
-```
 %{name: name, house: house} =  %{name: "Harry"} #=> ** (MatchError) no match of right hand side value: %{name: "Harry"}
+```
 
 Can assign whole map and pattern match vars
 ```elixir
-```
 def func(%{foo: foo, bar: bar} = map) do
   IO.puts foo; IO.puts bar; IO.inspect map
 end
@@ -758,41 +778,40 @@ func(%{foo: 1, bar: 2})
   #=> 1
   #=> 2
   #=> %{bar: 2, foo: 1}
+```
 
 Common Map functions
 ```elixir
-```
 map_size(%{a: 1, b: 2, c: 3})
 Map.get(%{a: 1, b: 2}, :a)
 Map.put(%{a: 1, b: 2}, :c, 3)
 Map.keys(%{a: 1, b: 2})
 Map.values(%{a: 1, b: 2})
 Map.merge(%{a: 1, b: 2}, %{b: 3, c: 4}) #=> %{a: 1, b: 3, c: 4}
+```
 
 Update maps
 ```elixir
-```
 foo = %{a: 1, b: 2}
 %{ foo | b: 3 }         #=> %{a: 1, b: 3}
+```
 
 This syntax can only update an existing key, not add a new one. 
 ```elixir
-```
 foo = %{a: 1, b: 2}
 %{ foo | c: 3 }         #=> ** (KeyError) key :c not found in: %{a: 1, b: 2}
-
-Can use . syntax
-```elixir
 ```
+
+Can use `.` syntax
+```elixir
 foo = %{a: 1, b: 2}
 foo.a                   #=> 1
+```
 
 But only on atoms
 ```elixir
-```
 foo = %{"a" => 1}
 foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
-
 ```
 
 ## 9. Keyword Lists  
@@ -808,91 +827,85 @@ foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 
 ```elixir
 kwlist = [foo: 1, bar: 2]
+```
 
 Cannot use . syntax
 ```elixir
-```
 kwlist.foo      #=> ** (ArgumentError)
+```
 
 Can have duplicate keys
 ```elixir
-```
 kwlist = [foo: 1, foo: 5, bar: 16, foo: 12]
-kwlist[:foo]                                    #=> 1
-
-Just a list of tuples like `[{ }, {}]
-```elixir
+kwlist[:foo]  #=> 1
 ```
+
+Just a list of tuples like `[{ }, {}]`
+```elixir
 [name: "Bob", age: 25] == [{:name, "Bob"}, {:age, 25}]  #=> true
+```
 
 List functions work
 ```elixir
-```
 [foo: 1, bar: 2] ++ [fizz: 3, buzz: 4]
 [foo: 1, bar: 2] -- [foo: 1]          
 {:foo, 1}       in [foo: 1, bar: 2]         
 [{:boo, 0}      | [foo: 1, bar: 2]]
 List.first([foo: 1, bar: 2])
+```
 
 Are ordered like List
 ```elixir
-```
 [foo: 1, bar: 2] == [bar: 2, foo: 1] #=> false
+```
 
 The main thing keyword lists are used for is to pass options to functions.
 ```elixir
-```
 String.split("I am your father", " ")                   #=> ["I", "am", "your", "father"]
 split/3 has optional args
-```elixir
 ```
-String.split("I   am your  father", " ", [trim: true])  #=> ["I", "am", "your", "father"]
-if passing single len list, leave off []
-```elixir
-```
-String.split("I   am your  father", " ", trim: true)    #=> ["I", "am", "your", "father"]
 
-When using List as optional params in your fn, 
 ```elixir
+String.split("I   am your  father", " ", [trim: true])  #=> ["I", "am", "your", "father"]
 ```
-pattern matching is tricky since order is important in List
+
+if passing single len list, leave off `[]`
 ```elixir
+String.split("I   am your  father", " ", trim: true)    #=> ["I", "am", "your", "father"]
 ```
+
+When using List as optional params in your fn, pattern matching is tricky since
+order is important in List
+
 Instead use Keyword funs
 ```elixir
-```
 Keyword.has_key?([trim: true, parts: false], :something_else)   #=> false
 Keyword.get(     [trim: true, parts: false], :trim)             #=> true
 Keyword.fetch(   [trim: true, parts: false], :trim)             #=> {:ok, true}
 Keyword.fetch(   [trim: true, parts: false], :not_there)        #=> :error
 Keyword.fetch!(  [trim: true, parts: false], :not_there)        #=> ** (KeyError) key :not_there not found in: [trim: true, parts: false]
 Keyword.delete(  [trim: true, parts: false], :parts)            #=> [trim: true]
+```
 
 Allowing duplicate keys is helpful e.g. in `Ecto.Query`
 ```elixir
-```
 query =
   from b in Book,
     where: b.publication_year < 1990,
     where: b.num_pages > 300,
     where: b.type == "Hardback"
 books = Repo.all(query)
+```
 
 if is a __macro__ `if/2` with a keyword list for arguments
 ```elixir
-```
 if some_condition do; "Something"; else; "Something else"; end
-same as
-```elixir
-```
 if some_condition, do: "Something", else: "Something else"
-same as
-```elixir
-```
 if(some_condition, [do: "Something", else: "Something else"])
+```
+
 also works for other blocks
 ```elixir
-```
 def shout(str), do: IO.puts(String.upcase(str))
 ```
 
@@ -908,43 +921,40 @@ def shout(str), do: IO.puts(String.upcase(str))
 defmodule MyModule do
   @my_attribute "some value"
 end
-
-used to reduce repetition and make your code more readable
-```elixir
 ```
+
+Used to reduce repetition and make your code more readable
+```elixir
 defmodule Circle do
   @pi 3.14159
 
   def diameter(r), do: 2 * @pi * r
   def area(r),  do: @pi * r ** 2 # evaluated at compile time, same as 
-def area(r), do: 3.14158 * r  ** 2
-```elixir
-```
+  def area(r), do: 3.14158 * r  ** 2
 end
+```
 
 Can be reassigned
 ```elixir
-```
 defmodule MyModule do
   @foo 4; @foo 8; def foo, do: @foo 
 end
 MyModule.first_foo #> 8
+```
 
 Can be accumulated
 ```elixir
-```
 defmodule MyModule do
   Module.register_attribute __MODULE__, :foo, accumulate: true
   @foo 4; @foo 8; def foo, do: @foo 
 end
 MyModule.first_foo #> [8, 4]
+```
 
 Certain module attributes have special behavior, and their names are reserved. 
-```elixir
-```
+
 Two of the most commonly-used reserved ones are @moduledoc and @doc:
 ```elixir
-```
 defmodule Math do
   @moduledoc "Mathematical functions"
 
@@ -954,22 +964,22 @@ defmodule Math do
   @doc "Subtract one number from another number"
   def subtract(a, b), do: a - b
 end
+```
 
-You can also use h to view a module or function’s documentation in IEx:
+You can also use `h` to view a module or function’s documentation in IEx:
 ```elixir
-```
 h Math #> Mathematical functions
-…
 h Math.add  #> def add(a, b)
->Add two numbers together
-```elixir
 ```
-…
+
+Add two numbers together
+```elixir
 h Math.subtract #> def subtract(a, b)
                 #> Subtract one number from another number
 ```
 
 ### 11. Elixir Structs  
+xxx
 
 - Structs are named maps with a defined list of keys.
 - Define a struct with `defstruct` inside a module.
@@ -982,16 +992,19 @@ h Math.subtract #> def subtract(a, b)
 
 ```elixir
 user = %{name: "Adam", email: "adam@example.com"} # Map doesn't enforce attrs and not named
+```
 
 Struct
 ```elixir
 ```
 defmodule User do; defstruct [:name, :email]; end
 user = %User{name: "Adam", email: "adam@example.com"}
+
 enforces keys
 ```elixir
 ```
 kurt = %User{name: "Kurt", email: "kurt@nirvana.com", age: 27} #> ** (KeyError) key :age not found
+
 default to nil
 ```elixir
 ```
@@ -1036,6 +1049,7 @@ Map.put(user, :name, "Bill")
 Map.keys(user)
 Map.values(user)
 Map.merge(user, %{name: "Dave"})
+
 and can use %{ ... | ... | } syntax
 ```elixir
 ```
@@ -1114,6 +1128,7 @@ function call takes precedence over pipe operator
 ```elixir
 ```
   #> Does it work like this?   fizz(2 |> buzz 3)
+
 >Or like this?             fizz(2) |> buzz(3)
 ```elixir
 ```
@@ -1165,10 +1180,12 @@ diff --git a/pensive/mix.exs
 +      {:mix_test_watch, "~> 1.1", only: :dev, runtime: false}
      ]
    end
+
 ```
 ```elixir
 diff --git a/pensive/config/config.exs
 @@ -59,6 +59,10 @@ config :logger, :console,
+
 Use Jason for JSON parsing in Phoenix
 ```elixir
 ```
@@ -1178,9 +1195,11 @@ Use Jason for JSON parsing in Phoenix
 +  config :mix_test_watch, clear: true
 +end
 +
+
 Import environment specific config. This must remain at the bottom
 ```elixir
 ```
+
 of this file so it overrides the configuration defined above.
 ```elixir
 ```
@@ -1311,19 +1330,23 @@ diff --git a/pensive/config/test.exs
  
 diff --git a/pensive/lib/pensive_web/router.ex
 @@ -31,6 +31,8 @@ defmodule PensiveWeb.Router do
+
   pipe_through :api
 ```elixir
 ```
+
 end
 ```elixir
 ```
  
 +  # Additional routes only for development and only if the `:dev_routes` env is set.
 +  # access at localhost:4000/dev/dashboard
+
 Enable LiveDashboard and Swoosh mailbox preview in development
 ```elixir
 ```
    if Application.compile_env(:pensive, :dev_routes) do
+
 If you want to use the LiveDashboard in production, you should put
 ```elixir
 ```
@@ -1336,6 +1359,7 @@ If you want to use the LiveDashboard in production, you should put
 diff --git a/pensive/lib/pensive_web/router.ex
 @@ -24,6 +24,7 @@ defmodule PensiveWeb.Router do
  
+
 Default route when no path is given
 ```elixir
 ```
@@ -1343,6 +1367,7 @@ Default route when no path is given
 +    get "/about", PageController, :about
    end
  
+
 Other scopes may use custom stacks.
 ```elixir
 ```
