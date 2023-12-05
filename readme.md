@@ -5,97 +5,97 @@ title: Phoenix on Rails
 
 <!-- vim-markdown-toc GFM -->
 
-  * [1. Intro](#1-intro)
-      * [Install Elixir/Erlang w/ asdf](#install-elixirerlang-w-asdf)
-  * [Part 1. An introduction to Elixir](#part-1-an-introduction-to-elixir)
-    * [2. Ruby vs. Elixir](#2-ruby-vs-elixir)
+* [1. Intro](#1-intro)
+    * [Install Elixir/Erlang w/ asdf](#install-elixirerlang-w-asdf)
+* [Part 1. An introduction to Elixir](#part-1-an-introduction-to-elixir)
+  * [2. Ruby vs. Elixir](#2-ruby-vs-elixir)
   * [3. Basic Elixir Syntax](#3-basic-elixir-syntax)
-      * [Common Syntax](#common-syntax)
-      * [Functions](#functions)
-      * [Regex](#regex)
-      * [Inspect & Exceptions](#inspect--exceptions)
+    * [Common Syntax](#common-syntax)
+    * [Functions](#functions)
+    * [Regex](#regex)
+    * [Inspect & Exceptions](#inspect--exceptions)
   * [4. Elixir Modules](#4-elixir-modules)
-      * [Modules organize functions](#modules-organize-functions)
-      * [Import (only)](#import-only)
-      * [Private](#private)
-      * [Alias](#alias)
+    * [Modules organize functions](#modules-organize-functions)
+    * [Import (only)](#import-only)
+    * [Private](#private)
+    * [Alias](#alias)
   * [5. Atoms, Lists and Tuples](#5-atoms-lists-and-tuples)
-      * [Atoms](#atoms)
-      * [Lists](#lists)
-      * [Tuples](#tuples)
-      * [Lists vs. Tuples](#lists-vs-tuples)
-      * [Size vs Length](#size-vs-length)
+    * [Atoms](#atoms)
+    * [Lists](#lists)
+    * [Tuples](#tuples)
+    * [Lists vs. Tuples](#lists-vs-tuples)
+    * [Size vs Length](#size-vs-length)
   * [6. Sigils](#6-sigils)
   * [7. Pattern matching](#7-pattern-matching)
   * [8. Elixir Maps](#8-elixir-maps)
   * [9. Keyword Lists](#9-keyword-lists)
-    * [10. Module attributes](#10-module-attributes)
-    * [11. Elixir Structs](#11-elixir-structs)
+  * [10. Module attributes](#10-module-attributes)
+  * [11. Elixir Structs](#11-elixir-structs)
   * [12. Date and time](#12-date-and-time)
   * [13. The pipe operator](#13-the-pipe-operator)
 * [Part 2. A simple CRUD app](#part-2-a-simple-crud-app)
-    * [14. A simple Rails app](#14-a-simple-rails-app)
-      * [rails new](#rails-new)
-    * [15. Creating a new Phoenix app](#15-creating-a-new-phoenix-app)
-      * [Continuous Testing with Elixir](#continuous-testing-with-elixir)
-    * [16. Directory structure and mix.exs](#16-directory-structure-and-mixexs)
-      * [Directory Structure](#directory-structure)
-      * [mix.exs](#mixexs)
-      * [The lib directory](#the-lib-directory)
-    * [17. Routing and config](#17-routing-and-config)
-      * [To create a simple _about_ page](#to-create-a-simple-_about_-page)
-          * [:ship: PensiveWeb.Router <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a>](#ship-pensivewebrouter-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommit9b98a189b98a18a)
-      * [Print routes](#print-routes)
-          * [:ship: Env specific configs <a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a>](#ship-env-specific-configs-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommitba654c2ba654c2a)
-    * [18. Controllers and templates](#18-controllers-and-templates)
-      * [Plug.Conn](#plugconn)
-    * [19. Tailwind](#19-tailwind)
-    * [20. Embedded Elixir](#20-embedded-elixir)
-    * [21. Layouts](#21-layouts)
-    * [22. Phoenix views](#22-phoenix-views)
-    * [23. Ecto.Migration](#23-ectomigration)
-    * [24. Ecto.Schema](#24-ectoschema)
-    * [25. Ecto.Repo](#25-ectorepo)
-    * [26. Route helpers](#26-route-helpers)
-    * [27. Index page](#27-index-page)
-    * [28. Function components](#28-function-components)
-    * [29. Core components](#29-core-components)
-    * [30. Phoenix contexts](#30-phoenix-contexts)
-    * [31. Helper functions](#31-helper-functions)
-    * [32. Ecto.Changeset](#32-ectochangeset)
-    * [33. New and Create](#33-new-and-create)
-    * [34. Errors and I18n](#34-errors-and-i18n)
-    * [35. Edit and Update](#35-edit-and-update)
-    * [36. Deleting memories](#36-deleting-memories)
-    * [37. Recap](#37-recap)
-  * [Part 3. Advanced concepts](#part-3-advanced-concepts)
-    * [38. Dependency management](#38-dependency-management)
-    * [39. Erlang libraries](#39-erlang-libraries)
-    * [40. use](#40-use)
-    * [41. Plug and pipelines](#41-plug-and-pipelines)
-    * [42. Scaffolding](#42-scaffolding)
-    * [43. with](#43-with)
-    * [44. Ecto.Query](#44-ectoquery)
-    * [45. LiveView](#45-liveview)
-  * [Part 4. Twittex](#part-4-twittex)
-    * [46. phx.gen.auth](#46-phxgenauth)
-    * [47. Database indexes](#47-database-indexes)
-    * [48. The User schema](#48-the-user-schema)
-    * [49. Uniqueness validations](#49-uniqueness-validations)
-    * [50. User registration](#50-user-registration)
-    * [51. User sessions](#51-user-sessions)
-    * [52. Auth routes and plugs](#52-auth-routes-and-plugs)
-    * [53. Static files](#53-static-files)
-    * [54. Assets and esbuild](#54-assets-and-esbuild)
-    * [55. Phoenix.Param](#55-phoenixparam)
-    * [56. Associations](#56-associations)
-    * [57. Preloads](#57-preloads)
-    * [58. Emails and password resets](#58-emails-and-password-resets)
-    * [59. LiveView sessions](#59-liveview-sessions)
-    * [60. LiveView forms](#60-liveview-forms)
-    * [61. File uploads](#61-file-uploads)
-    * [62. Follows](#62-follows)
-    * [Conclusion](#conclusion)
+  * [14. A simple Rails app](#14-a-simple-rails-app)
+    * [rails new](#rails-new)
+  * [15. Creating a new Phoenix app](#15-creating-a-new-phoenix-app)
+    * [Continuous Testing with Elixir](#continuous-testing-with-elixir)
+  * [16. Directory structure and mix.exs](#16-directory-structure-and-mixexs)
+    * [Directory Structure](#directory-structure)
+    * [mix.exs](#mixexs)
+    * [The lib directory](#the-lib-directory)
+  * [17. Routing and config](#17-routing-and-config)
+    * [To create a simple _about_ page](#to-create-a-simple-_about_-page)
+        * [:ship: PensiveWeb.Router <a href='https://github.com/arafatm/learn-phoenixonrails/commit/9b98a18'>9b98a18</a>](#ship-pensivewebrouter-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommit9b98a189b98a18a)
+    * [Print routes](#print-routes)
+        * [:ship: Env specific configs <a href='https://github.com/arafatm/learn-phoenixonrails/commit/ba654c2'>ba654c2</a>](#ship-env-specific-configs-a-hrefhttpsgithubcomarafatmlearn-phoenixonrailscommitba654c2ba654c2a)
+  * [18. Controllers and templates](#18-controllers-and-templates)
+    * [Plug.Conn](#plugconn)
+  * [19. Tailwind](#19-tailwind)
+  * [20. Embedded Elixir](#20-embedded-elixir)
+  * [21. Layouts](#21-layouts)
+  * [22. Phoenix views](#22-phoenix-views)
+  * [23. Ecto.Migration](#23-ectomigration)
+  * [24. Ecto.Schema](#24-ectoschema)
+  * [25. Ecto.Repo](#25-ectorepo)
+  * [26. Route helpers](#26-route-helpers)
+  * [27. Index page](#27-index-page)
+  * [28. Function components](#28-function-components)
+  * [29. Core components](#29-core-components)
+  * [30. Phoenix contexts](#30-phoenix-contexts)
+  * [31. Helper functions](#31-helper-functions)
+  * [32. Ecto.Changeset](#32-ectochangeset)
+  * [33. New and Create](#33-new-and-create)
+  * [34. Errors and I18n](#34-errors-and-i18n)
+  * [35. Edit and Update](#35-edit-and-update)
+  * [36. Deleting memories](#36-deleting-memories)
+  * [37. Recap](#37-recap)
+* [Part 3. Advanced concepts](#part-3-advanced-concepts)
+  * [38. Dependency management](#38-dependency-management)
+  * [39. Erlang libraries](#39-erlang-libraries)
+  * [40. use](#40-use)
+  * [41. Plug and pipelines](#41-plug-and-pipelines)
+  * [42. Scaffolding](#42-scaffolding)
+  * [43. with](#43-with)
+  * [44. Ecto.Query](#44-ectoquery)
+  * [45. LiveView](#45-liveview)
+* [Part 4. Twittex](#part-4-twittex)
+  * [46. phx.gen.auth](#46-phxgenauth)
+  * [47. Database indexes](#47-database-indexes)
+  * [48. The User schema](#48-the-user-schema)
+  * [49. Uniqueness validations](#49-uniqueness-validations)
+  * [50. User registration](#50-user-registration)
+  * [51. User sessions](#51-user-sessions)
+  * [52. Auth routes and plugs](#52-auth-routes-and-plugs)
+  * [53. Static files](#53-static-files)
+  * [54. Assets and esbuild](#54-assets-and-esbuild)
+  * [55. Phoenix.Param](#55-phoenixparam)
+  * [56. Associations](#56-associations)
+  * [57. Preloads](#57-preloads)
+  * [58. Emails and password resets](#58-emails-and-password-resets)
+  * [59. LiveView sessions](#59-liveview-sessions)
+  * [60. LiveView forms](#60-liveview-forms)
+  * [61. File uploads](#61-file-uploads)
+  * [62. Follows](#62-follows)
+  * [Conclusion](#conclusion)
 
 <!-- vim-markdown-toc -->
 
@@ -147,7 +147,7 @@ elixirc math.ex # creates Elixir.Math.Bem
 elixir math.exs # Doesn't save .beam
 ```
 
-## 3. Basic Elixir Syntax  
+### 3. Basic Elixir Syntax  
 
 Just remember that:
 - Strings must use double quotes, not single quotes.
@@ -365,7 +365,7 @@ end
 Foo.bar   # => "rescued error"
 ```
 
-## 4. Elixir Modules  
+### 4. Elixir Modules  
 
 | Module                     | Ruby                                         | Elixir                                                       |
 | ---                        | ---                                          | ---                                                          |
@@ -440,7 +440,7 @@ You can write it like this:
 alias PhoenixOnRails.{Foo, Bar, Fizz, Buzz}
 ```
 
-## 5. Atoms, Lists and Tuples  
+### 5. Atoms, Lists and Tuples  
 
 - Elixir **atoms** are essentially the same thing as Ruby **symbols** and use
   the `:same_syntax`.
@@ -540,7 +540,7 @@ tuple_size({5, 1, 4})     # 3
 length(["fizz", "buzz"])  # 2
 ```
 
-## 6. Sigils  
+### 6. Sigils  
 
 |                              |  Elixir                                  |  Ruby                   |
 | --                           |  --                                      |  --                     |
@@ -624,7 +624,7 @@ noun = "mat" #=> "mat"
 ~S(The cat sat on the #{noun}) #=> "The cat sat on the \#{noun}"
 ```
 
-## 7. Pattern matching  
+### 7. Pattern matching  
 
 - Allows to assign more than one variable at once
 - e.g. with tuples or lists
@@ -753,7 +753,7 @@ x = 6
 match?(%{a: ^x}, %{a: 6}) #=> true
 ```
 
-## 8. Elixir Maps  
+### 8. Elixir Maps  
 
 - Are _key-value_ data structures similar to Ruby hashes.
 - Are written with `%{}`, as opposed to Ruby hashes which are written with `{}`.
@@ -836,7 +836,7 @@ foo = %{"a" => 1}
 foo.a                   #=> ** (KeyError) key :a not found in: %{"a" => 1}
 ```
 
-## 9. Keyword Lists  
+### 9. Keyword Lists  
 
 - Maps (and Keyword) are what’s called an _associative data structure_ - they associate keys to values.
 - Are syntactic sugar over lists of two-element tuples.
@@ -1098,7 +1098,7 @@ This raises a FunctionClauseError if the first argument is not a Person:
 def greet_person(%Person{} = person), do: IO.puts("Hello, #{person.name}!")
 ```
 
-## 12. Date and time  
+### 12. Date and time  
 
 - Elixir provides `Date`, `Time`, and `NaiveDateTime` structs 
 - which can be created with the sigils `~D`, `~T` and `~N` respectively. 
@@ -1132,7 +1132,7 @@ dt.__struct__ #> DateTime
 dt.time_zone  #> "Etc/UTC"
 ```
 
-## 13. The pipe operator  
+### 13. The pipe operator  
 
 ```elixir
 "MySubdomain.example.com.au    "
@@ -1165,7 +1165,7 @@ fizz 2 |> buzz 3
 
 :bulb: For code analysis use [Credo](https://github.com/rrrene/credo)
 
-# Part 2. A simple CRUD app
+## Part 2. A simple CRUD app
 
 ### 14. A simple Rails app  
 
